@@ -58,3 +58,10 @@ h2 {
     font-size: 24px;
     margin-bottom: 15px;
 }
+footer {
+    padding: 20px;
+    background-color: #111;
+    font-size: 14px;
+    color: #888;
+    margin-top: 40px;
+}

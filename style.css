@@ -1,67 +1,456 @@
-body {
-    background-color: #1e1e24;
-    color: white;
-    text-align: center;
+/*====================================================
+ABECE 2.1 - style.css
+====================================================*/
+
+:root{
+    --color-fondo:#F7F3EC;
+    --color-primario:#1A2D42;
+    --color-secundario:#6DA3CF;
+    --color-acento:#F6D173;
+    --color-blanco:#ffffff;
+    --radio:18px;
+    --sombra:0 12px 30px rgba(0,0,0,.08);
+    --transicion:.3s ease;
 }
 
-button {
-    background-color: #25d366;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-img {
-    width: 300px;
-    border-radius: 15px;
+body{
+    background:var(--color-fondo);
+    color:var(--color-primario);
+    font-family:'Poppins',sans-serif;
+    line-height:1.6;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 60px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+nav a{
+    color:var(--color-primario);
+    text-decoration:none;
+    font-weight:600;
+    transition:var(--transicion);
+}
+
+nav a:hover{
+    color:var(--color-secundario);
+}
+
+.logo-marca{
+    width:80px;
+}
+
+section{
+    max-width:1400px;
+    margin:auto;
+    padding:80px 30px;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:58px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:20px;
+    max-width:700px;
+    margin:0 auto 25px;
+}
+
+.hero img{
+    width:100%;
+    max-width:520px;
+    border-radius:24px;
+    margin-top:30px;
+}
+
+button{
+    background:var(--color-acento);
+    color:var(--color-primario);
+    border:none;
+    border-radius:12px;
+    padding:14px 28px;
+    cursor:pointer;
+    font-weight:600;
+    letter-spacing:.5px;
+    transition:var(--transicion);
+}
+
+button:hover{
+    transform:translateY(-2px) scale(1.03);
+}
+
+.tienda-contenedor{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    margin-top:35px;
+}
+
+.tarjeta-producto{
+    background:#fff;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:var(--sombra);
+    transition:var(--transicion);
+}
+
+.tarjeta-producto:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(0,0,0,.15);
+}
+
+.tarjeta-producto img{
+    width:100%;
+    border-radius:14px;
+}
+
+.detalles-prod{
+    color:#777;
+    font-size:14px;
+    margin:12px 0;
+}
+
+.precio{
+    font-size:24px;
+    font-weight:700;
+    margin:18px 0;
+}
+
+#enlace-carrito{
+    background:var(--color-acento);
+    padding:8px 16px;
+    border-radius:30px;
+}
+
+#carrito-compras{
+    position:fixed;
+    top:0;
+    right:0;
+    width:340px;
+    height:100vh;
+    background:#fff;
+    padding:30px 20px;
+    border-left:2px solid var(--color-secundario);
+    box-shadow:-10px 0 30px rgba(0,0,0,.1);
+    overflow-y:auto;
+    transition:.4s;
+    z-index:1500;
+}
+
+.carrito-cerrado{
+    transform:translateX(100%);
+}
+
+.carrito-abierto{
+    transform:translateX(0);
+}
+
+.cerrar-carrito-x{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.modal-oculto{
+    display:none;
+}
+
+.modal-visible{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:2000;
+}
+
+.contenido-modal{
+    background:#fff;
+    width:min(650px,95%);
+    padding:30px;
+    border-radius:20px;
+}
+
+.logo-checkout{
+    width:90px;
+    display:block;
+    margin:0 auto 20px;
+}
+
+#form-checkout{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:20px;
+}
+
+#form-checkout input,
+#form-checkout textarea,
+#form-checkout select{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-family:'Poppins',sans-serif;
+}
+
+#form-checkout input:focus,
+#form-checkout textarea:focus,
+#form-checkout select:focus{
+    outline:none;
+    border-color:var(--color-secundario);
+    box-shadow:0 0 8px rgba(109,163,207,.3);
+}
+
+.modulo-facturacion{
+    background:#f3f3f3;
+    padding:15px;
+    border-radius:12px;
+}
+
+.oculto-fiscal{
+    display:none;
+}
+
+.visible-fiscal{
+    display:block;
+    margin-top:15px;
+}
+
+footer{
+    background:var(--color-primario);
+    color:#fff;
+    text-align:center;
+    padding:40px;
+    margin-top:50px;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 12px;
+    }
+
+    .logo-marca {
+        width: 70px;
+        margin: 0 auto;
+    }
+
+    .menu {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+    nav a {
+        font-size: 13.5px;
+        margin: 0 5px;
+        padding: 6px 10px;
+    }
+
+    #enlace-carrito {
+        padding: 6px 12px;
+        font-size: 13px;
+        display: inline-block;
+    }
+
+    #carrito-compras {
+        width: 85%;
+        max-width: 310px;
+    }
+
+    section {
+        padding: 40px 15px;
+    }
+
+    .hero h1 { font-size: 38px; }
+    h2 { font-size: 26px; margin-bottom: 15px; }
+
+    .contacto-contenedor, .tienda-contenedor, .banners-contenedor {
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .info-contacto, .formulario-contacto-caja, .tarjeta-producto, .banner-valor {
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* DISEÑO EXCLUSIVO PARA LA PÁGINA DE CONTACTO */
+.contacto-seccion {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.subtitulo-contacto {
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.contacto-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
     margin-top: 20px;
 }
-nav a {
-    color: #4ea8de;
-    margin: 0 15px;
-    text-decoration: none;
-    font-size: 18px;
-}
-@media (max-width: 600px) {
-    nav {
-        background-color: #ffb703;
-        padding: 10px;
-    }
-    nav a {
-        color: black;
-        display: block;
-        margin: 10px 0;
-    }
-}
-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 300px;
-    margin: 30px auto;
-    gap: 15px;
-}
-input, textarea {
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-family: sans-serif;
-}
-section {
-    padding: 40px 20px;
-    border-bottom: 1px solid #333; /* Una línea sutil para separar cada sección */
+
+.info-contacto, .formulario-contacto-caja {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.04);
+    text-align: left;
 }
 
-h2 {
-    color: #ffb703; /* Un color mostaza/dorado para resaltar los subtítulos */
-    font-family: sans-serif;
-    font-size: 24px;
+.info-contacto h3, .formulario-contacto-caja h3 {
+    color: #1A2D42; /* Tu Azul Medianoche */
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 22px;
+    border-bottom: 2px solid #F7F3EC;
+    padding-bottom: 10px;
+}
+
+.tarjeta-info {
+    background-color: #F7F3EC; /* Tu Crema Algodón */
+    padding: 15px;
+    border-radius: 12px;
     margin-bottom: 15px;
 }
-footer {
-    padding: 20px;
-    background-color: #111;
+
+.tarjeta-info p {
+    margin: 0 0 5px 0;
     font-size: 14px;
+}
+
+.link-contacto-directo {
+    color: #6DA3CF; /* Tu Azul Oveja */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.link-contacto-directo:hover {
+    color: #1A2D42;
+}
+
+.nota-atencion {
+    font-size: 13px;
     color: #888;
-    margin-top: 40px;
+    margin-top: 25px;
+}
+
+/* Ajustes de campos de formulario de contacto ordinario */
+#form-comunidad input, #form-comunidad textarea {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+#form-comunidad textarea {
+    height: 120px;
+    resize: none;
+}
+
+.btn-enviar-contacto {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+}
+
+/* DISEÑO DE BANNERS CORPORATIVOS PARA BENEFICIOS */
+.valores-seccion {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.subtitulo-valores {
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.banners-contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 10px;
+}
+
+.banner-valor {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.03);
+    text-align: left;
+    border-top: 4px solid #6DA3CF; /* Detalle elegante arriba con tu Azul Oveja */
+    transition: 0.3s ease-in-out;
+}
+
+.banner-valor:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.08);
+}
+
+.icono-valor {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.banner-valor h3 {
+    color: #1A2D42; /* Tu Azul Medianoche */
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.banner-valor p {
+    color: #555;
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin: 0;
 }

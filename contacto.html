@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - ABECE</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca">
+        <div class="menu">
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="beneficios.html">Beneficios</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)">
+                🛒 Mi Carrito (<span id="contador-productos">0</span>)
+            </a>
+        </div>
+    </nav>
+
+    <!-- El Carrito también vive en esta página por si el usuario decide finalizar su orden -->
+    <div id="carrito-compras" class="carrito-cerrado">
+        <span class="cerrar-carrito-x" onclick="alternarCarrito(event)">×</span>
+        <h3>🛒 Mi Carrito</h3>
+        <ul id="lista-carrito"></ul>
+        <p><strong>Total: $<span id="total-precio">0</span>.00 MXN</strong></p>
+        <button id="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+        <button id="btn-pagar" onclick="abrirCheckoutGlobal()">Finalizar Compra</button>
+    </div>
+
+    <!-- SECCIÓN PRINCIPAL DE CONTACTO -->
+    <section class="contacto-seccion">
+        <h2>Ponte en Contacto con Nosotros</h2>
+        <p class="subtitulo-contacto">Estamos listos para ayudarte a elegir el descanso perfecto para tu bebé.</p>
+
+        <div class="contacto-contenedor">
+            
+            <!-- Bloque 1: Canales Directos Reales de ABeCe -->
+            <div class="info-contacto">
+                <h3>Atención Inmediata</h3>
+                
+                <div class="tarjeta-info">
+                    <p><strong>🟢 WhatsApp Oficial:</strong></p>
+                    <a href="https://wa.me" target="_blank" class="link-contacto-directo">
+                        55 1118 0337
+                    </a>
+                </div>
+
+                <div class="tarjeta-info">
+                    <p><strong>✉️ Correo de Ventas:</strong></p>
+                    <a href="mailto:ventasabece@gmail.com" class="link-contacto-directo">
+                        ventasabece@gmail.com
+                    </a>
+                </div>
+                
+                <p class="nota-atencion">⏰ Horario de atención: Lunes a Viernes de 9:00 am a 6:00 pm.</p>
+            </div>
+
+            <!-- Bloque 2: Formulario de Mensajería Escolar -->
+            <div class="formulario-contacto-caja">
+                <h3>Envíanos un mensaje</h3>
+                <form id="form-comunidad" onsubmit="enviarMensajeContacto(event)">
+                    <input type="text" id="fc-nombre" placeholder="Nombre completo" required>
+                    <input type="email" id="fc-correo" placeholder="Correo electrónico" required>
+                    <textarea id="fc-mensaje" placeholder="¿En qué podemos ayudarte?" required></textarea>
+                    <button type="submit" class="btn-enviar-contacto">Enviar Mensaje</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Ventana Modal de Checkout Compartida -->
+    <div id="modal-pago" class="modal-oculto">
+        <div class="contenido-modal">
+            <span class="cerrar-modal" onclick="cerrarCheckout()">×</span>
+            <img src="imagenes/logo.png" alt="Logo" class="logo-checkout">
+            <h3>Finalizar Compra</h3>
+            <p id="checkout-producto"></p>
+            <p id="checkout-total"></p>
+            <form id="form-checkout" onsubmit="procesarPagoBancario(event)">
+                <h4>Datos de Envío</h4>
+                <input id="chk-nombre" type="text" placeholder="Nombre completo" required>
+                <input id="chk-correo" type="email" placeholder="Correo electrónico" required>
+                <input id="chk-telefono" type="tel" placeholder="Teléfono" required>
+                <textarea id="chk-direccion" placeholder="Dirección completa" required></textarea>
+                <div class="modulo-facturacion">
+                    <label class="label-checkbox">
+                        <input type="checkbox" id="chk-necesita-factura" onchange="alternarModuloFiscal()"> Necesito factura
+                    </label>
+                    <div id="campos-fiscales" class="oculto-fiscal">
+                        <h4>Datos Fiscales</h4>
+                        <input id="fisc-rfc" type="text" placeholder="RFC">
+                        <input id="fisc-razon" type="text" placeholder="Razón Social">
+                        <input id="fisc-cp" type="text" placeholder="Código Postal">
+                        <select id="fisc-cfdi">
+                            <option value="">Selecciona el Uso de CFDI</option>
+                            <option value="G01">G01 - Adquisición de mercancías</option>
+                            <option value="G03">G03 - Gastos en general</option>
+                            <option value="S01">S01 - Sin efectos fiscales</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-pago-tarjeta">Pagar con Tarjeta</button>
+            </form>
+            <p class="nota-seguridad">🔒 Pago protegido.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 ABECE. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

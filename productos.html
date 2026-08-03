@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - ABECE</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca">
+        <div class="menu">
+            <a href="index.html">Inicio</a>
+            <a href="productos.html">Productos</a>
+            <a href="beneficios.html">Beneficios</a>
+            <a href="contacto.html">Contacto</a>
+            <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)">
+                🛒 Mi Carrito (<span id="contador-productos">0</span>)
+            </a>
+        </div>
+    </nav>
+
+    <!-- El Carrito también vive aquí para que puedan ver lo que llevan -->
+    <div id="carrito-compras" class="carrito-cerrado">
+        <span class="cerrar-carrito-x" onclick="alternarCarrito(event)">×</span>
+        <h3>🛒 Mi Carrito</h3>
+        <ul id="lista-carrito"></ul>
+        <p><strong>Total: $<span id="total-precio">0</span>.00 MXN</strong></p>
+        <button id="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+        <button id="btn-pagar" onclick="abrirCheckoutGlobal()">Finalizar Compra</button>
+    </div>
+
+    <section class="tienda-seccion">
+        <h2>Nuestros Productos Oficiales</h2>
+        <div class="tienda-contenedor">
+
+            <div class="tarjeta-producto">
+                <img src="imagenes/cojin1.png" alt="Cojín Lactancia">
+                <h3>Cojín de Lactancia MOD:5000</h3>
+                <p class="detalles-prod">46 x 56 x 20 cm</p>
+                <p class="precio">$832 MXN</p>
+                <button onclick="comprarProducto('Cojín de Lactancia MOD:5000',832)">Comprar Ahora</button>
+            </div>
+
+            <div class="tarjeta-producto">
+                <img src="imagenes/sillon.jpg" alt="Sillón">
+                <h3>Sillón Colchón Antirreflujo</h3>
+                <p class="detalles-prod">86.5 x 44.5 x 27.5 cm</p>
+                <p class="precio">$2,529 MXN</p>
+                <button onclick="comprarProducto('Sillón Colchón Antirreflujo',2529)">Comprar Ahora</button>
+            </div>
+
+            <div class="tarjeta-producto">
+                <img src="imagenes/cobija.jpg" alt="Cobija">
+                <h3>Cobija Rusia Doble Tela</h3>
+                <p class="detalles-prod">Incluye oso</p>
+                <p class="precio">$310 MXN</p>
+                <button onclick="comprarProducto('Cobija Rusia Doble Tela',310)">Comprar Ahora</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Ventana Modal de Checkout Compartida -->
+    <div id="modal-pago" class="modal-oculto">
+        <div class="contenido-modal">
+            <span class="cerrar-modal" onclick="cerrarCheckout()">×</span>
+            <img src="imagenes/logo.png" alt="Logo" class="logo-checkout">
+            <h3>Finalizar Compra</h3>
+            <p id="checkout-producto"></p>
+            <p id="checkout-total"></p>
+            <form id="form-checkout" onsubmit="procesarPagoBancario(event)">
+                <h4>Datos de Envío</h4>
+                <input id="chk-nombre" type="text" placeholder="Nombre completo" required>
+                <input id="chk-correo" type="email" placeholder="Correo electrónico" required>
+                <input id="chk-telefono" type="tel" placeholder="Teléfono" required>
+                <textarea id="chk-direccion" placeholder="Dirección completa" required></textarea>
+                <div class="modulo-facturacion">
+                    <label class="label-checkbox">
+                        <input type="checkbox" id="chk-necesita-factura" onchange="alternarModuloFiscal()"> Necesito factura
+                    </label>
+                    <div id="campos-fiscales" class="oculto-fiscal">
+                        <h4>Datos Fiscales</h4>
+                        <input id="fisc-rfc" type="text" placeholder="RFC">
+                        <input id="fisc-razon" type="text" placeholder="Razón Social">
+                        <input id="fisc-cp" type="text" placeholder="Código Postal">
+                        <select id="fisc-cfdi">
+                            <option value="">Selecciona el Uso de CFDI</option>
+                            <option value="G01">G01 - Adquisición de mercancías</option>
+                            <option value="G03">G03 - Gastos en general</option>
+                            <option value="S01">S01 - Sin efectos fiscales</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-pago-tarjeta">Pagar con Tarjeta</button>
+            </form>
+            <p class="nota-seguridad">🔒 Pago protegido.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 ABECE. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,59 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-   <title>ABECE</title>
-   <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABECE 2.0</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-         <a href="#">Inicio</a>
-         <a href="#">Servicios</a>
-         <a href="#">Contacto</a>
-    </nav>
-    <section>
-    <h1>ABECE</h1>
-    <p>Bienvenido</p>
-    <p>Somos especialistas en descanso para bebés</p>
-    <button onclick="mostrarMensaje()">Boton whatsApp</button>
-    <img src="https://picsum.photos/300/200" alt="Bebé">
-    </section>
-    <!-- Sección Beneficios -->
-    <section>
-        <h2>Beneficios de nuestro descanso</h2>
-        <p>Acolchado ergonómico antiahogo.</p>
-        <p>Telas 100% de algodón orgánico.</p>
-    </section>
 
-    <!-- Sección Productos -->
-    <section>
-        <h2>Nuestros Productos</h2>
-        <p>Nidos de contención para recién nacidos.</p>
-        <p>Almohadas especiales de descanso.</p>
-    </section>
+<nav>
+<img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca">
 
-    <!-- Sección Testimonios -->
-    <section>
-        <h2>Lo que dicen los papás</h2>
-        <p>"Mi bebé duerme corrido toda la noche, excelente producto." - María S.</p>
-    </section>
-    <!-- Sección FAQ -->
-    <section>
-        <h2>Preguntas Frecuentes</h2>
-        <p><strong>¿Tienen envíos a domicilio?</strong></p>
-        <p>Sí, hacemos envíos seguros a todo el país.</p>
-        <p><strong>¿Qué métodos de pago aceptan?</strong></p>
-        <p>Aceptamos tarjetas de débito, crédito y transferencias.</p>
-    </section>
-    <form>
-    <input type="text" placeholder="Nombre" required>
-    <input type="email" placeholder="Correo" required>
-    <textarea placeholder="Mensaje" required></textarea>
-    <button type="submit">Enviar</button>
-    </form>
-    <!-- Sección Footer -->
-    <footer>
-        <p>© 2026 ABECE. Todos los derechos reservados.</p>
-    </footer>
-    <script src="script.js"></script>
+<div class="menu">
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="beneficios.html">Beneficios</a>
+    <a href="contacto.html">Contacto</a>
+    <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)">
+        🛒 Mi Carrito (<span id="contador-productos">0</span>)
+    </a>
+</div>
+</nav>
+
+<div id="carrito-compras" class="carrito-cerrado">
+<span class="cerrar-carrito-x" onclick="alternarCarrito(event)">×</span>
+<h3>🛒 Mi Carrito</h3>
+<ul id="lista-carrito"></ul>
+<p><strong>Total: $<span id="total-precio">0</span>.00 MXN</strong></p>
+<button id="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+<button id="btn-pagar" onclick="abrirCheckoutGlobal()">Finalizar Compra</button>
+</div>
+
+<section class="hero">
+<h1>ABECE</h1>
+<p>Blancos y accesorios que abrazan el descanso de tu bebé.</p>
+<img src="imagenes/papasabece.png" alt="Familia ABECE">
+</section>
+
+<section>
+<h2>¿Por qué elegir ABECE?</h2>
+<p>Acolchado ergonómico antirreflujo.</p>
+<p>Telas suaves y resistentes.</p>
+<p>Productos diseñados pensando en la seguridad del bebé.</p>
+</section>
+
+<section>
+<h2>Nuestros Productos</h2>
+
+<div class="tienda-contenedor">
+
+<div class="tarjeta-producto">
+<img src="imagenes/cojin.jpeg" alt="Cojín Lactancia">
+<h3>Cojín de Lactancia MOD:5000</h3>
+<p class="detalles-prod">46 x 56 x 20 cm</p>
+<p class="precio">$832 MXN</p>
+<button onclick="comprarProducto('Cojín de Lactancia MOD:5000',832)">Comprar Ahora</button>
+</div>
+
+<div class="tarjeta-producto">
+<img src="imagenes/sillon.png" alt="Sillón">
+<h3>Sillón Colchón Antirreflujo</h3>
+<p class="detalles-prod">86.5 x 44.5 x 27.5 cm</p>
+<p class="precio">$2,529 MXN</p>
+<button onclick="comprarProducto('Sillón Colchón Antirreflujo',2529)">Comprar Ahora</button>
+</div>
+
+<div class="tarjeta-producto">
+<img src="imagenes/cobija1.png" alt="Cobija">
+<h3>Cobija Rusia Doble Tela</h3>
+<p class="detalles-prod">Incluye oso</p>
+<p class="precio">$310 MXN</p>
+<button onclick="comprarProducto('Cobija Rusia Doble Tela',310)">Comprar Ahora</button>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>Lo que dicen los papás</h2>
+<p>"Mi bebé duerme mucho mejor desde que usamos ABECE."</p>
+</section>
+
+<section>
+<h2>Preguntas Frecuentes</h2>
+<p><strong>¿Hacen envíos?</strong></p>
+<p>Sí, realizamos envíos a todo México.</p>
+<p><strong>¿Qué métodos de pago aceptan?</strong></p>
+<p>Tarjeta de crédito, débito y transferencia.</p>
+</section>
+
+<div id="modal-pago" class="modal-oculto">
+<div class="contenido-modal">
+
+<span class="cerrar-modal" onclick="cerrarCheckout()">×</span>
+
+<img src="imagenes/logo.png" alt="Logo" class="logo-checkout">
+
+<h3>Finalizar Compra</h3>
+
+<p id="checkout-producto"></p>
+<p id="checkout-total"></p>
+
+<form id="form-checkout" onsubmit="procesarPagoBancario(event)">
+
+<h4>Datos de Envío</h4>
+
+<input id="chk-nombre" type="text" placeholder="Nombre completo" required>
+<input id="chk-correo" type="email" placeholder="Correo electrónico" required>
+<input id="chk-telefono" type="tel" placeholder="Teléfono" required>
+
+<textarea id="chk-direccion" placeholder="Dirección completa" required></textarea>
+
+<div class="modulo-facturacion">
+
+<label class="label-checkbox">
+<input type="checkbox"
+id="chk-necesita-factura"
+onchange="alternarModuloFiscal()">
+Necesito factura
+</label>
+
+<div id="campos-fiscales" class="oculto-fiscal">
+
+<h4>Datos Fiscales</h4>
+
+<input id="fisc-rfc" type="text" placeholder="RFC">
+<input id="fisc-razon" type="text" placeholder="Razón Social">
+<input id="fisc-cp" type="text" placeholder="Código Postal">
+
+<select id="fisc-cfdi">
+<option value="">Selecciona el Uso de CFDI</option>
+<option value="G01">G01 - Adquisición de mercancías</option>
+<option value="G03">G03 - Gastos en general</option>
+<option value="S01">S01 - Sin efectos fiscales</option>
+</select>
+
+</div>
+
+</div>
+
+<button type="submit" class="btn-pago-tarjeta">
+Pagar con Tarjeta
+</button>
+
+</form>
+
+<p class="nota-seguridad">
+🔒 Pago protegido.
+</p>
+
+</div>
+</div>
+
+<footer>
+<p>© 2026 ABECE. Todos los derechos reservados.</p>
+</footer>
+
+<script src="script.js"></script>
+
 </body>
 </html>

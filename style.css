@@ -454,3 +454,95 @@ footer{
     line-height: 1.6;
     margin: 0;
 }
+
+/* ESTILOS PARA TU NUEVA IMAGEN DE VALORES SVG */
+@media (max-width: 768px) {
+    .imagen-valores-contenedor {
+        overflow-x: auto; /* Permite deslizar con el dedo a los lados */
+        justify-content: flex-start;
+        padding-bottom: 15px;
+    }
+    .img-valores-premium {
+        width: 800px; /* Obliga a la imagen a mantenerse ancha y legible */
+        max-width: none;
+    }
+}
+
+/* SECCIÓN COMUNIDAD Y REDES */
+.comunidad-seccion {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.subtitulo-comunidad {
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 15px;
+}
+
+.comunidad-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.tarjeta-redes, .tarjeta-video {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.03);
+    text-align: left;
+}
+
+.tarjeta-redes h3, .tarjeta-video h3 {
+    color: #1A2D42; /* Tu Azul Medianoche */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+/* Botones de Redes Estilizados */
+.botones-redes-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.btn-red-social {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.fb { background-color: #1877F2; color: white; }
+.fb:hover { background-color: #145dbf; }
+
+.ig { background-color: #E1306C; color: white; }
+.ig:hover { background-color: #b82354; }
+
+/* Contenedor Responsivo para el Reproductor del Reel */
+.video-responsive-contenedor {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.iframe-reel {
+    width: 100%;
+    max-width: 340px; /* Ancho ideal para que guarde la forma de celular del reel */
+    height: 480px; /* Altura perfecta para reproducir vertical sin cortes */
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}

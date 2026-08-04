@@ -1,0 +1,196 @@
+<svg viewBox="0 0 360 1850" xmlns="http://www.w3.org/2000/svg" font-family="'Comfortaa','Nunito','Trebuchet MS',sans-serif">
+  <defs>
+    <filter id="cardShadowM" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#1A2D42" flood-opacity="0.10"/>
+    </filter>
+    <filter id="softBlurM"><feGaussianBlur stdDeviation="26"/></filter>
+    <linearGradient id="bgGradM" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FBF8F3"/>
+      <stop offset="100%" stop-color="#F7F3EC"/>
+    </linearGradient>
+    <linearGradient id="iconGradM" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7FB2DB"/>
+      <stop offset="100%" stop-color="#6DA3CF"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="0" y="0" width="360" height="1850" fill="url(#bgGradM)"/>
+
+  <!-- Decorative soft blobs -->
+  <circle cx="20" cy="10" r="90" fill="#6DA3CF" opacity="0.10" filter="url(#softBlurM)"/>
+  <circle cx="345" cy="1820" r="130" fill="#F6D173" opacity="0.14" filter="url(#softBlurM)"/>
+
+  <!-- Decorative cloud motif -->
+  <g opacity="0.55" fill="#FFFFFF">
+    <g transform="translate(300,36) scale(0.75)">
+      <ellipse cx="0" cy="10" rx="26" ry="16"/>
+      <ellipse cx="24" cy="4" rx="20" ry="14"/>
+      <ellipse cx="-22" cy="6" rx="18" ry="12"/>
+    </g>
+  </g>
+
+  <!-- Small sheep silhouette watermark -->
+  <g transform="translate(320,1790)" opacity="0.10">
+    <circle r="46" fill="#6DA3CF"/>
+    <g transform="translate(-20,-13) scale(0.72)" fill="#1A2D42">
+      <ellipse cx="14" cy="10" rx="20" ry="15"/>
+      <circle cx="34" cy="4" r="9"/>
+      <circle cx="0" cy="14" r="8"/>
+      <circle cx="28" cy="14" r="8"/>
+      <circle cx="-6" cy="-2" r="7"/>
+      <circle cx="10" cy="-6" r="7"/>
+      <circle cx="24" cy="-4" r="7"/>
+    </g>
+  </g>
+
+  <!-- Eyebrow badge -->
+  <g transform="translate(180,44)">
+    <rect x="-92" y="-18" width="184" height="34" rx="17" fill="#F6D173"/>
+    <text x="0" y="4" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.2" fill="#1A2D42">NUESTRA PROMESA</text>
+  </g>
+
+  <!-- Title -->
+  <text x="180" y="98" text-anchor="middle" font-size="23" font-weight="700" fill="#1A2D42">
+    Nuestras reglas de oro
+  </text>
+  <text x="180" y="128" text-anchor="middle" font-size="23" font-weight="700" fill="#1A2D42">
+    para proteger y abrazar
+  </text>
+  <text x="180" y="158" text-anchor="middle" font-size="23" font-weight="700" fill="#1A2D42">
+    el descanso de tu bebé
+  </text>
+
+  <!-- decorative wavy underline -->
+  <path d="M 130 180 Q 150 168 170 180 T 210 180 T 230 180" stroke="#6DA3CF" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+  <!-- ===================== CARD 1 ===================== -->
+  <g transform="translate(20,214)">
+    <rect x="0" y="0" width="320" height="380" rx="24" fill="#FFFFFF" filter="url(#cardShadowM)"/>
+    <rect x="0" y="0" width="320" height="7" rx="3.5" fill="#6DA3CF"/>
+
+    <!-- number chip -->
+    <circle cx="280" cy="40" r="18" fill="#F6D173"/>
+    <text x="280" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#1A2D42">01</text>
+
+    <!-- icon -->
+    <circle cx="58" cy="64" r="36" fill="url(#iconGradM)"/>
+    <g transform="translate(58,64) scale(0.86)" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M0,-20 L17,-13 V4 C17,15 9,22 0,25 C-9,22 -17,15 -17,4 V-13 Z"/>
+      <path d="M-7,1 L-2,7 L9,-7" stroke-width="3.2"/>
+    </g>
+
+    <text x="28" y="134" font-size="20" font-weight="700" fill="#1A2D42">Ternura</text>
+    <text x="28" y="160" font-size="20" font-weight="700" fill="#1A2D42">Responsable</text>
+
+    <text x="28" y="194" font-size="14" fill="#3B4A5A">
+      <tspan x="28" dy="0">No solo hacemos productos</tspan>
+      <tspan x="28" dy="22">bonitos: creamos refugios</tspan>
+      <tspan x="28" dy="22">seguros. Cada tela, costura</tspan>
+      <tspan x="28" dy="22">y relleno protege la piel</tspan>
+      <tspan x="28" dy="22">delicada de tu bebé.</tspan>
+    </text>
+
+    <!-- footer tag -->
+    <rect x="28" y="322" width="150" height="28" rx="14" fill="#F7F3EC"/>
+    <text x="103" y="341" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6DA3CF">MATERIALES SEGUROS</text>
+  </g>
+
+  <!-- ===================== CARD 2 ===================== -->
+  <g transform="translate(20,618)">
+    <rect x="0" y="0" width="320" height="380" rx="24" fill="#FFFFFF" filter="url(#cardShadowM)"/>
+    <rect x="0" y="0" width="320" height="7" rx="3.5" fill="#6DA3CF"/>
+
+    <circle cx="280" cy="40" r="18" fill="#F6D173"/>
+    <text x="280" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#1A2D42">02</text>
+
+    <!-- icon: heart cupped by hands -->
+    <circle cx="58" cy="64" r="36" fill="url(#iconGradM)"/>
+    <g transform="translate(58,64) scale(0.86)" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M-20,6 C-24,-6 -14,-14 -6,-8 C-2,-11 4,-11 8,-8 C16,-14 26,-6 22,6 C18,16 4,22 1,24 C-4,22 -16,16 -20,6 Z" fill="#FFFFFF" stroke="none" opacity="0.95" transform="translate(0,-6) scale(0.62)"/>
+      <path d="M-22,10 C-22,2 -16,-4 -8,-2" />
+      <path d="M22,10 C22,2 16,-4 8,-2" />
+    </g>
+
+    <text x="28" y="134" font-size="20" font-weight="700" fill="#1A2D42">Empatía</text>
+    <text x="28" y="160" font-size="20" font-weight="700" fill="#1A2D42">Familiar</text>
+
+    <text x="28" y="194" font-size="14" fill="#3B4A5A">
+      <tspan x="28" dy="0">Entendemos el cansancio</tspan>
+      <tspan x="28" dy="22">y el amor de criar. Sin</tspan>
+      <tspan x="28" dy="22">juzgar, somos el aliado</tspan>
+      <tspan x="28" dy="22">que hace la vida en familia</tspan>
+      <tspan x="28" dy="22">más fácil y cómoda.</tspan>
+    </text>
+
+    <rect x="28" y="322" width="150" height="28" rx="14" fill="#F7F3EC"/>
+    <text x="103" y="341" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6DA3CF">SIN JUICIOS, CON APOYO</text>
+  </g>
+
+  <!-- ===================== CARD 3 ===================== -->
+  <g transform="translate(20,1022)">
+    <rect x="0" y="0" width="320" height="380" rx="24" fill="#FFFFFF" filter="url(#cardShadowM)"/>
+    <rect x="0" y="0" width="320" height="7" rx="3.5" fill="#6DA3CF"/>
+
+    <circle cx="280" cy="40" r="18" fill="#F6D173"/>
+    <text x="280" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#1A2D42">03</text>
+
+    <!-- icon: cloud -->
+    <circle cx="58" cy="64" r="36" fill="url(#iconGradM)"/>
+    <g transform="translate(58,64) scale(0.86)" fill="#FFFFFF">
+      <ellipse cx="-2" cy="6" rx="22" ry="13"/>
+      <ellipse cx="14" cy="-2" rx="15" ry="12"/>
+      <ellipse cx="-16" cy="0" rx="12" ry="10"/>
+      <ellipse cx="0" cy="-8" rx="12" ry="10"/>
+    </g>
+
+    <text x="28" y="128" font-size="20" font-weight="700" fill="#1A2D42">Calidad sin</text>
+    <text x="28" y="154" font-size="20" font-weight="700" fill="#1A2D42">Concesiones</text>
+
+    <text x="28" y="190" font-size="14" fill="#3B4A5A">
+      <tspan x="28" dy="0">Sabemos que todo se lava</tspan>
+      <tspan x="28" dy="22">y se usa sin parar. Por eso</tspan>
+      <tspan x="28" dy="22">nuestros textiles mantienen</tspan>
+      <tspan x="28" dy="22">su efecto nube lavado</tspan>
+      <tspan x="28" dy="22">tras lavado.</tspan>
+    </text>
+
+    <rect x="28" y="322" width="150" height="28" rx="14" fill="#F7F3EC"/>
+    <text x="103" y="341" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6DA3CF">EFECTO NUBE DURADERO</text>
+  </g>
+
+  <!-- ===================== CARD 4 ===================== -->
+  <g transform="translate(20,1426)">
+    <rect x="0" y="0" width="320" height="380" rx="24" fill="#FFFFFF" filter="url(#cardShadowM)"/>
+    <rect x="0" y="0" width="320" height="7" rx="3.5" fill="#6DA3CF"/>
+
+    <circle cx="280" cy="40" r="18" fill="#F6D173"/>
+    <text x="280" y="45" text-anchor="middle" font-size="14" font-weight="700" fill="#1A2D42">04</text>
+
+    <!-- icon: package with motion lines -->
+    <circle cx="58" cy="64" r="36" fill="url(#iconGradM)"/>
+    <g transform="translate(58,64) scale(0.86)" fill="none" stroke="#FFFFFF" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M-14,-16 L14,-16 L20,-8 L-20,-8 Z" fill="#FFFFFF" stroke="none" opacity="0.9"/>
+      <rect x="-16" y="-8" width="32" height="24" rx="2"/>
+      <path d="M-16,-8 L0,0 L16,-8" />
+      <path d="M0,0 L0,16" />
+      <path d="M-32,-4 L-24,-4" stroke-width="2.6" opacity="0.85"/>
+      <path d="M-30,4 L-24,4" stroke-width="2.6" opacity="0.6"/>
+    </g>
+
+    <text x="28" y="128" font-size="20" font-weight="700" fill="#1A2D42">Cercanía en</text>
+    <text x="28" y="154" font-size="20" font-weight="700" fill="#1A2D42">Movimiento</text>
+
+    <text x="28" y="190" font-size="14" fill="#3B4A5A">
+      <tspan x="28" dy="0">La distancia no diluye el</tspan>
+      <tspan x="28" dy="22">cuidado. Cada envío, en</tspan>
+      <tspan x="28" dy="22">CDMX o en toda la</tspan>
+      <tspan x="28" dy="22">República, viaja con la</tspan>
+      <tspan x="28" dy="22">misma atención y cariño.</tspan>
+    </text>
+
+    <rect x="28" y="322" width="150" height="28" rx="14" fill="#F7F3EC"/>
+    <text x="103" y="341" text-anchor="middle" font-size="11.5" font-weight="700" fill="#6DA3CF">ENVÍOS A TODO MÉXICO</text>
+  </g>
+
+</svg>

@@ -7,7 +7,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://googleapis.com" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -20,6 +20,7 @@
     <a href="index.html">Inicio</a>
     <a href="productos.html">Productos</a>
     <a href="beneficios.html">Beneficios</a>
+    <a href="identidad.html">Identidad</a> <!-- Verifica que esta línea esté en todas las páginas -->
     <a href="contacto.html">Contacto</a>
     <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)">
         🛒 Mi Carrito (<span id="contador-productos">0</span>)
@@ -36,11 +37,43 @@
 <button id="btn-pagar" onclick="abrirCheckoutGlobal()">Finalizar Compra</button>
 </div>
 
-<section class="hero">
-<h1>ABECE</h1>
-<p>Blancos y accesorios que abrazan el descanso de tu bebé.</p>
-<img src="imagenes/papasabece.png" alt="Familia ABECE">
+<!-- HERO INTERACTIVO PREMIUM - INTEGRADO POR ESPINOZA SOUND LAB -->
+<section class="hero-premium">
+    <div class="cloud-bg c1"></div>
+    <div class="cloud-bg c2"></div>
+    <div class="cloud-bg c3"></div>
+    <div class="hero-inner">
+        <div class="hero-text">
+            <span class="eyebrow">La Nube de Sueños</span>
+            <h1>Un abrazo <span>suavecito</span><br>para cada etapa<br>de tu bebé</h1>
+            <p class="sub">Cojines, cobijas y accesorios de lactancia hechos en México, pensados para acompañar tu descanso y el de tu bebé — desde la primera noche en casa.</p>
+            <div class="cta-row">
+                <a class="btn-primary-banner" href="productos.html">Descubre la colección →</a>
+                <a class="btn-link-banner" href="identidad.html">Conoce nuestra historia</a>
+            </div>
+            <div class="trust-row">
+                <span>🟢 Hecho con cariño en el Edomex</span>
+                <span>🇲🇽 Envíos a toda la República</span>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="cloud-frame" id="cloudFrame">
+                <img class="slide active" src="imagenes/FamiliaABECE1.png" alt="Los primeros abrazos">
+                <img class="slide" src="imagenes/siesta.png" alt="Siestas de sueño profundo">
+                <img class="slide" src="imagenes/horadejugar.png" alt="Horas de juego y risas">
+                <div class="stage-pill" id="stagePill">Los primeros abrazos</div>
+            </div>
+            <div class="badge-float">100% suave</div>
+            <div class="dots" id="dots">
+                <button class="dot active" data-i="0" aria-label="Los primeros abrazos"></button>
+                <button class="dot" data-i="1" aria-label="Siestas de sueño profundo"></button>
+                <button class="dot" data-i="2" aria-label="Horas de juego y risas"></button>
+            </div>
+        </div>
+    </div>
 </section>
+
 
 <section>
 <h2>¿Por qué elegir ABECE?</h2>
@@ -170,30 +203,15 @@ Pagar con Tarjeta
                 <p>Mantente al tanto de nuestros lanzamientos, consejos de maternidad y dinámicas especiales.</p>
                 
                 <div class="botones-redes-flex">
-                    <!-- Enlace directo oficial a tu Fanpage de Facebook -->
-                    <a href="https://facebook.com" target="_blank" class="btn-red-social fb">
+                  <!-- Enlace directo oficial a tu Fanpage de Facebook -->
+                    <a href="https://facebook.com/abecemex" target="_blank" class="btn-red-social fb">
                         📘 Facebook: ABeCe Bebes
                     </a>
                     
                     <!-- Enlace directo oficial a tu perfil de Instagram -->
-                    <a href="https://instagram.com" target="_blank" class="btn-red-social ig">
+                    <a href="https://instagram.com/abece.mex/" target="_blank" class="btn-red-social ig">
                         📸 Instagram: @abece.mex
                     </a>
-                </div>
-            </div>
-
-            <!-- Bloque Derecho: Reel de Donación Incrustado -->
-            <div class="tarjeta-video">
-                <h3>Nuestra Labor Social 🤍</h3>
-                <p>Revive los momentos de la donación especial que realizamos al orfanato gracias a tu confianza.</p>
-                
-                <div class="video-responsive-contenedor">
-                    <iframe src="https://instagram.com" 
-                            class="iframe-reel"
-                            frameborder="0" 
-                            scrolling="no" 
-                            allowtransparency="true">
-                    </iframe>
                 </div>
             </div>
 

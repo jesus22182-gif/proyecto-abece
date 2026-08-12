@@ -66,23 +66,194 @@ section{
     text-align:center;
 }
 
-.hero h1{
-    font-size:58px;
-    margin-bottom:10px;
+/*====================================================
+NUEVO HERO INTERACTIVO (ESPINOZA SOUND LAB FIX)
+====================================================*/
+.hero-premium {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-fondo);
+    padding: 0;
 }
 
-.hero p{
-    font-size:20px;
-    max-width:700px;
-    margin:0 auto 25px;
+/* Nubes decorativas de fondo */
+.cloud-bg { position: absolute; border-radius: 50%; filter: blur(2px); opacity: .55; pointer-events: none; }
+.cloud-bg.c1 { width: 220px; height: 120px; background: #EAF3FA; top: -40px; left: -60px; }
+.cloud-bg.c2 { width: 160px; height: 90px; background: #EAF3FA; bottom: 20px; left: 38%; opacity: .45; }
+.cloud-bg.c3 { width: 130px; height: 80px; background: #fff; top: 60px; right: 6%; opacity: .6; }
+
+.hero-inner {
+    position: relative;
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 48px;
+    padding: 64px 32px 56px;
 }
 
-.hero img{
-    width:100%;
-    max-width:520px;
-    border-radius:24px;
-    margin-top:30px;
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--color-secundario);
+    background: #EAF3FA;
+    padding: 7px 14px;
+    border-radius: 999px;
+    margin-bottom: 22px;
 }
+
+.hero-text h1 {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 1.18;
+    margin: 0 0 20px;
+    color: var(--color-primario);
+    letter-spacing: -0.01em;
+    text-align: left;
+}
+
+.hero-text h1 span { color: var(--color-secundario); }
+
+.sub {
+    font-family: 'Nunito', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: #3d5064;
+    max-width: 440px;
+    margin: 0 0 30px;
+    text-align: left;
+}
+
+.cta-row { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-bottom: 34px; }
+
+.btn-primary-banner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-acento);
+    color: var(--color-primario);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 15.5px;
+    text-decoration: none;
+    padding: 15px 28px;
+    border-radius: 999px;
+    box-shadow: 0 10px 22px rgba(246,209,115,.55);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn-primary-banner:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 26px rgba(246,209,115,.65);
+}
+
+.btn-link-banner {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-primario);
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-secundario);
+    padding-bottom: 2px;
+}
+
+.trust-row {
+    display: flex;
+    gap: 26px;
+    flex-wrap: wrap;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #5a7185;
+    font-family: 'Nunito', sans-serif;
+}
+
+/* Área Visual de la Lupa / Animación */
+.hero-visual { position: relative; display: flex; flex-direction: column; align-items: center; }
+
+.cloud-frame {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1/1.05;
+    border-radius: 44% 56% 62% 38% / 48% 42% 58% 52%;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(26,45,66,0.1), 0 0 0 10px #fff, 0 0 0 11px #EAF3FA;
+    animation: morph 14s ease-in-out infinite;
+}
+
+@keyframes morph {
+    0%, 100% { border-radius: 44% 56% 62% 38% / 48% 42% 58% 52%; }
+    50% { border-radius: 58% 42% 40% 60% / 40% 55% 45% 60%; }
+}
+
+.slide {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+    opacity: 0; transition: opacity 1s ease;
+}
+
+.slide.active { opacity: 1; }
+
+.stage-pill {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,.92);
+    color: var(--color-primario);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 13.5px;
+    padding: 9px 18px;
+    border-radius: 999px;
+    box-shadow: 0 6px 16px rgba(26,45,66,0.1);
+    white-space: nowrap;
+}
+
+.dots { display: flex; gap: 9px; margin-top: 22px; }
+
+.dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: #d7e4ee; border: none; cursor: pointer; padding: 0;
+    transition: background .25s ease, width .25s ease;
+}
+
+.dot.active { background: var(--color-secundario); width: 24px; border-radius: 6px; }
+
+.badge-float {
+    position: absolute;
+    background: var(--color-acento);
+    color: var(--color-primario);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 12.5px;
+    padding: 9px 14px;
+    border-radius: 14px;
+    top: 8%;
+    right: -4%;
+    box-shadow: 0 10px 20px rgba(246,209,115,.5);
+    transform: rotate(4deg);
+    z-index: 10;
+}
+
+/* Adaptación para pantallas chicas */
+@media (max-width: 860px) {
+    .hero-inner { grid-template-columns: 1fr; padding: 44px 22px 40px; gap: 34px; }
+    .hero-text h1 { font-size: 32px; text-align: center; }
+    .hero-visual { order: -1; }
+    .cloud-frame { max-width: 320px; }
+    .sub { max-width: 100%; text-align: center; }
+    .cta-row { justify-content: center; }
+    .trust-row { justify-content: center; }
+}
+
 
 button{
     background:var(--color-acento);
@@ -545,4 +716,291 @@ footer{
     height: 480px; /* Altura perfecta para reproducir vertical sin cortes */
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,.08);
+}
+
+/* ==========================================================================
+   SISTEMA DE LUPA INTERACTIVA DINÁMICA (ESTILO CIMACO / WALMART)
+   ========================================================================== */
+
+/* Contenedor base de la foto (ACTUALIZADO PARA PROYECTAR HACIA AFUERA) */
+.contenedor-lupa-premium {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    position: relative;
+    /* 💡 CAMBIO CLAVE: Cambiamos hidden por visible para que la lupa flote hacia afuera */
+    overflow: visible; 
+    margin-bottom: 14px;
+    background-color: white;
+    cursor: crosshair;
+}
+
+/* El cuadro de zoom (Lente fija al costado estilo Cimaco - CORREGIDA) */
+.lupa-lente {
+    position: absolute;
+    border: 2px solid #6DA3CF; /* Tu Azul de marca */
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(26, 45, 66, 0.3);
+    width: 420px; /* Tamaño del recuadro de zoom */
+    height: 420px;
+    background-repeat: no-repeat;
+    display: none; /* Inicia oculto */
+    pointer-events: none;
+    
+    /* 💡 SOLUCIÓN CLAVE: Lo anclamos exactamente a la derecha de la tarjeta actual */
+    top: 0;
+    left: 105%; /* Lo empuja hacia afuera de la tarjeta para no tapar nada */
+    z-index: 9999; 
+    background-color: white;
+}
+
+/* ==========================================================================
+   SOLUCIÓN DEFINITIVA DE CAPAS PARA LA LUPA FIJA AL COSTADO
+   ========================================================================== */
+
+/* Aseguramos que la tarjeta que NO tiene el mouse encima se quede abajo */
+.tarjeta-producto {
+    position: relative;
+    z-index: 1; /* Capa normal de fondo */
+}
+
+/* 💡 EL SECRETO: Cuando el cliente pasa el mouse sobre UNA tarjeta, 
+   esa tarjeta sube de nivel automáticamente por encima de todas las demás */
+.tarjeta-producto:hover {
+    z-index: 999; /* Sube al nivel más alto de la pantalla */
+}
+
+/* El cuadro de zoom (Aseguramos su posición fija limpia) */
+.lupa-lente {
+    position: absolute;
+    border: 2px solid #6DA3CF;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(26, 45, 66, 0.25);
+    width: 420px;
+    height: 360px;
+    background-repeat: no-repeat;
+    display: none;
+    pointer-events: none;
+    
+    /* Lo posiciona flotando de forma exacta al costado derecho */
+    top: 0;
+    left: 105%; 
+    z-index: 9999; /* Máxima prioridad visual */
+    background-color: white;
+}
+
+/* Para la última tarjeta de la derecha (Cobija Rusia), 
+   proyectamos la lupa hacia la izquierda para que no se salga de la pantalla */
+.tarjeta-producto:last-child .lupa-lente {
+    left: auto;
+    right: 105%; 
+}
+
+/*=========================
+ BOTÓN OFICIAL WHATSAPP
+==========================*/
+
+.btn-whatsapp{
+
+display:inline-block;
+
+background:#25D366;
+
+color:white;
+
+text-decoration:none;
+
+padding:15px 28px;
+
+border-radius:50px;
+
+font-weight:bold;
+
+font-size:17px;
+
+transition:.30s;
+
+box-shadow:0 10px 25px rgba(37,211,102,.30);
+
+margin-top:10px;
+
+}
+
+.btn-whatsapp:hover{
+
+background:#1ebe5d;
+
+transform:translateY(-3px);
+
+box-shadow:0 18px 35px rgba(37,211,102,.40);
+
+}
+
+.numero-whatsapp{
+
+margin-top:12px;
+
+font-size:15px;
+
+color:#777;
+
+font-weight:500;
+
+letter-spacing:1px;
+
+}
+
+
+/*====================================================
+NUEVA SECCIÓN: IDENTIDAD DE MARCA (MISIÓN Y VISIÓN)
+====================================================*/
+.identidad-seccion {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.subtitulo-valores {
+    color: #666;
+    margin-bottom: 40px;
+    font-size: 16px;
+}
+
+.identidad-contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.tarjeta-identidad {
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    flex: 1;
+    min-width: 300px;
+    max-width: 550px;
+    text-align: left;
+    border-top: 4px solid var(--color-secundario); /* Borde superior Azul Oveja */
+    transition: var(--transicion);
+}
+
+.tarjeta-identidad:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,.12);
+}
+
+.icono-identidad {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.tarjeta-identidad h3 {
+    color: var(--color-primario);
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.tarjeta-identidad p {
+    color: var(--color-primario);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/*====================================================
+NUEVA SECCIÓN: CUADRÍCULA DE VALORES CORPORATIVOS
+====================================================*/
+.titulo-valores-bloque {
+    margin-top: 80px;
+    font-size: 32px;
+    color: var(--color-primario);
+}
+
+.valores-grid-corporativo {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.valor-item {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    text-align: left;
+    border-left: 4px solid var(--color-acento);
+    height: auto; /* 💡 Esto asegura que la tarjeta se estire y muestre todo el texto */
+    transition: var(--transicion);
+}
+
+
+.valor-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,.1);
+}
+
+.valor-item h3 {
+    color: var(--color-primario);
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.valor-item p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/*====================================================
+FIRMA PROFESIONAL: ESPINOZA SOUND LAB
+====================================================*/
+.contenedor-creditos-estudio {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+}
+
+.logo-estudio {
+    height: 35px; /* Tamaño discreto y sumamente elegante */
+    width: auto;
+    opacity: 0.85;
+    transition: var(--transicion);
+    margin-bottom: 5px;
+}
+
+.logo-estudio:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.nombre-estudio {
+    color: var(--color-blanco);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.contacto-desarrollador {
+    font-size: 12.5px;
+    color: #888;
+}
+
+.contacto-desarrollador a {
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transicion);
+}
+
+.contacto-desarrollador a:hover {
+    color: var(--color-acento);
+    text-decoration: underline;
 }

@@ -10,17 +10,19 @@
 <body>
 
     <nav>
-        <img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca">
-        <div class="menu">
-            <a href="index.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="beneficios.html">Beneficios</a>
-            <a href="contacto.html">Contacto</a>
-            <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)">
-                🛒 Mi Carrito (<span id="contador-productos">0</span>)
-            </a>
-        </div>
-    </nav>
+<img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca">
+
+<div class="menu">
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="beneficios.html">Beneficios</a>
+    <a href="identidad.html">Identidad</a> <!-- Verifica que esta línea esté en todas las páginas -->
+    <a href="contacto.html">Contacto</a>
+    <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)">
+        🛒 Mi Carrito (<span id="contador-productos">0</span>)
+    </a>
+</div>
+</nav>
 
     <!-- El Carrito también vive aquí para que puedan ver lo que llevan -->
     <div id="carrito-compras" class="carrito-cerrado">
@@ -36,24 +38,36 @@
         <h2>Nuestros Productos Oficiales</h2>
         <div class="tienda-contenedor">
 
+<!-- Producto 1 -->
             <div class="tarjeta-producto">
-                <img src="imagenes/cojin1.png" alt="Cojín Lactancia">
+                <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+                    <img src="imagenes/cojin1.png" alt="Cojín Lactancia" class="img-base-lupa">
+                    <div class="lupa-lente"></div>
+                </div>
                 <h3>Cojín de Lactancia MOD:5000</h3>
                 <p class="detalles-prod">46 x 56 x 20 cm</p>
                 <p class="precio">$832 MXN</p>
                 <button onclick="comprarProducto('Cojín de Lactancia MOD:5000',832)">Comprar Ahora</button>
             </div>
 
+            <!-- Producto 2 -->
             <div class="tarjeta-producto">
-                <img src="imagenes/sillon.jpg" alt="Sillón">
+                <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+                    <img src="imagenes/sillon.jpg" alt="Sillón" class="img-base-lupa">
+                    <div class="lupa-lente"></div>
+                </div>
                 <h3>Sillón Colchón Antirreflujo</h3>
                 <p class="detalles-prod">86.5 x 44.5 x 27.5 cm</p>
                 <p class="precio">$2,529 MXN</p>
                 <button onclick="comprarProducto('Sillón Colchón Antirreflujo',2529)">Comprar Ahora</button>
             </div>
 
+            <!-- Producto 3 -->
             <div class="tarjeta-producto">
-                <img src="imagenes/cobija.jpg" alt="Cobija">
+                <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+                    <img src="imagenes/cobija.jpg" alt="Cobija" class="img-base-lupa">
+                    <div class="lupa-lente"></div>
+                </div>
                 <h3>Cobija Rusia Doble Tela</h3>
                 <p class="detalles-prod">Incluye oso</p>
                 <p class="precio">$310 MXN</p>

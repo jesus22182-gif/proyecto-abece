@@ -10,17 +10,19 @@
 <body>
 
     <nav>
-        <img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca">
-        <div class="menu">
-            <a href="index.html">Inicio</a>
-            <a href="productos.html">Productos</a>
-            <a href="beneficios.html">Beneficios</a>
-            <a href="contacto.html">Contacto</a>
-            <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)">
-                🛒 Mi Carrito (<span id="contador-productos">0</span>)
-            </a>
-        </div>
-    </nav>
+<img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca">
+
+<div class="menu">
+    <a href="index.html">Inicio</a>
+    <a href="productos.html">Productos</a>
+    <a href="beneficios.html">Beneficios</a>
+    <a href="identidad.html">Identidad</a> <!-- Verifica que esta línea esté en todas las páginas -->
+    <a href="contacto.html">Contacto</a>
+    <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)">
+        🛒 Mi Carrito (<span id="contador-productos">0</span>)
+    </a>
+</div>
+</nav>
 
     <!-- El Carrito también vive en esta página por si el usuario decide finalizar su orden -->
     <div id="carrito-compras" class="carrito-cerrado">
@@ -43,12 +45,24 @@
             <div class="info-contacto">
                 <h3>Atención Inmediata</h3>
                 
-                <div class="tarjeta-info">
-                    <p><strong>🟢 WhatsApp Oficial:</strong></p>
-                    <a href="https://wa.me" target="_blank" class="link-contacto-directo">
-                        55 1118 0337
-                    </a>
-                </div>
+            <div class="tarjeta-info">
+
+    <p><strong>🟢 WhatsApp Oficial</strong></p>
+
+    <a href="https://wa.me/525511180337?text=Hola%20ABECE,%20me%20gustaría%20recibir%20información."
+       target="_blank"
+       class="btn-whatsapp">
+
+       💬 Enviar mensaje por WhatsApp
+
+    </a>
+
+    <p class="numero-whatsapp">
+        55 1118 0337
+    </p>
+
+</div>
+
 
                 <div class="tarjeta-info">
                     <p><strong>✉️ Correo de Ventas:</strong></p>

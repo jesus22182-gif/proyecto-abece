@@ -216,3 +216,60 @@ function enviarMensajeContacto(event) {
     // Resetea los campos de texto
     document.getElementById("form-comunidad").reset();
 }
+
+// CONTROLADOR DE LUPA FIJA AL COSTADO (SOLUCIÓN CONTRA SOBREPOSICIONES)
+function ejecutarLupa(e, contenedor) {
+    const img = contenedor.querySelector('.img-base-lupa');
+    const lente = contenedor.querySelector('.lupa-lente');
+    
+    // Encendemos la ventana lateral
+    lente.style.display = "block";
+    
+    // Obtenemos la posición del contenedor actual
+    const rect = contenedor.getBoundingClientRect();
+    
+    // Calculamos las coordenadas del mouse dentro de tu ficha técnica
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Convertimos las coordenadas a porcentajes exactos (0% a 100%)
+    const porcenX = (x / contenedor.offsetWidth) * 100;
+    const porcenY = (y / contenedor.offsetHeight) * 100;
+    
+    // Cargamos tu ficha técnica gigante (Zoom 250%) en el recuadro lateral
+    lente.style.backgroundImage = "url('" + img.src + "')";
+    lente.style.backgroundSize = (contenedor.offsetWidth * 2.5) + "px " + (contenedor.offsetHeight * 2.5) + "px";
+    
+    // Movemos el fondo milimétricamente según el porcentaje del puntero
+    lente.style.backgroundPosition = porcenX + "% " + porcenY + "%";
+}
+
+function apagarLupa(contenedor) {
+    // Apaga la ventana lateral cuando el cliente quita el mouse
+    const lente = contenedor.querySelector('.lupa-lente');
+    lente.style.display = "none";
+}
+
+// CONTROLADOR DEL SLIDER INTERACTIVO DE LA NUBE DE SUEÑOS (ESPINOZA SOUND LAB)
+const slidesBanner = document.querySelectorAll('.slide');
+const dotsBanner = document.querySelectorAll('.dot');
+const pillBanner = document.getElementById('stagePill');
+const labelsBanner = ['Los primeros abrazos', 'Noches de sueño profundo', 'Horas de juego y risas'];
+let indexBanner = 0;
+
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function goToBanner(n) {
+    slidesBanner[indexBanner].classList.remove('active');
+    dotsBanner[indexBanner].classList.remove('active');
+    indexBanner = n;
+    slidesBanner[indexBanner].classList.add('active');
+    dotsBanner[indexBanner].classList.add('active');
+    pillBanner.textContent = labelsBanner[indexBanner];
+}
+
+dotsBanner.forEach(d => d.addEventListener('click', () => goToBanner(parseInt(d.dataset.i))));
+
+if (!reduceMotion) {
+    setInterval(() => goToBanner((indexBanner + 1) % slidesBanner.length), 4200);
+}

@@ -49,7 +49,7 @@
             <p class="sub">Cojines, cobijas y accesorios de lactancia hechos en México, pensados para acompañar tu descanso y el de tu bebé — desde la primera noche en casa.</p>
             <div class="cta-row">
                 <a class="btn-primary-banner" href="productos.html">Descubre la colección →</a>
-                <a class="btn-link-banner" href="identidad.html">Conoce nuestra historia</a>
+                <a class="btn-link-banner" href="identidad.html">Conocenos </a>
             </div>
             <div class="trust-row">
                 <span>🟢 Hecho con cariño en el Edomex</span>
@@ -142,12 +142,21 @@
 <form id="form-checkout" onsubmit="procesarPagoBancario(event)">
 
 <h4>Datos de Envío</h4>
+                <input id="chk-nombre" type="text" placeholder="Nombre completo" required>
+                <input id="chk-correo" type="email" placeholder="Correo electrónico" required>
+                
+                <!-- CANDADO DE 10 DÍGITOS PARA MÉXICO -->
+                <input id="chk-telefono" type="tel" placeholder="Teléfono (10 dígitos)" 
+                       pattern="[0-9]{10}" title="Por favor ingresa un número válido de 10 dígitos de México" required>
 
-<input id="chk-nombre" type="text" placeholder="Nombre completo" required>
-<input id="chk-correo" type="email" placeholder="Correo electrónico" required>
-<input id="chk-telefono" type="tel" placeholder="Teléfono" required>
-
-<textarea id="chk-direccion" placeholder="Dirección completa" required></textarea>
+                <!-- CAMPOS SEPARADOS PARA DIRECCIÓN COMPLETA -->
+                <div class="direccion-split-grid">
+                    <input id="chk-calle" type="text" placeholder="Calle y Número (Ej. Av. Juárez 123)" required>
+                    <input id="chk-colonia" type="text" placeholder="Colonia" required>
+                    <input id="chk-cp" type="text" placeholder="Código Postal (5 dígitos)" pattern="[0-9]{5}" title="Ingresa un CP válido de 5 dígitos" required>
+                    <input id="chk-municipio" type="text" placeholder="Alcaldía o Municipio" required>
+                    <input id="chk-estado" type="text" placeholder="Estado" required>
+                </div>
 
 <div class="modulo-facturacion">
 

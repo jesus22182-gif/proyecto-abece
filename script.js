@@ -170,13 +170,24 @@ function alternarModuloFiscal() {
     }
 }
 
-// 8. FINALIZACIÓN DE COMPRA Y REDIRECCIÓN BANCARIA (SAM'S / WALMART STYLE)
+// 8. FINALIZACIÓN DE COMPRA Y REDIRECCIÓN BANCARIA (ACTUALIZADO CON VALIDACIÓN)
 function procesarPagoBancario(event) {
     event.preventDefault(); // Detiene el reinicio automático de la página
 
     const nombreCliente = document.getElementById("chk-nombre").value;
-    const direccionCliente = document.getElementById("chk-direccion").value;
+    const correoCliente = document.getElementById("chk-correo").value;
+    const telefonoCliente = document.getElementById("chk-telefono").value;
     const pideFactura = document.getElementById("chk-necesita-factura").checked;
+
+    // 💡 CAPTURA Y UNIFICACIÓN AUTOMÁTICA DE LA DIRECCIÓN
+    const calle = document.getElementById("chk-calle").value;
+    const colonia = document.getElementById("chk-colonia").value;
+    const cp = document.getElementById("chk-cp").value;
+    const municipio = document.getElementById("chk-municipio").value;
+    const estado = document.getElementById("chk-estado").value;
+
+    // Formateamos la dirección completa en una sola línea profesional
+    const direccionCompletaUnificada = `${calle}, Col. ${colonia}, C.P. ${cp}, ${municipio}, ${estado}.`;
 
     let mensajeFiscal = "";
     if (pideFactura) {
@@ -185,23 +196,20 @@ function procesarPagoBancario(event) {
         mensajeFiscal = "\n📝 Datos Fiscales validados para el RFC: " + rfc + " (Uso CFDI: " + cfdi + ")";
     }
 
-    // Alerta de confirmación de cierre exitoso del diagrama de experiencia
+    // Alerta de confirmación con la dirección armada
     alert(
         "✨ ¡Gracias por tu compra, " + nombreCliente + "! ✨\n\n" +
-        "📦 Orden de entrega registrada en:\n" + direccionCliente + "\n" +
+        "📦 Orden de entrega registrada en:\n" + direccionCompletaUnificada + "\n" +
         mensajeFiscal + "\n\n" +
-        "Te redirigiremos de forma 100% segura a la pasarela bancaria de Mercado Pago para procesar tu pago de $" + total.toLocaleString('es-MX') + " MXN con tarjeta."
+        "Te redirigiremos de forma 100% segura a la pasarela bancaria de Mercado Pago para procesar tu pago de $" +
+        total.toLocaleString('es-MX') + " MXN con tarjeta."
     );
-    
-    // Abre el procesador bancario oficial en internet
+
+    // (El resto de tu función window.open, vaciar carrito y cerrar checkout se queda exactamente igual)
     window.open("https://mercadopago.com", "_blank");
-    
-    // Reseteamos el e-commerce de la memoria de forma limpia y automática
     carrito = [];
     total = 0;
     actualizarPantallaCarrito();
-    
-    // Cerramos la ventana modal flotante
     cerrarCheckout();
 }
 

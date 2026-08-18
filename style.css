@@ -359,11 +359,26 @@ button:hover{
     z-index:2000;
 }
 
-.contenido-modal{
-    background:#fff;
-    width:min(650px,95%);
-    padding:30px;
-    border-radius:20px;
+/* Caja de contenido central blanca (ACTUALIZADA CON AJUSTE AUTOMÁTICO DE ALTURA) */
+.contenido-modal {
+    background: #ffffff;
+    width: min(550px, 95%); /* Mantiene un ancho elegante y adaptable */
+    max-height: 90vh; /* 💡 SOLUCIÓN CLAVE: Evita que se salga de la pantalla limitando la altura al 90% de la ventana visual */
+    overflow-y: auto; /* 💡 SOLUCIÓN CLAVE: Activa una barra de scroll interna automática si el formulario es muy largo */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(26, 45, 66, 0.15);
+    position: relative;
+    text-align: center;
+}
+
+/* Oculta la barra de scroll de la lupa interna para que el diseño luzca ultra limpio */
+.contenido-modal::-webkit-scrollbar {
+    width: 6px;
+}
+.contenido-modal::-webkit-scrollbar-thumb {
+    background: #6DA3CF; /* Tu Azul Oveja */
+    border-radius: 10px;
 }
 
 .logo-checkout{
@@ -1003,4 +1018,27 @@ FIRMA PROFESIONAL: ESPINOZA SOUND LAB
 .contacto-desarrollador a:hover {
     color: var(--color-acento);
     text-decoration: underline;
+}
+
+/* CUADRÍCULA COMPACTA PARA LOS CAMPOS DE DIRECCIÓN */
+.direccion-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide el espacio en dos columnas simétricas */
+    gap: 10px; /* Margen de separación limpio */
+    margin-bottom: 10px;
+}
+
+/* La calle ocupa todo el ancho completo de la fila */
+#chk-calle {
+    grid-column: span 2;
+}
+
+/* En teléfonos celulares, los campos se apilan a una sola columna para mayor comodidad */
+@media (max-width: 480px) {
+    .direccion-split-grid {
+        grid-template-columns: 1fr;
+    }
+    #chk-calle {
+        grid-column: span 1;
+    }
 }

@@ -1,87 +1,521 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beneficios y Valores - ABECE</title>
-    <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beneficios y Valores - ABECE</title>
+ 
+<!-- NOTA: tu link original a "https://googleapis.com" estaba incompleto y no cargaba
+     ninguna fuente. Lo reemplacé por la URL correcta de Google Fonts (Comfortaa + Nunito),
+     que son las tipografías oficiales de marca usadas en el nuevo bloque de Centro de Ayuda. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+ 
+<link rel="stylesheet" href="style.css">
+<!-- Font Awesome: necesario para los iconos de redes sociales -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+ 
+<!-- ============================================================
+     ESTILOS DEL CENTRO DE AYUDA (acordeón)
+     Todas las clases están prefijadas con "ayuda-" a propósito,
+     para no chocar con ninguna clase que ya exista en tu style.css.
+     Puedes dejar este bloque aquí, o más adelante moverlo a style.css.
+     ============================================================ -->
+<style>
+  #centro-ayuda{
+    --ayuda-azul-oveja:#6DA3CF;
+    --ayuda-azul-oveja-suave:#EAF2F8;
+    --ayuda-crema:#F7F3EC;
+    --ayuda-amarillo:#F6D173;
+    --ayuda-medianoche:#1A2D42;
+    --ayuda-medianoche-60:rgba(26,45,66,0.6);
+    --ayuda-borde: rgba(26,45,66,0.12);
+ 
+    background:var(--ayuda-crema);
+    color:var(--ayuda-medianoche);
+    font-family:'Nunito', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding:64px 0 80px;
+  }
+ 
+  #centro-ayuda *{ box-sizing:border-box; }
+ 
+  #centro-ayuda .ayuda-wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+ 
+  #centro-ayuda .ayuda-eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Comfortaa', cursive;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ayuda-medianoche);
+    background:var(--ayuda-amarillo);
+    padding:6px 14px;
+    border-radius:100px;
+    margin-bottom:20px;
+  }
+ 
+  #centro-ayuda h2.ayuda-titulo{
+    font-family:'Comfortaa', cursive;
+    font-weight:700;
+    font-size:clamp(28px, 5vw, 38px);
+    line-height:1.2;
+    margin:0 0 14px;
+    color:var(--ayuda-medianoche);
+  }
+ 
+  #centro-ayuda .ayuda-lead{
+    font-size:17px;
+    line-height:1.65;
+    color:var(--ayuda-medianoche-60);
+    max-width:56ch;
+    font-style:italic;
+    margin:0;
+  }
+ 
+  #centro-ayuda .ayuda-quicknav{
+    display:flex;
+    gap:10px;
+    margin:32px 0 8px;
+    flex-wrap:wrap;
+  }
+  #centro-ayuda .ayuda-quicknav a{
+    font-family:'Comfortaa', cursive;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ayuda-azul-oveja);
+    background:var(--ayuda-azul-oveja-suave);
+    border:1px solid transparent;
+    padding:8px 16px;
+    border-radius:100px;
+    text-decoration:none;
+    transition:background .2s ease, color .2s ease;
+  }
+  #centro-ayuda .ayuda-quicknav a:hover{ background:var(--ayuda-azul-oveja); color:#fff; }
+  #centro-ayuda .ayuda-quicknav a:focus-visible{ outline:2px solid var(--ayuda-medianoche); outline-offset:2px; }
+ 
+  #centro-ayuda .ayuda-grupo{ margin-top:52px; }
+ 
+  #centro-ayuda .ayuda-grupo-head{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    margin-bottom:20px;
+  }
+  #centro-ayuda .ayuda-grupo-head svg{ width:34px; height:34px; flex-shrink:0; margin-top:2px; }
+ 
+  #centro-ayuda .ayuda-grupo-titulo{
+    font-family:'Comfortaa', cursive;
+    font-weight:700;
+    font-size:22px;
+    color:var(--ayuda-medianoche);
+    margin:0 0 4px;
+  }
+  #centro-ayuda .ayuda-grupo-sub{
+    font-size:14.5px;
+    color:var(--ayuda-medianoche-60);
+    margin:0;
+    line-height:1.5;
+  }
+ 
+  #centro-ayuda .ayuda-accordion{ border-top:1px solid var(--ayuda-borde); }
+  #centro-ayuda .ayuda-accordion details{ border-bottom:1px solid var(--ayuda-borde); }
+ 
+  #centro-ayuda .ayuda-accordion summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:20px 4px;
+    font-family:'Comfortaa', cursive;
+    font-weight:600;
+    font-size:16px;
+    color:var(--ayuda-medianoche);
+    -webkit-tap-highlight-color:transparent;
+  }
+  #centro-ayuda .ayuda-accordion summary::-webkit-details-marker{ display:none; }
+  #centro-ayuda .ayuda-accordion summary:focus-visible{
+    outline:2px solid var(--ayuda-azul-oveja);
+    outline-offset:4px;
+    border-radius:6px;
+  }
+ 
+  #centro-ayuda .ayuda-chev{
+    flex-shrink:0;
+    width:22px;height:22px;
+    border-radius:50%;
+    background:var(--ayuda-azul-oveja-suave);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform .28s ease, background .28s ease;
+  }
+  #centro-ayuda details[open] .ayuda-chev{
+    transform:rotate(180deg);
+    background:var(--ayuda-amarillo);
+  }
+  #centro-ayuda .ayuda-chev svg{ width:11px; height:11px; }
+ 
+  #centro-ayuda .ayuda-panel{
+    padding:0 4px 24px;
+    font-size:15.5px;
+    line-height:1.75;
+    color:var(--ayuda-medianoche);
+  }
+  #centro-ayuda .ayuda-panel p{ margin:0 0 14px; }
+  #centro-ayuda .ayuda-panel p:last-child{ margin-bottom:0; }
+  #centro-ayuda .ayuda-panel strong{ color:var(--ayuda-medianoche); }
+ 
+  #centro-ayuda .ayuda-pill-row{
+    display:flex; gap:8px; flex-wrap:wrap; margin:14px 0 16px;
+  }
+  #centro-ayuda .ayuda-pill{
+    font-family:'Comfortaa', cursive;
+    font-size:12.5px;
+    font-weight:600;
+    background:var(--ayuda-crema);
+    border:1px solid var(--ayuda-borde);
+    color:var(--ayuda-medianoche);
+    padding:6px 12px;
+    border-radius:100px;
+  }
+  #centro-ayuda .ayuda-pill.amarillo{ background:var(--ayuda-amarillo); border-color:transparent; }
+ 
+  #centro-ayuda .ayuda-contacto{
+    margin-top:56px;
+    background:var(--ayuda-azul-oveja-suave);
+    border-radius:20px;
+    padding:32px 28px;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+  #centro-ayuda .ayuda-contacto h3{
+    font-family:'Comfortaa', cursive;
+    font-size:17px;
+    margin:0 0 6px;
+    color:var(--ayuda-medianoche);
+  }
+  #centro-ayuda .ayuda-contacto p{
+    margin:0;
+    font-size:14.5px;
+    color:var(--ayuda-medianoche-60);
+    line-height:1.6;
+  }
+  #centro-ayuda .ayuda-contacto a{
+    color:var(--ayuda-medianoche);
+    font-weight:600;
+    text-decoration:none;
+    border-bottom:1.5px solid var(--ayuda-azul-oveja);
+  }
+  #centro-ayuda .ayuda-contacto a:hover{ border-color:var(--ayuda-medianoche); }
+ 
+  @media (prefers-reduced-motion: reduce){
+    #centro-ayuda .ayuda-chev{ transition:none; }
+  }
+  @media (max-width:520px){
+    #centro-ayuda{ padding:48px 0 64px; }
+    #centro-ayuda .ayuda-grupo-head svg{ display:none; }
+  }
+ 
+  /* ============================================================
+     FOOTER MINIMALISTA — columnas "Legal" y "Servicio"
+     Clases prefijadas con "pie-" para no chocar con tu style.css.
+     ============================================================ */
+  footer{ background:var(--ayuda-crema, #F7F3EC); }
+ 
+  .pie-columnas{
+    max-width:1100px;
+    margin:0 auto;
+    padding:48px 24px 32px;
+    display:flex;
+    gap:64px;
+    flex-wrap:wrap;
+    border-bottom:1px solid rgba(26,45,66,0.1);
+  }
+ 
+  .pie-col{ min-width:160px; }
+ 
+  .pie-titulo{
+    font-family:'Nunito', sans-serif;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#1A2D42;
+    margin:0 0 14px;
+  }
+ 
+  .pie-col a{
+    display:block;
+    font-family:'Nunito', sans-serif;
+    font-size:14.5px;
+    font-weight:400;
+    color:rgba(26,45,66,0.65);
+    text-decoration:none;
+    margin-bottom:10px;
+    transition:color .18s ease;
+  }
+  .pie-col a:hover{ color:#6DA3CF; }
+  .pie-col a:focus-visible{ outline:2px solid #6DA3CF; outline-offset:3px; border-radius:4px; }
+</style>
 </head>
 <body>
-
-    <nav>
+<nav>
+<a href="index.html" class="enlace-logo-marca">
 <img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca">
-
+</a>
 <div class="menu">
-    <a href="index.html">Inicio</a>
-    <a href="productos.html">Productos</a>
-    <a href="beneficios.html">Beneficios</a>
-    <a href="identidad.html">Identidad</a> <!-- Verifica que esta línea esté en todas las páginas -->
-    <a href="contacto.html">Contacto</a>
-    <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)">
-        🛒 Mi Carrito (<span id="contador-productos">0</span>)
-    </a>
+<a href="index.html">Inicio</a>
+<a href="productos.html">Productos</a>
+<a href="beneficios.html">Beneficios</a>
+<a href="identidad.html">Identidad</a> <!-- Verifica que esta línea esté en todas las páginas -->
+<a href="contacto.html">Contacto</a>
+<a href="#" id="enlace-carrito" onclick="alternarCarrito(event)">
+🛒 Mi Carrito (<span id="contador-productos">0</span>)</a>
 </div>
 </nav>
-
-    <!-- El Carrito también vive en esta página por si el usuario decide finalizar su orden -->
-    <div id="carrito-compras" class="carrito-cerrado">
-        <span class="cerrar-carrito-x" onclick="alternarCarrito(event)">×</span>
-        <h3>🛒 Mi Carrito</h3>
-        <ul id="lista-carrito"></ul>
-        <p><strong>Total: $<span id="total-precio">0</span>.00 MXN</strong></p>
-        <button id="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
-        <button id="btn-pagar" onclick="abrirCheckoutGlobal()">Finalizar Compra</button>
-    </div>
-
+ 
+<!-- El Carrito también vive en esta página por si el usuario decide finalizar su orden -->
+<div id="carrito-compras" class="carrito-cerrado">
+<span class="cerrar-carrito-x" onclick="alternarCarrito(event)">×</span>
+<h3>🛒 Mi Carrito</h3>
+<ul id="lista-carrito"></ul>
+<p><strong>Total: $<span id="total-precio">0</span>.00 MXN</strong></p>
+<button id="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
+<button id="btn-pagar" onclick="abrirCheckoutGlobal()">Finalizar Compra</button>
+</div>
+ 
 <!-- SECCIÓN DE VALORES CON TU NUEVA IMAGEN SVG -->
-    <section class="valores-seccion">
-        <div class="imagen-valores-contenedor">
-            <img src="imagenes/valores-abece.svg" alt="Nuestras Reglas de Oro ABeCe" class="img-valores-premium">
+<section class="valores-seccion">
+<div class="imagen-valores-contenedor">
+<img src="imagenes/valores-abece.svg" alt="Nuestras Reglas de Oro ABeCe" class="img-valorespremium">
+</div>
+</section>
+ 
+<!-- ============================================================
+     NUEVO: CENTRO DE AYUDA (Envíos, Devoluciones y Legal)
+     ============================================================ -->
+<section id="centro-ayuda">
+  <div class="ayuda-wrap">
+ 
+    <span class="ayuda-eyebrow">Centro de Ayuda</span>
+    <h2 class="ayuda-titulo">Estamos para acompañarte,<br>también con tus dudas</h2>
+    <p class="ayuda-lead">Sabemos que entre pañales, tomas y noches largas, lo último que necesitas es batallar para encontrar una respuesta. Aquí reunimos, con calma y claridad, todo lo que necesitas saber sobre tus envíos, tus cambios y los términos de nuestra tienda.</p>
+ 
+    <nav class="ayuda-quicknav" aria-label="Ir a sección">
+      <a href="#ayuda-envios">Envíos y devoluciones</a>
+      <a href="#ayuda-legal">Legal</a>
+    </nav>
+ 
+    <!-- ================= ENVÍOS Y DEVOLUCIONES ================= -->
+    <div class="ayuda-grupo" id="ayuda-envios">
+      <div class="ayuda-grupo-head">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="6" y="18" width="36" height="22" rx="4" fill="#EAF2F8" stroke="#6DA3CF" stroke-width="2.5"/>
+          <path d="M6 24h36" stroke="#6DA3CF" stroke-width="2.5"/>
+          <path d="M18 18v-4a6 6 0 0 1 12 0v4" stroke="#F6D173" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <p class="ayuda-grupo-titulo">Envíos y devoluciones</p>
+          <p class="ayuda-grupo-sub">Para que sepas exactamente qué esperar desde que compras hasta que abres tu paquete.</p>
         </div>
-    </section>
-
-    <!-- Ventana Modal de Checkout Compartida -->
-    <div id="modal-pago" class="modal-oculto">
-        <div class="contenido-modal">
-            <span class="cerrar-modal" onclick="cerrarCheckout()">×</span>
-            <img src="imagenes/logo.png" alt="Logo" class="logo-checkout">
-            <h3>Finalizar Compra</h3>
-            <p id="checkout-producto"></p>
-            <p id="checkout-total"></p>
-            <form id="form-checkout" onsubmit="procesarPagoBancario(event)">
-                <h4>Datos de Envío</h4>
-                <input id="chk-nombre" type="text" placeholder="Nombre completo" required>
-                <input id="chk-correo" type="email" placeholder="Correo electrónico" required>
-                <input id="chk-telefono" type="tel" placeholder="Teléfono" required>
-                <textarea id="chk-direccion" placeholder="Dirección completa" required></textarea>
-                <div class="modulo-facturacion">
-                    <label class="label-checkbox">
-                        <input type="checkbox" id="chk-necesita-factura" onchange="alternarModuloFiscal()"> Necesito factura
-                    </label>
-                    <div id="campos-fiscales" class="oculto-fiscal">
-                        <h4>Datos Fiscales</h4>
-                        <input id="fisc-rfc" type="text" placeholder="RFC">
-                        <input id="fisc-razon" type="text" placeholder="Razón Social">
-                        <input id="fisc-cp" type="text" placeholder="Código Postal">
-                        <select id="fisc-cfdi">
-                            <option value="">Selecciona el Uso de CFDI</option>
-                            <option value="G01">G01 - Adquisición de mercancías</option>
-                            <option value="G03">G03 - Gastos en general</option>
-                            <option value="S01">S01 - Sin efectos fiscales</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit" class="btn-pago-tarjeta">Pagar con Tarjeta</button>
-            </form>
-            <p class="nota-seguridad">🔒 Pago protegido.</p>
-        </div>
+      </div>
+ 
+      <div class="ayuda-accordion">
+        <details open>
+          <summary>
+            <span>¿Cuándo mi envío es gratis?</span>
+            <span class="ayuda-chev"><svg viewBox="0 0 12 8" fill="none"><path d="M1 1L6 6L11 1" stroke="#1A2D42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="ayuda-panel">
+            <p>A partir de <strong>$1,600.00 pesos</strong> de compra, tu pedido viaja sin costo a cualquier parte de la República Mexicana. Nos encanta pensar que ese envío gratuito es también un pequeño abrazo extra que llega junto con tu paquete.</p>
+            <p>Si tu compra no alcanza ese monto, el costo de envío estándar se calcula y te lo mostramos con toda claridad antes de confirmar tu pedido, sin sorpresas ni letras chiquitas.</p>
+            <div class="ayuda-pill-row">
+              <span class="ayuda-pill amarillo">Envío gratis desde $1,600</span>
+              <span class="ayuda-pill">Cobertura nacional</span>
+            </div>
+          </div>
+        </details>
+ 
+        <details>
+          <summary>
+            <span>¿Puedo hacer un cambio o devolución?</span>
+            <span class="ayuda-chev"><svg viewBox="0 0 12 8" fill="none"><path d="M1 1L6 6L11 1" stroke="#1A2D42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="ayuda-panel">
+            <p>Claro que sí. Tienes <strong>15 días</strong> a partir de la fecha de tu compra para solicitar un cambio, sin ningún problema.</p>
+            <p>Podemos ofrecerte un <strong>cambio por otro producto</strong> o un <strong>vale</strong> para usar más adelante en cualquier artículo de abece. Por ahora, no realizamos devoluciones de dinero, y para poder ayudarte necesitaremos ver el recibo de tu compra.</p>
+            <p>Una vez que recibamos e inspeccionemos tu producto en nuestras oficinas, te avisaremos por correo si tu cambio fue aprobado, para que sigas tu proceso con toda tranquilidad.</p>
+          </div>
+        </details>
+ 
+        <details>
+          <summary>
+            <span>¿Cómo cuido a mi bebé al recibir el paquete?</span>
+            <span class="ayuda-chev"><svg viewBox="0 0 12 8" fill="none"><path d="M1 1L6 6L11 1" stroke="#1A2D42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="ayuda-panel">
+            <p>Cada paquete de abece viaja protegido para que tú solo te preocupes por disfrutar su suavidad. Al recibirlo, te recomendamos lavarte las manos antes de abrir y acomodar los artículos, como parte del mismo cuidado con el que fueron fabricados.</p>
+          </div>
+        </details>
+      </div>
     </div>
-
-    <footer>
-        <p>© 2026 ABECE. Todos los derechos reservados.</p>
-    </footer>
-
-    <script src="script.js"></script>
+ 
+    <!-- ================= LEGAL ================= -->
+    <div class="ayuda-grupo" id="ayuda-legal">
+      <div class="ayuda-grupo-head">
+        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M24 8v32M24 8l-12 6M24 8l12 6" stroke="#6DA3CF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6 16h12M30 16h12" stroke="#6DA3CF" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M8 16l4 9h-8l4-9zM40 16l4 9h-8l4-9z" fill="#EAF2F8" stroke="#6DA3CF" stroke-width="2"/>
+          <rect x="16" y="38" width="16" height="3" rx="1.5" fill="#F6D173"/>
+        </svg>
+        <div>
+          <p class="ayuda-grupo-titulo">Legal</p>
+          <p class="ayuda-grupo-sub">Lo que rige el uso de nuestro sitio, explicado sin tecnicismos innecesarios.</p>
+        </div>
+      </div>
+ 
+      <div class="ayuda-accordion">
+        <details>
+          <summary>
+            <span>Términos y Condiciones</span>
+            <span class="ayuda-chev"><svg viewBox="0 0 12 8" fill="none"><path d="M1 1L6 6L11 1" stroke="#1A2D42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </summary>
+          <div class="ayuda-panel">
+            <p>Al usar nuestro sitio, aceptas estas condiciones con el mismo cuidado con el que nosotros preparamos cada uno de tus pedidos. abece podrá actualizar estos términos en cualquier momento, así que te invitamos a revisarlos de vez en cuando.</p>
+            <p><strong>Todo el contenido de abecemexico.com</strong> —textos, imágenes, fotografías, diseños, logotipos y la estructura misma del sitio— es <strong>propiedad exclusiva de abecemexico.com</strong> y está protegido por las leyes mexicanas de propiedad intelectual e industrial. No está permitido reproducir, copiar o distribuir este contenido con fines comerciales sin autorización previa.</p>
+            <p>Estos términos se rigen por las leyes de la República Mexicana. Si tienes cualquier duda sobre su alcance, escríbenos y con gusto te la resolvemos.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+ 
+    <div class="ayuda-contacto">
+      <h3>¿Sigues con dudas?</h3>
+      <p>Escríbenos a <a href="mailto:info@abecemexico.com">info@abecemexico.com</a> o llámanos al <a href="tel:+525555766546">(55) 5576 6546</a>. Nos dará mucho gusto acompañarte.</p>
+    </div>
+ 
+  </div>
+</section>
+<!-- ============== FIN CENTRO DE AYUDA ============== -->
+ 
+<!-- Ventana Modal de Checkout Compartida -->
+<div id="modal-pago" class="modal-oculto">
+<div class="contenido-modal">
+<span class="cerrar-modal" onclick="cerrarCheckout()">×</span>
+<img src="imagenes/logo.png" alt="Logo" class="logo-checkout">
+<h3>Finalizar Compra</h3>
+<p id="checkout-producto"></p>
+<p id="checkout-total"></p>
+<form id="form-checkout" onsubmit="procesarPagoBancario(event)"><h4>Datos de Envío</h4>
+<input id="chk-nombre" type="text" placeholder="Nombre completo" required>
+<input id="chk-correo" type="email" placeholder="Correo electrónico" required>
+<input id="chk-telefono" type="tel" placeholder="Teléfono" required>
+<textarea id="chk-direccion" placeholder="Dirección completa" required></textarea>
+<div class="modulo-facturacion">
+<label class="label-checkbox">
+<input type="checkbox" id="chk-necesita-factura" onchange="alternarModuloFiscal()">
+Necesito factura
+</label>
+<div id="campos-fiscales" class="oculto-fiscal">
+<h4>Datos Fiscales</h4>
+<input id="fisc-rfc" type="text" placeholder="RFC">
+<input id="fisc-razon" type="text" placeholder="Razón Social">
+<input id="fisc-cp" type="text" placeholder="Código Postal">
+<select id="fisc-cfdi">
+<option value="">Selecciona el Uso de CFDI</option>
+<option value="G01">G01 - Adquisición de mercancías</option>
+<option value="G03">G03 - Gastos en general</option>
+<option value="S01">S01 - Sin efectos fiscales</option>
+</select>
+</div>
+</div>
+<button type="submit" class="btn-pago-tarjeta">Pagar con Tarjeta</button>
+</form>
+<p class="nota-seguridad">🔒 Pago protegido.</p>
+</div>
+</div>
+ 
+<!-- ==================== COMUNIDAD ==================== -->
+<section class="comunidad-seccion"><h2>Nuestra Comunidad ABeCe</h2>
+<p class="subtitulo-comunidad">
+Cada compra nos ayuda a abrazar a quienes más lo necesitan.
+¡Síguenos y sé parte del cambio!
+</p>
+<div class="iconos-redes-flex">
+<a href="https://facebook.com/abecemex"
+target="_blank"
+rel="noopener noreferrer"
+class="icono-social-link"
+title="Facebook ABeCe"
+aria-label="Facebook ABeCe">
+<i class="fa-brands fa-facebook" aria-hidden="true"></i>
+</a>
+<a href="https://instagram.com/abece.mex/"
+target="_blank"
+rel="noopener noreferrer"
+class="icono-social-link"
+title="Instagram ABeCe"
+aria-label="Instagram ABeCe">
+<i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+</div>
+</section>
+ 
+<!-- Footer Corporativo con Firma de ESPINOZA SOUND LAB -->
+<footer>
+ 
+<!-- NUEVO: Footer minimalista de dos columnas (Legal / Servicio).
+     Este bloque de columnas debe copiarse igual en todas las páginas del sitio. -->
+<div class="pie-columnas">
+  <div class="pie-col">
+    <p class="pie-titulo">Legal</p>
+    <a href="aviso-privacidad.html">Aviso de Privacidad</a>
+    <a href="beneficios.html#ayuda-legal">Términos y Condiciones</a>
+  </div>
+  <div class="pie-col">
+    <p class="pie-titulo">Servicio</p>
+    <a href="beneficios.html#ayuda-envios">Políticas de entrega</a>
+    <a href="beneficios.html#ayuda-envios">Cambios y devoluciones</a>
+  </div>
+</div>
+ 
+<p>© 2026 ABeCe. Todos los derechos reservados.</p>
+<!-- Bloque Derecho: Distintivos de Confianza Bancaria Monocromáticos -->
+<div class="footer-metodos-pago">
+<i class="fa-brands fa-cc-visa" title="Aceptamos Visa"></i>
+<i class="fa-brands fa-cc-mastercard" title="Aceptamos Mastercard"></i>
+<!-- Usamos un icono institucional elegante para representar SPEI / Transferencia -->
+<i class="fa-solid fa-money-bill-transfer" title="Aceptamos Transferencias SPEI (BBVA)"></i>
+</div>
+</div>
+<div class="contenedor-creditos-estudio">
+<!-- Tu logotipo de estudio digital -->
+<img src="imagenes/logo-espinoza.png" alt="Logotipo ESPINOZA SOUND LAB" class="logo-estudio">
+<p class="creditos-desarrollador">
+Desarrollo Digital y Branding por 
+<span class="nombre-estudio">ESPINOZA SOUND LAB</span>
+</p>
+<p class="contacto-desarrollador">
+✉️ Contacto Soluciones Web: <a href="mailto:jesus22182@://gmail.com">jesus22182@gmail.com</a>
+</p>
+</div></footer>
+ 
+<!-- JavaScript propio -->
+<script src="script.js"></script>
+<!-- BOTÓN FLOTANTE DE WHATSAPP INTEGRADO POR ESPINOZA SOUND LAB -->
+<a href="https://wa.me/525511180337?text=Hola%20ABECE,%20me%20gustaría%20recibir%20información."
+target="_blank" class="btn-whatsapp-flotante" title="Chatea con ABeCe">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
 </body>
 </html>
+ 

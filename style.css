@@ -1042,3 +1042,146 @@ FIRMA PROFESIONAL: ESPINOZA SOUND LAB
         grid-column: span 1;
     }
 }
+/* EFECTO INTERACTIVO PARA EL LOGOTIPO DE PORTADA */
+.enlace-logo-marca {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer; /* Fuerza a que aparezca la manita del dedo al poner el mouse */
+    transition: transform 0.3s ease;
+}
+
+.enlace-logo-marca:hover {
+    transform: scale(1.03); /* Le da un sutil brinco del 3% al pasar el mouse, muy elegante */
+}
+
+/* ==========================================================================
+   REDES SOCIALES ULTRA-MINIMALISTAS 
+   ========================================================================== */
+.iconos-redes-flex {
+    display: flex;
+    justify-content: center; /* Los alinea exactamente al centro horizontal */
+    align-items: center;
+    gap: 35px; /* Espaciado elegante entre un logo y otro */
+    margin-top: 20px;
+}
+
+.icono-social-link {
+    font-size: 32px; /* Tamaño vectorial idéntico al de tu referencia móvil */
+    color: #1A2D42; /* Tu Azul Medianoche base para un look monocromático Pro */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+/* Al pasar el cursor, brillan con tu Azul Oveja y dan un sutil salto */
+.icono-social-link:hover {
+    color: #6DA3CF; /* Tu Azul Oveja de marca */
+    transform: scale(1.12);
+}
+
+/* ==========================================================================
+   BOTÓN FLOTANTE DE WHATSAPP PREMIUM (ESTILO MUNDO REAL)
+   ========================================================================== */
+.btn-whatsapp-flotante {
+    position: fixed; /* 💡 EL SECRETO: Lo congela en la pantalla sin importar el scroll */
+    bottom: 30px; /* Separación limpia del borde inferior */
+    right: 30px; /* Separación limpia del borde derecho */
+    width: 60px;
+    height: 60px;
+    background-color: #25D366; /* Verde oficial de WhatsApp */
+    color: #ffffff; /* Icono blanco nítido */
+    border-radius: 50px; /* Lo hace completamente redondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px; /* Tamaño del logo interno */
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); /* Sombra verde brillante que da volumen */
+    z-index: 99999; /* Máxima prioridad para pasar por encima de las lupas y modales */
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* EFECTO INTERACTIVO: Al pasar el cursor gira levemente y se agranda */
+.btn-whatsapp-flotante:hover {
+    background-color: #20ba5a;
+    transform: scale(1.1) rotate(10deg);
+}
+
+/* Responsivo: En teléfonos celulares lo hacemos un poquito más compacto para no estorbar */
+@media (max-width: 480px) {
+    .btn-whatsapp-flotante {
+        bottom: 20px;
+        right: 20px;
+        width: 54px;
+        height: 54px;
+        font-size: 30px;
+    }
+}
+
+/* ==========================================================================
+   BARRA DE GARANTÍAS COMERCIALES (ESTILO RE-EVOLUCIÓN ABeCe 2023)
+   ========================================================================== */
+.barra-garantias-abece {
+    background-color: #ffffff; /* Caja blanca limpia que contrasta con el fondo crema general */
+    padding: 30px 20px;
+    margin: 40px auto;
+    max-width: 1200px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(26, 45, 66, 0.02); /* Sombra ultra suave */
+}
+
+.garantias-contenedor-flex {
+    display: flex;
+    flex-wrap: wrap; /* Permite que se acomoden solos si la pantalla es chica */
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.item-garantia {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    min-width: 250px; /* Evita que las tarjetas se deformen o se amontonen */
+    text-align: left;
+}
+
+.icono-garantia {
+    font-size: 28px;
+    color: #6DA3CF; /* Tu Azul Oveja de marca para dar un look tierno y profesional */
+    background-color: #F7F3EC; /* Fondo crema suave redondo para el icono */
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.texto-garantia h4 {
+    margin: 0 0 5px 0;
+    color: #1A2D42; /* Tu Azul Medianoche corporativo */
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.texto-garantia p {
+    margin: 0;
+    color: #666666;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+/* RESPONSIVO: En pantallas de celular se apilan en una sola columna ordenada */
+@media (max-width: 768px) {
+    .garantias-contenedor-flex {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .item-garantia {
+        width: 100%;
+    }
+}

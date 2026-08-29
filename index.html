@@ -3,236 +3,579 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABECE 2.0</title>
-
+<title>ABeCe | Productos para el descanso de tu bebé</title>
+<meta name="description" content="ABeCe: productos para el descanso, comodidad y bienestar de bebés y 
+familias.">
+<!-- Tipografía -->
+<!-- CORREGIDO 28/ago: el enlace anterior solo cargaba Nunito y con la URL
+     incompleta en otras páginas del sitio (apuntaba a "googleapis.com" a
+     secas). Aquí se corrige a la ruta completa de Google Fonts y se agrega
+     Comfortaa, la misma combinación tipográfica que ya usas en el Centro
+     de Ayuda de beneficios.html. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://googleapis.com" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+<!-- Estilos propios -->
 <link rel="stylesheet" href="style.css">
+<!-- Font Awesome: necesario para los iconos de redes sociales -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+ 
+<!-- ============================================================
+     TIPOGRAFÍA DE MARCA: Comfortaa (títulos/acentos) + Nunito (texto).
+     Va después de style.css a propósito, así toma prioridad sin tener
+     que tocar tu hoja de estilos. Solo define font-family: no cambia
+     tamaños, colores ni espaciados de tu diseño actual.
+     ============================================================ -->
+<style>
+  body,
+  p, li, a, input, textarea, select, button, label{
+    font-family:'Nunito', sans-serif;
+  }
+  h1, h2, h3, h4,
+  .eyebrow, .stage-pill, .badge-float,
+  nav .menu a,
+  .btn-primary-banner, .btn-link-banner,
+  .tarjeta-producto button, .btn-pago-tarjeta,
+  #btn-vaciar, #btn-pagar,
+  .nombre-estudio{
+    font-family:'Comfortaa', cursive;
+  }
+</style>
+ 
+<!-- ============================================================
+     ESTILOS: info de envío en el carrito + modal + checkbox legal
+     Clases prefijadas con "env-" y "legal-" para no chocar con
+     nada de tu style.css. Reutilizan .contenido-modal, .modal-oculto,
+     .cerrar-modal y .label-checkbox que ya existen en tu sitio.
+     ============================================================ -->
+<style>
+  .env-linea-carrito{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    font-size:13.5px;
+    color:#1A2D42;
+    opacity:0.75;
+    margin:4px 0 12px;
+  }
+  .env-btn-info{
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:14px;
+    line-height:1;
+    padding:2px;
+    display:inline-flex;
+    border-radius:50%;
+    transition:background .15s ease;
+  }
+  .env-btn-info:hover,
+  .env-btn-info:focus-visible{
+    background:#EAF2F8;
+    outline:none;
+  }
+ 
+  .env-cuerpo-modal h3{
+    font-size:18px;
+    margin:0 0 12px;
+    color:#1A2D42;
+  }
+  .env-cuerpo-modal p{
+    font-size:14.5px;
+    line-height:1.65;
+    color:#1A2D42;
+    margin:0 0 12px;
+  }
+  .env-cuerpo-modal ul{
+    margin:0 0 4px;
+    padding-left:20px;
+  }
+  .env-cuerpo-modal li{
+    font-size:14.5px;
+    line-height:1.6;
+    color:#1A2D42;
+    margin-bottom:8px;
+  }
+  .env-pill{
+    display:inline-block;
+    background:#F6D173;
+    color:#1A2D42;
+    font-weight:700;
+    font-size:12.5px;
+    padding:4px 10px;
+    border-radius:100px;
+    margin-bottom:14px;
+  }
+ 
+  .legal-checkbox-wrap{
+    margin:18px 0 10px;
+    padding:14px 16px;
+    background:#EAF2F8;
+    border-radius:12px;
+  }
+  .legal-checkbox-wrap .label-checkbox{
+    align-items:flex-start;
+    font-size:13.5px;
+    line-height:1.55;
+  }
+  .legal-checkbox-wrap a{
+    color:#1A2D42;
+    font-weight:700;
+    text-decoration:underline;
+  }
+  .legal-checkbox-wrap a:hover{ color:#6DA3CF; }
+</style>
 </head>
-<body>
-
+<body><!-- ==================== NAVEGACIÓN ==================== -->
 <nav>
-<img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca">
-
+<a href="index.html" class="enlace-logo-marca" aria-label="Ir al inicio de ABeCe">
+<img src="imagenes/logo.png" alt="Logotipo ABeCe" class="logo-marca">
+</a>
 <div class="menu">
-    <a href="index.html">Inicio</a>
-    <a href="productos.html">Productos</a>
-    <a href="beneficios.html">Beneficios</a>
-    <a href="identidad.html">Identidad</a> <!-- Verifica que esta línea esté en todas las páginas -->
-    <a href="contacto.html">Contacto</a>
-    <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)">
-        🛒 Mi Carrito (<span id="contador-productos">0</span>)
-    </a>
+<a href="index.html">Inicio</a>
+<a href="productos.html">Productos</a>
+<a href="beneficios.html">Beneficios</a>
+<a href="identidad.html">Identidad</a>
+<a href="contacto.html">Contacto</a>
+<a href="#"
+id="enlace-carrito"
+onclick="alternarCarrito(event)"
+aria-label="Abrir mi carrito">
+🛒 Mi Carrito (<span id="contador-productos">0</span>)
+</a>
 </div>
 </nav>
-
-<div id="carrito-compras" class="carrito-cerrado">
-<span class="cerrar-carrito-x" onclick="alternarCarrito(event)">×</span>
+<!-- ==================== CARRITO ==================== -->
+<div id="carrito-compras" class="carrito-cerrado" aria-label="Carrito de compras">
+<button type="button"
+class="cerrar-carrito-x"
+onclick="alternarCarrito(event)"
+aria-label="Cerrar carrito">
+×</button>
 <h3>🛒 Mi Carrito</h3>
 <ul id="lista-carrito"></ul>
-<p><strong>Total: $<span id="total-precio">0</span>.00 MXN</strong></p>
-<button id="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
-<button id="btn-pagar" onclick="abrirCheckoutGlobal()">Finalizar Compra</button>
+ 
+<!-- NUEVO: aviso de costo de envío estándar + ícono que abre el modal informativo -->
+<p class="env-linea-carrito">
+Envío estándar: $150 MXN
+<button type="button"
+class="env-btn-info"
+onclick="alternarModalEnvio(event)"
+aria-label="Más información sobre el costo de envío">
+ℹ️
+</button>
+</p>
+ 
+<p>
+<strong>
+Total: $<span id="total-precio">0</span>.00 MXN
+</strong>
+</p>
+<button type="button" id="btn-vaciar" onclick="vaciarCarrito()">
+Vaciar Carrito
+</button>
+<button type="button" id="btn-pagar" onclick="abrirCheckoutGlobal()">
+Finalizar Compra
+</button>
 </div>
-
-<!-- HERO INTERACTIVO PREMIUM - INTEGRADO POR ESPINOZA SOUND LAB -->
+ 
+<!-- ==================== MODAL: INFORMACIÓN DE ENVÍO ==================== -->
+<div id="modal-envio" class="modal-oculto" role="dialog" aria-modal="true" aria-labelledby="modal-envio-titulo">
+<div class="contenido-modal">
+<button type="button"
+class="cerrar-modal"
+onclick="alternarModalEnvio(event)"
+aria-label="Cerrar información de envío">×
+</button>
+<div class="env-cuerpo-modal">
+<span class="env-pill">Envíos ABeCe</span>
+<h3 id="modal-envio-titulo">💌 Sobre tu envío</h3>
+<p>Queremos que sepas exactamente qué esperar antes de finalizar tu compra:</p>
+<ul>
+<li><strong>Envío estándar:</strong> tiene un costo de <strong>$150 MXN</strong> para cualquier parte de la República Mexicana.</li>
+<li><strong>Envío gratis:</strong> aplica automáticamente en compras a partir de <strong>$1,600 MXN</strong>.</li>
+<li>Tu pedido se procesa a partir de que el pago sea confirmado, y te compartimos tu número de guía para dar seguimiento en todo momento.</li>
+</ul>
+<p>¿Tienes más dudas sobre tu pedido? Consulta nuestro <a href="beneficios.html#ayuda-envios">Centro de Ayuda</a> o escríbenos a <a href="mailto:info@abecemexico.com">info@abecemexico.com</a>.</p>
+</div>
+</div>
+</div>
+ 
+<!-- ==================== HERO ==================== -->
 <section class="hero-premium">
-    <div class="cloud-bg c1"></div>
-    <div class="cloud-bg c2"></div>
-    <div class="cloud-bg c3"></div>
-    <div class="hero-inner">
-        <div class="hero-text">
-            <span class="eyebrow">La Nube de Sueños</span>
-            <h1>Un abrazo <span>suavecito</span><br>para cada etapa<br>de tu bebé</h1>
-            <p class="sub">Cojines, cobijas y accesorios de lactancia hechos en México, pensados para acompañar tu descanso y el de tu bebé — desde la primera noche en casa.</p>
-            <div class="cta-row">
-                <a class="btn-primary-banner" href="productos.html">Descubre la colección →</a>
-                <a class="btn-link-banner" href="identidad.html">Conocenos </a>
-            </div>
-            <div class="trust-row">
-                <span>🟢 Hecho con cariño en el Edomex</span>
-                <span>🇲🇽 Envíos a toda la República</span>
-            </div>
-        </div>
-
-        <div class="hero-visual">
-            <div class="cloud-frame" id="cloudFrame">
-                <img class="slide active" src="imagenes/FamiliaABECE1.png" alt="Los primeros abrazos">
-                <img class="slide" src="imagenes/siesta.png" alt="Siestas de sueño profundo">
-                <img class="slide" src="imagenes/horadejugar.png" alt="Horas de juego y risas">
-                <div class="stage-pill" id="stagePill">Los primeros abrazos</div>
-            </div>
-            <div class="badge-float">100% suave</div>
-            <div class="dots" id="dots">
-                <button class="dot active" data-i="0" aria-label="Los primeros abrazos"></button>
-                <button class="dot" data-i="1" aria-label="Siestas de sueño profundo"></button>
-                <button class="dot" data-i="2" aria-label="Horas de juego y risas"></button>
-            </div>
-        </div>
-    </div>
+<div class="cloud-bg c1"></div>
+<div class="cloud-bg c2"></div>
+<div class="cloud-bg c3"></div>
+<div class="hero-inner"><div class="hero-text">
+<span class="eyebrow">La Nube de Sueños</span>
+<h1>
+Un abrazo <span>suavecito</span><br>
+para cada etapa<br>
+de tu bebé
+</h1>
+<p class="sub">
+Cojines, cobijas y accesorios de lactancia hechos en México,
+pensados para acompañar tu descanso y el de tu bebé,
+desde la primera noche en casa.
+</p>
+<div class="cta-row">
+<a class="btn-primary-banner" href="productos.html">
+Descubre la colección →
+</a>
+<a class="btn-link-banner" href="identidad.html">
+Identidad
+</a>
+</div>
+<div class="trust-row">
+<span>🟢 Hecho con cariño en el Edomex</span>
+<span>🇲🇽 Envíos a toda la República</span>
+</div></div>
+<!-- ==================== HERO VISUAL ==================== -->
+<div class="hero-visual">
+<div class="cloud-frame" id="cloudFrame">
+<img class="slide active"
+src="imagenes/FamiliaABECE1.png"
+alt="Familia disfrutando momentos con su bebé">
+<img class="slide"
+src="imagenes/siesta.png"
+alt="Bebé durante una siesta">
+<img class="slide"
+src="imagenes/horadejugar.png"
+alt="Bebé durante una hora de juego">
+<div class="stage-pill" id="stagePill">
+Los primeros abrazos
+</div>
+</div>
+<div class="badge-float">
+100% suave
+</div>
+<div class="dots" id="dots" aria-label="Galería del hero"><button type="button"
+class="dot active"
+data-i="0"
+aria-label="Mostrar Los primeros abrazos">
+</button>
+<button type="button"
+class="dot"
+data-i="1"
+aria-label="Mostrar Siestas de sueño profundo">
+</button>
+<button type="button"
+class="dot"
+data-i="2"
+aria-label="Mostrar Horas de juego y risas">
+</button>
+</div>
+</div>
+</div>
 </section>
-
-
+<!-- ==================== BENEFICIOS ==================== -->
 <section>
-<h2>¿Por qué elegir ABECE?</h2>
-<p>Acolchado ergonómico antirreflujo.</p>
+<h2>¿Por qué elegir ABeCe?</h2><p>Acolchado ergonómico antirreflujo.</p>
 <p>Telas suaves y resistentes.</p>
 <p>Productos diseñados pensando en la seguridad del bebé.</p>
 </section>
-
+<!-- ==================== PRODUCTOS ==================== -->
 <section>
 <h2>Nuestros Productos</h2>
-
 <div class="tienda-contenedor">
-
 <div class="tarjeta-producto">
-<img src="imagenes/cojin.jpeg" alt="Cojín Lactancia">
+<img src="imagenes/cojin.jpeg"
+alt="Cojín de Lactancia ABeCe">
 <h3>Cojín de Lactancia MOD:5000</h3>
-<p class="detalles-prod">46 x 56 x 20 cm</p>
-<p class="precio">$832 MXN</p>
-<button onclick="comprarProducto('Cojín de Lactancia MOD:5000',832)">Comprar Ahora</button>
-</div>
-
+<p class="detalles-prod">
+46 × 56 × 20 cm
+</p>
+<p class="precio">
+$832 MXN
+</p>
+<button type="button"
+onclick="comprarProducto('Cojín de Lactancia MOD:5000', 832)">
+Comprar Ahora
+</button></div>
 <div class="tarjeta-producto">
-<img src="imagenes/sillon.png" alt="Sillón">
+<img src="imagenes/sillon.png"
+alt="Sillón colchón antirreflujo">
 <h3>Sillón Colchón Antirreflujo</h3>
-<p class="detalles-prod">86.5 x 44.5 x 27.5 cm</p>
-<p class="precio">$2,529 MXN</p>
-<button onclick="comprarProducto('Sillón Colchón Antirreflujo',2529)">Comprar Ahora</button>
+<p class="detalles-prod">
+86.5 × 44.5 × 27.5 cm
+</p>
+<p class="precio">
+$2,529 MXN
+</p>
+<button type="button"
+onclick="comprarProducto('Sillón Colchón Antirreflujo', 2529)">
+Comprar Ahora
+</button>
 </div>
-
 <div class="tarjeta-producto">
-<img src="imagenes/cobija1.png" alt="Cobija">
-<h3>Cobija Rusia Doble Tela</h3>
-<p class="detalles-prod">Incluye oso</p>
-<p class="precio">$310 MXN</p>
-<button onclick="comprarProducto('Cobija Rusia Doble Tela',310)">Comprar Ahora</button>
+<img src="imagenes/cobija1.png"
+alt="Cobija Rusia doble tela"><h3>Cobija Rusia Doble Tela</h3>
+<p class="detalles-prod">
+Incluye oso
+</p>
+<p class="precio">
+$310 MXN
+</p>
+<button type="button"
+onclick="comprarProducto('Cobija Rusia Doble Tela', 310)">
+Comprar Ahora
+</button>
 </div>
-
 </div>
 </section>
-
+<!-- ==================== TESTIMONIO ==================== -->
 <section>
 <h2>Lo que dicen los papás</h2>
-<p>"Mi bebé duerme mucho mejor desde que usamos ABECE."</p>
-</section>
-
+<p>
+"Mi bebé duerme mucho mejor desde que usamos ABeCe."
+</p>
+</section><!-- ==================== PREGUNTAS FRECUENTES ==================== -->
 <section>
 <h2>Preguntas Frecuentes</h2>
-<p><strong>¿Hacen envíos?</strong></p>
-<p>Sí, realizamos envíos a todo México.</p>
-<p><strong>¿Qué métodos de pago aceptan?</strong></p>
-<p>Tarjeta de crédito, débito y transferencia.</p>
+<p>
+<strong>¿Hacen envíos?</strong>
+</p>
+<p>
+Sí, realizamos envíos a todo México.
+</p>
+<p>
+<strong>¿Qué métodos de pago aceptan?</strong>
+</p>
+<p>
+Tarjeta de crédito, débito y transferencia.
+</p>
 </section>
-
-<div id="modal-pago" class="modal-oculto">
+<!-- ==================== CHECKOUT ==================== -->
+<div id="modal-pago" class="modal-oculto" role="dialog" aria-modal="true" aria-labelledby="modal-pago-titulo">
 <div class="contenido-modal">
-
-<span class="cerrar-modal" onclick="cerrarCheckout()">×</span>
-
-<img src="imagenes/logo.png" alt="Logo" class="logo-checkout">
-
-<h3>Finalizar Compra</h3>
-
+<button type="button"
+class="cerrar-modal"
+onclick="cerrarCheckout()"
+aria-label="Cerrar formulario de compra">×
+</button>
+<img src="imagenes/logo.png"
+alt="Logotipo ABeCe"
+class="logo-checkout">
+<h3 id="modal-pago-titulo">Finalizar Compra</h3>
 <p id="checkout-producto"></p>
 <p id="checkout-total"></p>
-
-<form id="form-checkout" onsubmit="procesarPagoBancario(event)">
-
+<form id="form-checkout"
+onsubmit="procesarPagoBancario(event)">
 <h4>Datos de Envío</h4>
-                <input id="chk-nombre" type="text" placeholder="Nombre completo" required>
-                <input id="chk-correo" type="email" placeholder="Correo electrónico" required>
-                
-                <!-- CANDADO DE 10 DÍGITOS PARA MÉXICO -->
-                <input id="chk-telefono" type="tel" placeholder="Teléfono (10 dígitos)" 
-                       pattern="[0-9]{10}" title="Por favor ingresa un número válido de 10 dígitos de México" required>
-
-                <!-- CAMPOS SEPARADOS PARA DIRECCIÓN COMPLETA -->
-                <div class="direccion-split-grid">
-                    <input id="chk-calle" type="text" placeholder="Calle y Número (Ej. Av. Juárez 123)" required>
-                    <input id="chk-colonia" type="text" placeholder="Colonia" required>
-                    <input id="chk-cp" type="text" placeholder="Código Postal (5 dígitos)" pattern="[0-9]{5}" title="Ingresa un CP válido de 5 dígitos" required>
-                    <input id="chk-municipio" type="text" placeholder="Alcaldía o Municipio" required>
-                    <input id="chk-estado" type="text" placeholder="Estado" required>
-                </div>
-
+<input id="chk-nombre"
+type="text"
+placeholder="Nombre completo"
+aria-label="Nombre completo"
+autocomplete="name"
+required>
+<input id="chk-correo"
+type="email"
+placeholder="Correo electrónico"
+aria-label="Correo electrónico"
+autocomplete="email"
+required>
+<input id="chk-telefono" type="tel"
+placeholder="Teléfono (10 dígitos)"
+aria-label="Teléfono a 10 dígitos"
+pattern="[0-9]{10}"
+inputmode="numeric"
+maxlength="10"
+autocomplete="tel"
+title="Por favor ingresa un número válido de 10 dígitos de México"
+required>
+<!-- DIRECCIÓN -->
+<div class="direccion-split-grid">
+<input id="chk-calle"
+type="text"
+placeholder="Calle y número (Ej. Av. Juárez 123)"
+aria-label="Calle y número"
+autocomplete="street-address"
+required>
+<input id="chk-colonia"
+type="text"
+placeholder="Colonia"
+aria-label="Colonia"
+required>
+<input id="chk-cp"
+type="text"
+placeholder="Código Postal (5 dígitos)"
+aria-label="Código Postal a 5 dígitos"
+pattern="[0-9]{5}"
+inputmode="numeric"
+maxlength="5"
+autocomplete="postal-code" title="Ingresa un CP válido de 5 dígitos"
+required>
+<input id="chk-municipio"
+type="text"
+placeholder="Alcaldía o Municipio"
+aria-label="Alcaldía o Municipio"
+required>
+<input id="chk-estado"
+type="text"
+placeholder="Estado"
+aria-label="Estado"
+required>
+</div>
+<!-- FACTURACIÓN -->
 <div class="modulo-facturacion">
-
 <label class="label-checkbox">
 <input type="checkbox"
 id="chk-necesita-factura"
 onchange="alternarModuloFiscal()">
 Necesito factura
 </label>
-
 <div id="campos-fiscales" class="oculto-fiscal">
-
 <h4>Datos Fiscales</h4>
-
-<input id="fisc-rfc" type="text" placeholder="RFC">
-<input id="fisc-razon" type="text" placeholder="Razón Social">
-<input id="fisc-cp" type="text" placeholder="Código Postal">
-
-<select id="fisc-cfdi">
-<option value="">Selecciona el Uso de CFDI</option>
-<option value="G01">G01 - Adquisición de mercancías</option>
-<option value="G03">G03 - Gastos en general</option>
-<option value="S01">S01 - Sin efectos fiscales</option>
-</select>
-
+<input id="fisc-rfc"
+type="text"
+placeholder="RFC"
+aria-label="RFC">
+<input id="fisc-razon"
+type="text"
+placeholder="Razón Social"
+aria-label="Razón Social">
+<input id="fisc-cp"
+type="text"
+placeholder="Código Postal"
+aria-label="Código Postal para factura"
+inputmode="numeric">
+<select id="fisc-cfdi" aria-label="Uso de CFDI">
+<option value="">
+Selecciona el Uso de CFDI
+</option>
+<option value="G01">
+G01 - Adquisición de mercancías
+</option>
+<option value="G03">
+G03 - Gastos en general
+</option>
+<option value="S01">
+S01 - Sin efectos fiscales
+</option>
+</select></div>
 </div>
-
+ 
+<!-- NUEVO: checkbox obligatorio de mayoría de edad y aceptación de políticas -->
+<div class="legal-checkbox-wrap">
+<label class="label-checkbox">
+<input type="checkbox"
+id="chk-acepta-terminos"
+required>
+Confirmo que soy mayor de edad y acepto los <a href="beneficios.html#ayuda-legal" target="_blank" rel="noopener noreferrer">Términos y Condiciones</a> y el <a href="aviso-privacidad.html" target="_blank" rel="noopener noreferrer">Aviso de Privacidad</a> de ABeCe.
+</label>
 </div>
-
-<button type="submit" class="btn-pago-tarjeta">
+ 
+<button type="submit"
+class="btn-pago-tarjeta">
 Pagar con Tarjeta
 </button>
-
 </form>
-
 <p class="nota-seguridad">
 🔒 Pago protegido.
 </p>
-
 </div>
 </div>
-
-<!-- SECCIÓN COMUNIDAD Y RESPONSABILIDAD SOCIAL -->
+<!-- ==================== COMUNIDAD ==================== -->
 <section class="comunidad-seccion">
-        <h2>Nuestra Comunidad ABeCe</h2>
-        <p class="subtitulo-comunidad">Cada compra nos ayuda a abrazar a quienes más lo necesitan. ¡Síguenos y sé parte del cambio!</p>
-
-        <div class="comunidad-contenedor">
-            
-            <!-- Bloque Izquierdo: Redes Sociales Directas -->
-            <div class="tarjeta-redes">
-                <h3>Síguenos en Redes</h3>
-                <p>Mantente al tanto de nuestros lanzamientos, consejos de maternidad y dinámicas especiales.</p>
-                
-                <div class="botones-redes-flex">
-                  <!-- Enlace directo oficial a tu Fanpage de Facebook -->
-                    <a href="https://facebook.com/abecemex" target="_blank" class="btn-red-social fb">
-                        📘 Facebook: ABeCe Bebes
-                    </a>
-                    
-                    <!-- Enlace directo oficial a tu perfil de Instagram -->
-                    <a href="https://instagram.com/abece.mex/" target="_blank" class="btn-red-social ig">
-                        📸 Instagram: @abece.mex
-                    </a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-
-    <footer>
-<p>© 2026 ABECE. Todos los derechos reservados.</p>
+<h2>Nuestra Comunidad ABeCe</h2>
+<p class="subtitulo-comunidad">
+Cada compra nos ayuda a abrazar a quienes más lo necesitan.
+¡Síguenos y sé parte del cambio!
+</p><div class="iconos-redes-flex">
+<a href="https://facebook.com/abecemex"
+target="_blank"
+rel="noopener noreferrer"
+class="icono-social-link"
+title="Facebook ABeCe"
+aria-label="Facebook ABeCe">
+<i class="fa-brands fa-facebook" aria-hidden="true"></i>
+</a>
+<a href="https://instagram.com/abece.mex/"
+target="_blank"
+rel="noopener noreferrer"
+class="icono-social-link"
+title="Instagram ABeCe"
+aria-label="Instagram ABeCe">
+<i class="fa-brands fa-instagram" aria-hidden="true"></i>
+</a>
+</div>
+</section>
+<!-- BARRA PREMIUM DE GARANTÍAS COMERCIALES ABeCe (RECUPERADA DE 2023) --><section class="barra-garantias-abece">
+<div class="garantias-contenedor-flex">
+<!-- Garantía 1: Envío Gratis -->
+<div class="item-garantia">
+<div class="icono-garantia"><i class="fa-solid fa-truck-fast"></i></div>
+<div class="texto-garantia">
+<h4>Envío Gratis</h4>
+<p>Por cada $1,600 pesos de compra a cualquier parte de la República Mexicana.</p>
+</div>
+</div>
+<!-- Garantía 2: Compra Protegida -->
+<div class="item-garantia">
+<div class="icono-garantia"><i class="fa-solid fa-shield-halved"></i></div>
+<div class="texto-garantia">
+<h4>Compra Protegida</h4>
+<p>Recibe el producto que esperabas o te devolvemos tu dinero.</p>
+</div>
+</div>
+<!-- Garantía 3: Garantía de Fábrica -->
+<div class="item-garantia">
+<div class="icono-garantia"><i class="fa-solid fa-award"></i></div>
+<div class="texto-garantia">
+<h4>Garantía de Fábrica</h4>
+<p>10 días de cobertura total directa por cualquier defecto de fabricación.</p>
+</div>
+</div>
+<!-- Garantía 4: Formas de Pago --><div class="item-garantia">
+<div class="icono-garantia"><i class="fa-solid fa-credit-card"></i></div>
+<div class="texto-garantia">
+<h4>Diferentes Formas de Pago</h4>
+<p>Aceptamos tarjetas de crédito, débito, Mercado Pago y transferencias SPEI.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer Corporativo con Firma de ESPINOZA SOUND LAB -->
+<footer>
+<p>© 2026 ABeCe. Todos los derechos reservados.</p>
+<!-- Bloque Derecho: Distintivos de Confianza Bancaria Monocromáticos -->
+<div class="footer-metodos-pago">
+<i class="fa-brands fa-cc-visa" title="Aceptamos Visa"></i>
+<i class="fa-brands fa-cc-mastercard" title="Aceptamos Mastercard"></i>
+<!-- Usamos un icono institucional elegante para representar SPEI / Transferencia -->
+<i class="fa-solid fa-money-bill-transfer" title="Aceptamos Transferencias SPEI (BBVA)"></i>
+</div>
+</div>
+<div class="contenedor-creditos-estudio">
+<!-- Tu logotipo de estudio digital -->
+<img src="imagenes/logo-espinoza.png" alt="Logotipo ESPINOZA SOUND LAB" class="logo-estudio">
+<p class="creditos-desarrollador">
+Desarrollo Digital y Branding por 
+<span class="nombre-estudio">ESPINOZA SOUND LAB</span></p>
+<p class="contacto-desarrollador">
+✉️ Contacto Soluciones Web: <a href="mailto:jesus22182@gmail.com">jesus22182@gmail.com</a>
+</p>
+</div>
 </footer>
-
+ 
+<!-- NUEVO: función para abrir/cerrar el modal informativo de envío.
+     Usa la misma clase "modal-oculto" que ya controla modal-pago,
+     así que hereda el mismo comportamiento visual definido en tu style.css. -->
+<script>
+function alternarModalEnvio(event){
+  if(event) event.preventDefault();
+  var modal = document.getElementById('modal-envio');
+  if(modal){ modal.classList.toggle('modal-oculto'); }
+}
+</script>
+ 
+<!-- JavaScript propio -->
 <script src="script.js"></script>
-
+<!-- BOTÓN FLOTANTE DE WHATSAPP INTEGRADO POR ESPINOZA SOUND LAB -->
+<a href="https://wa.me/525511180337?text=Hola%20ABECE,%20me%20gustaría%20recibir%20información."
+target="_blank" class="btn-whatsapp-flotante" title="Chatea con ABeCe">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
 </body>
 </html>

@@ -6,13 +6,19 @@
     <title>Contacto - ABECE</title>
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome: necesario para los iconos de redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
 </head>
 <body>
 
-    <nav>
-<img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca">
+<nav>
+    <a href="index.html" class="enlace-logo-marca">
+        <img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca">
+    </a>
+    <div class="menu">
 
-<div class="menu">
     <a href="index.html">Inicio</a>
     <a href="productos.html">Productos</a>
     <a href="beneficios.html">Beneficios</a>
@@ -53,12 +59,11 @@
        target="_blank"
        class="btn-whatsapp">
 
-       💬 Enviar mensaje por WhatsApp
-
+       💬 Enviar mensaje por WhatsApp 
     </a>
 
     <p class="numero-whatsapp">
-        55 1118 0337
+        ✉️ 55 1118 0337
     </p>
 
 </div>
@@ -125,10 +130,38 @@
         </div>
     </div>
 
+    <!-- Footer Corporativo con Firma de ESPINOZA SOUND LAB -->
     <footer>
-        <p>© 2026 ABECE. Todos los derechos reservados.</p>
+        <p>© 2026 ABeCe. Todos los derechos reservados.</p>
+     <!-- Bloque Derecho: Distintivos de Confianza Bancaria Monocromáticos -->
+            <div class="footer-metodos-pago">
+                <i class="fa-brands fa-cc-visa" title="Aceptamos Visa"></i>
+                <i class="fa-brands fa-cc-mastercard" title="Aceptamos Mastercard"></i>
+                <!-- Usamos un icono institucional elegante para representar SPEI / Transferencia -->
+                <i class="fa-solid fa-money-bill-transfer" title="Aceptamos Transferencias SPEI (BBVA)"></i>
+            </div>
+        </div>
+        
+        <div class="contenedor-creditos-estudio">
+            <!-- Tu logotipo de estudio digital -->
+            <img src="imagenes/logo-espinoza.png" alt="Logotipo ESPINOZA SOUND LAB" class="logo-estudio">
+            
+            <p class="creditos-desarrollador">
+                Desarrollo Digital y Branding por 
+                <span class="nombre-estudio">ESPINOZA SOUND LAB</span>
+            </p>
+            
+            <p class="contacto-desarrollador">
+                ✉️ Contacto Soluciones Web: <a href="mailto:jesus22182@://gmail.com">jesus22182@gmail.com</a>
+            </p>
+        </div>
     </footer>
 
     <script src="script.js"></script>
+    <!-- BOTÓN FLOTANTE DE WHATSAPP INTEGRADO POR ESPINOZA SOUND LAB -->
+    <a href="https://whatsapp.com" target="_blank" class="btn-whatsapp-flotante" title="Chatea con ABeCe">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
 </body>
 </html>

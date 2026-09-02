@@ -1,278 +1,313 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Productos - ABeCe</title>
-<meta name="description" content="Productos ABeCe para el descanso, comodidad y bienestar de tu bebé.">
-
-<!-- Tipografía oficial ABeCe: Comfortaa para títulos + Nunito para textos -->
+<!DOCTYPE html> 
+<html lang="es"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Productos - ABeCe</title> 
+<meta name="description" content="ABeCe: productos para el descanso, comodidad y bienestar de bebés y 
+familias.">
+<!-- Tipografía -->
+<!-- CORREGIDO 28/ago: el enlace anterior solo cargaba Nunito y con la URL
+     incompleta en otras páginas del sitio (apuntaba a "googleapis.com" a
+     secas). Aquí se corrige a la ruta completa de Google Fonts y se agrega
+     Comfortaa, la misma combinación tipográfica que ya usas en el Centro
+     de Ayuda de beneficios.html. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Nunito:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+<!-- Estilos propios -->
 <link rel="stylesheet" href="style.css">
+<!-- Font Awesome: necesario para los iconos de redes sociales -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-<!-- Ajuste tipográfico para igualar el estilo del Centro de Ayuda de beneficios.html -->
-<style>
-body { font-family:'Nunito',sans-serif; }
-h1,h2,h3,h4 { font-family:'Comfortaa',cursive; }
-nav a,button,input,textarea,select { font-family:'Nunito',sans-serif; }
-
-.env-linea-carrito {
-    display:flex; align-items:center; gap:6px;
-    font-size:13.5px; color:#1A2D42; opacity:.75;
-    margin:4px 0 12px;
-}
-.env-btn-info {
-    background:none; border:none; cursor:pointer;
-    font-size:14px; line-height:1; padding:2px;
-    display:inline-flex; border-radius:50%;
-}
-.env-btn-info:hover,.env-btn-info:focus-visible {
-    background:#EAF2F8; outline:none;
-}
-.env-cuerpo-modal h3 {
-    font-family:'Comfortaa',cursive; font-size:18px;
-    margin:0 0 12px; color:#1A2D42;
-}
-.env-cuerpo-modal p,.env-cuerpo-modal li {
-    font-family:'Nunito',sans-serif; font-size:14.5px;
-    line-height:1.65; color:#1A2D42;
-}
-.env-cuerpo-modal ul { padding-left:20px; }
-.env-pill {
-    display:inline-block; background:#F6D173; color:#1A2D42;
-    font-family:'Nunito',sans-serif; font-weight:700;
-    font-size:12.5px; padding:4px 10px; border-radius:100px;
-}
-.legal-checkbox-wrap {
-    margin:18px 0 10px; padding:14px 16px;
-    background:#EAF2F8; border-radius:12px;
-}
-.legal-checkbox-wrap .label-checkbox {
-    align-items:flex-start; font-family:'Nunito',sans-serif;
-    font-size:13.5px; line-height:1.55;
-}
-.legal-checkbox-wrap a {
-    color:#1A2D42; font-weight:700; text-decoration:underline;
-}
-button:focus-visible,a:focus-visible,input:focus-visible,
-textarea:focus-visible,select:focus-visible {
-    outline:2px solid #6DA3CF; outline-offset:3px;
-}
-</style>
 </head>
-
-<body>
-
-<!-- ==================== NAVEGACIÓN ==================== -->
-<nav>
-<a href="index.html" class="enlace-logo-marca" aria-label="Ir al inicio de ABeCe">
-<img src="imagenes/logo.png" alt="Logotipo ABeCe" class="logo-marca">
-</a>
-<div class="menu">
-<a href="index.html">Inicio</a>
-<a href="productos.html">Productos</a>
-<a href="beneficios.html">Beneficios</a>
-<a href="identidad.html">Identidad</a>
-<a href="contacto.html">Contacto</a>
-<a href="#" id="enlace-carrito" onclick="alternarCarrito(event)" aria-label="Abrir mi carrito">
-🛒 Mi Carrito (<span id="contador-productos">0</span>)
-</a>
-</div>
-</nav>
-
-<!-- ==================== CARRITO ==================== -->
-<aside id="carrito-compras" class="carrito-cerrado" aria-label="Carrito de compras">
-<button type="button" class="cerrar-carrito-x" onclick="alternarCarrito(event)" aria-label="Cerrar carrito">×</button>
-<h3>🛒 Mi Carrito</h3>
-<ul id="lista-carrito"></ul>
-
-<p class="env-linea-carrito">
-Envío estándar: $150 MXN
-<button type="button" class="env-btn-info" onclick="alternarModalEnvio(event)" aria-label="Más información sobre el costo de envío">ℹ️</button>
-</p>
-
-<p><strong>Total: $<span id="total-precio">0</span>.00 MXN</strong></p>
-<button type="button" id="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button>
-<button type="button" id="btn-pagar" onclick="abrirCheckoutGlobal()">Finalizar Compra</button>
-</aside>
-
-<!-- ==================== MODAL DE ENVÍO ==================== -->
-<div id="modal-envio" class="modal-oculto" aria-label="Información sobre el costo de envío">
-<div class="contenido-modal">
-<button type="button" class="cerrar-modal" onclick="alternarModalEnvio(event)" aria-label="Cerrar información de envío">×</button>
-<div class="env-cuerpo-modal">
-<span class="env-pill">Envíos ABeCe</span>
-<h3>💌 Sobre tu envío</h3>
-<p>Queremos que sepas exactamente qué esperar antes de finalizar tu compra:</p>
-<ul>
-<li><strong>Envío estándar:</strong> tiene un costo de <strong>$150 MXN</strong> para cualquier parte de la República Mexicana.</li>
-<li><strong>Envío gratis:</strong> aplica automáticamente en compras a partir de <strong>$1,600 MXN</strong>.</li>
-<li>Tu pedido se procesa a partir de que el pago sea confirmado, y te compartimos tu número de guía para dar seguimiento.</li>
-</ul>
-<p>¿Tienes más dudas sobre tu pedido? Consulta nuestro
-<a href="beneficios.html#ayuda-envios">Centro de Ayuda</a>
-o escríbenos a
-<a href="mailto:info@abecemexico.com">info@abecemexico.com</a>.</p>
-</div>
-</div>
-</div>
-
-<!-- ==================== PRODUCTOS ==================== -->
-<main>
-<section class="productos-seccion">
-<h1>Nuestros Productos</h1>
-<p class="subtitulo-productos">
-Descubre artículos pensados para acompañar el descanso y la comodidad de tu bebé.
-</p>
-
-<div class="tienda-contenedor">
-
-<article class="tarjeta-producto">
-<div class="contenedor-imagen-producto">
-<img src="imagenes/cojin.jpeg" alt="Cojín de Lactancia ABeCe" loading="lazy"
-onmousemove="ejecutarLupa(event,this)" onmouseleave="cerrarLupa()">
-</div>
-<h2>Cojín de Lactancia MOD:5000</h2>
-<p class="detalles-prod">46 × 56 × 20 cm</p>
-<p class="precio">$832 MXN</p>
-<button type="button" onclick="comprarProducto('Cojín de Lactancia MOD:5000',832)">Comprar Ahora</button>
-</article>
-
-<article class="tarjeta-producto">
-<div class="contenedor-imagen-producto">
-<img src="imagenes/sillon.png" alt="Sillón Colchón Antirreflujo ABeCe" loading="lazy"
-onmousemove="ejecutarLupa(event,this)" onmouseleave="cerrarLupa()">
-</div>
-<h2>Sillón Colchón Antirreflujo</h2>
-<p class="detalles-prod">86.5 × 44.5 × 27.5 cm</p>
-<p class="precio">$2,529 MXN</p>
-<button type="button" onclick="comprarProducto('Sillón Colchón Antirreflujo',2529)">Comprar Ahora</button>
-</article>
-
-<article class="tarjeta-producto">
-<div class="contenedor-imagen-producto">
-<img src="imagenes/cobija1.png" alt="Cobija Rusia Doble Tela ABeCe" loading="lazy"
-onmousemove="ejecutarLupa(event,this)" onmouseleave="cerrarLupa()">
-</div>
-<h2>Cobija Rusia Doble Tela</h2>
-<p class="detalles-prod">Incluye oso</p>
-<p class="precio">$310 MXN</p>
-<button type="button" onclick="comprarProducto('Cobija Rusia Doble Tela',310)">Comprar Ahora</button>
-</article>
-
-</div>
-</section>
-
-<!-- ==================== TESTIMONIO ==================== -->
-<section class="testimonios-seccion">
-<h2>Lo que dicen los papás</h2>
-<blockquote>"Mi bebé duerme mucho mejor desde que usamos ABeCe."</blockquote>
-</section>
-
-<!-- ==================== PREGUNTAS FRECUENTES ==================== -->
-<section class="faq-seccion">
-<h2>Preguntas Frecuentes</h2>
-<div class="faq-item">
-<h3>¿Hacen envíos?</h3>
-<p>Sí, realizamos envíos a todo México.</p>
-</div>
-<div class="faq-item">
-<h3>¿Qué métodos de pago aceptan?</h3>
-<p>Tarjeta de crédito, débito y transferencia.</p>
-</div>
-</section>
-</main>
-
+<body> 
+ 
+<nav> 
+    <a href="index.html" class="enlace-logo-marca"> 
+        <img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca"> 
+    </a> 
+    <div class="menu"> 
+ 
+    <a href="index.html">Inicio</a> 
+    <a href="productos.html">Productos</a> 
+    <a href="beneficios.html">Beneficios</a> 
+    <a href="identidad.html">Identidad</a> <!-- Verifica que esta línea esté en todas las páginas --> 
+    <a href="contacto.html">Contacto</a> 
+    <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)"> 
+        🛒 Mi Carrito (<span id="contador-productos">0</span>) 
+    </a> 
+</div> 
+</nav> 
+ 
+    <!-- El Carrito también vive aquí para que puedan ver lo que llevan --> 
+    <div id="carrito-compras" class="carrito-cerrado"> 
+        <span class="cerrar-carrito-x" onclick="alternarCarrito(event)">×</span> 
+        <h3>🛒 Mi Carrito</h3> 
+        <ul id="lista-carrito"></ul> 
+        <p><strong>Total: $<span id="total-precio">0</span>.00 MXN</strong></p> 
+        <button id="btn-vaciar" onclick="vaciarCarrito()">Vaciar Carrito</button> 
+        <button id="btn-pagar" onclick="abrirCheckoutGlobal()">Finalizar Compra</button> 
+    </div> 
+    <!-- BARRA PREMIUM DE GARANTÍAS COMERCIALES ABeCe (RECUPERADA DE 2023) --> 
+    <section class="barra-garantias-abece"> 
+        <div class="garantias-contenedor-flex"> 
+             
+            <!-- Garantía 1: Envío Gratis --> 
+            <div class="item-garantia"> 
+                <div class="icono-garantia"><i class="fa-solid fa-truck-fast"></i></div> 
+                <div class="texto-garantia"> 
+                    <h4>Envío Gratis</h4> 
+                    <p>Por cada $1,600 pesos de compra a cualquier parte de la República Mexicana.</p> 
+                </div> 
+            </div> 
+ 
+            <!-- Garantía 2: Compra Protegida --> 
+            <div class="item-garantia"> 
+                <div class="icono-garantia"><i class="fa-solid fa-shield-halved"></i></div> 
+                <div class="texto-garantia"> 
+                    <h4>Compra Protegida</h4> 
+                    <p>Recibe el producto que esperabas o te devolvemos tu dinero.</p> 
+                </div> 
+            </div> 
+ 
+            <!-- Garantía 3: Garantía de Fábrica --> 
+            <div class="item-garantia"> 
+                <div class="icono-garantia"><i class="fa-solid fa-award"></i></div> 
+                <div class="texto-garantia"> 
+                    <h4>Garantía de Fábrica</h4> 
+                    <p>15 días de cobertura total directa por cualquier defecto de fabricación.</p> 
+                </div> 
+            </div> 
+ 
+            <!-- Garantía 4: Formas de Pago --> 
+            <div class="item-garantia"> 
+                <div class="icono-garantia"><i class="fa-solid fa-credit-card"></i></div> 
+                <div class="texto-garantia"> 
+                    <h4>Diferentes Formas de Pago</h4> 
+                    <p>Aceptamos tarjetas de crédito, débito, Mercado Pago y transferencias SPEI.</p> 
+                </div> 
+            </div> 
+ 
+        </div> 
+    </section> 
+ 
+    <section class="tienda-seccion"> 
+        <h2>Nuestros Productos Oficiales</h2> 
+        <div class="tienda-contenedor"> 
+ 
+<!-- Producto 1 --> 
+            <div class="tarjeta-producto"> 
+                <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" 
+onmouseleave="apagarLupa(this)"> 
+                    <img src="imagenes/cojin1.png" alt="Cojín Lactancia" class="img-base-lupa"> 
+                    <div class="lupa-lente"></div> 
+                </div> 
+                <h3>Cojín de Lactancia MOD:5000</h3> 
+                <p class="detalles-prod">46 x 56 x 20 cm</p> 
+                <p class="precio">$832 MXN</p> 
+                <button onclick="comprarProducto('Cojín de Lactancia MOD:5000',832)">Comprar Ahora</button> 
+            </div> 
+ 
+            <!-- Producto 2 --> 
+            <div class="tarjeta-producto"> 
+                <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" 
+onmouseleave="apagarLupa(this)"> 
+                    <img src="imagenes/sillon.jpg" alt="Sillón" class="img-base-lupa"> 
+                    <div class="lupa-lente"></div> 
+                </div> 
+                <h3>Sillón Colchón Antirreflujo</h3> 
+                <p class="detalles-prod">86.5 x 44.5 x 27.5 cm</p> 
+                <p class="precio">$2,529 MXN</p> 
+                <button onclick="comprarProducto('Sillón Colchón Antirreflujo',2529)">Comprar Ahora</button> 
+            </div> 
+ 
+            <!-- Producto 3 --> 
+            <div class="tarjeta-producto"> 
+                <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" 
+onmouseleave="apagarLupa(this)"> 
+                    <img src="imagenes/cobija.jpg" alt="Cobija" class="img-base-lupa"> 
+                    <div class="lupa-lente"></div> 
+                </div> 
+                <h3>Cobija Rusia Doble Tela</h3> 
+                <p class="detalles-prod">Incluye oso</p> 
+                <p class="precio">$310 MXN</p> 
+                <button onclick="comprarProducto('Cobija Rusia Doble Tela',310)">Comprar Ahora</button> 
+            </div> 
+ 
+        </div> 
+    </section> 
+ 
 <!-- ==================== CHECKOUT ==================== -->
-<div id="modal-pago" class="modal-oculto" aria-label="Finalizar compra">
+<div id="modal-pago" class="modal-oculto" role="dialog" aria-modal="true" aria-labelledby="modal-pago-titulo">
 <div class="contenido-modal">
-<button type="button" class="cerrar-modal" onclick="cerrarCheckout()" aria-label="Cerrar formulario de compra">×</button>
-<img src="imagenes/logo.png" alt="Logotipo ABeCe" class="logo-checkout">
-<h3>Finalizar Compra</h3>
+<button type="button"
+class="cerrar-modal"
+onclick="cerrarCheckout()"
+aria-label="Cerrar formulario de compra">×
+</button>
+<img src="imagenes/logo.png"
+alt="Logotipo ABeCe"
+class="logo-checkout">
+<h3 id="modal-pago-titulo">Finalizar Compra</h3>
 <p id="checkout-producto"></p>
 <p id="checkout-total"></p>
-
-<form id="form-checkout" onsubmit="procesarPagoBancario(event)">
+<form id="form-checkout"
+onsubmit="procesarPagoBancario(event)">
 <h4>Datos de Envío</h4>
-
-<input id="chk-nombre" type="text" placeholder="Nombre completo" autocomplete="name" required>
-<input id="chk-correo" type="email" placeholder="Correo electrónico" autocomplete="email" required>
-<input id="chk-telefono" type="tel" placeholder="Teléfono (10 dígitos)" pattern="[0-9]{10}"
-inputmode="numeric" maxlength="10" autocomplete="tel" required>
-
+<input id="chk-nombre"
+type="text"
+placeholder="Nombre completo"
+aria-label="Nombre completo"
+autocomplete="name"
+required>
+<input id="chk-correo"
+type="email"
+placeholder="Correo electrónico"
+aria-label="Correo electrónico"
+autocomplete="email"
+required>
+<input id="chk-telefono" type="tel"
+placeholder="Teléfono (10 dígitos)"
+aria-label="Teléfono a 10 dígitos"
+pattern="[0-9]{10}"
+inputmode="numeric"
+maxlength="10"
+autocomplete="tel"
+title="Por favor ingresa un número válido de 10 dígitos de México"
+required>
+<!-- DIRECCIÓN -->
 <div class="direccion-split-grid">
-<input id="chk-calle" type="text" placeholder="Calle y número (Ej. Av. Juárez 123)" autocomplete="street-address" required>
-<input id="chk-colonia" type="text" placeholder="Colonia" required>
-<input id="chk-cp" type="text" placeholder="Código Postal (5 dígitos)" pattern="[0-9]{5}"
-inputmode="numeric" maxlength="5" autocomplete="postal-code" required>
-<input id="chk-municipio" type="text" placeholder="Alcaldía o Municipio" required>
-<input id="chk-estado" type="text" placeholder="Estado" required>
+<input id="chk-calle"
+type="text"
+placeholder="Calle y número (Ej. Av. Juárez 123)"
+aria-label="Calle y número"
+autocomplete="street-address"
+required>
+<input id="chk-colonia"
+type="text"
+placeholder="Colonia"
+aria-label="Colonia"
+required>
+<input id="chk-cp"
+type="text"
+placeholder="Código Postal (5 dígitos)"
+aria-label="Código Postal a 5 dígitos"
+pattern="[0-9]{5}"
+inputmode="numeric"
+maxlength="5"
+autocomplete="postal-code" title="Ingresa un CP válido de 5 dígitos"
+required>
+<input id="chk-municipio"
+type="text"
+placeholder="Alcaldía o Municipio"
+aria-label="Alcaldía o Municipio"
+required>
+<input id="chk-estado"
+type="text"
+placeholder="Estado"
+aria-label="Estado"
+required>
 </div>
-
+<!-- FACTURACIÓN -->
 <div class="modulo-facturacion">
 <label class="label-checkbox">
-<input type="checkbox" id="chk-necesita-factura" onchange="alternarModuloFiscal()">
+<input type="checkbox"
+id="chk-necesita-factura"
+onchange="alternarModuloFiscal()">
 Necesito factura
 </label>
-
 <div id="campos-fiscales" class="oculto-fiscal">
 <h4>Datos Fiscales</h4>
-<input id="fisc-rfc" type="text" placeholder="RFC" autocomplete="off">
-<input id="fisc-razon" type="text" placeholder="Razón Social" autocomplete="organization">
-<input id="fisc-cp" type="text" placeholder="Código Postal" pattern="[0-9]{5}"
-inputmode="numeric" maxlength="5" autocomplete="postal-code">
-
-<select id="fisc-cfdi">
-<option value="">Selecciona el Uso de CFDI</option>
-<option value="G01">G01 - Adquisición de mercancías</option>
-<option value="G03">G03 - Gastos en general</option>
-<option value="S01">S01 - Sin efectos fiscales</option>
-</select>
+<input id="fisc-rfc"
+type="text"
+placeholder="RFC"
+aria-label="RFC">
+<input id="fisc-razon"
+type="text"
+placeholder="Razón Social"
+aria-label="Razón Social">
+<input id="fisc-cp"
+type="text"
+placeholder="Código Postal"
+aria-label="Código Postal para factura"
+inputmode="numeric">
+<select id="fisc-cfdi" aria-label="Uso de CFDI">
+<option value="">
+Selecciona el Uso de CFDI
+</option>
+<option value="G01">
+G01 - Adquisición de mercancías
+</option>
+<option value="G03">
+G03 - Gastos en general
+</option>
+<option value="S01">
+S01 - Sin efectos fiscales
+</option>
+</select></div>
 </div>
-</div>
-
+ 
+<!-- NUEVO: checkbox obligatorio de mayoría de edad y aceptación de políticas -->
 <div class="legal-checkbox-wrap">
 <label class="label-checkbox">
-<input type="checkbox" id="chk-acepta-legal" required>
-<span>
-He leído y acepto los
-<a href="beneficios.html#ayuda-legal">Términos y Condiciones</a>
-y el
-<a href="aviso-privacidad.html">Aviso de Privacidad</a>.
-</span>
+<input type="checkbox"
+id="chk-acepta-terminos"
+required>
+Confirmo que soy mayor de edad y acepto los <a href="beneficios.html#ayuda-legal" target="_blank" rel="noopener noreferrer">Términos y Condiciones</a> y el <a href="aviso-privacidad.html" target="_blank" rel="noopener noreferrer">Aviso de Privacidad</a> de ABeCe.
 </label>
 </div>
-
-<button type="submit" class="btn-pago-tarjeta">Pagar con Tarjeta</button>
+ 
+<button type="submit"
+class="btn-pago-tarjeta">
+Pagar con Tarjeta
+</button>
 </form>
-
-<p class="nota-seguridad">🔒 Pago protegido.</p>
-</div>
-</div>
-
-<!-- ==================== COMUNIDAD ==================== -->
-<section class="comunidad-seccion">
-<h2>Nuestra Comunidad ABeCe</h2>
-<p class="subtitulo-comunidad">
-Cada compra nos ayuda a abrazar a quienes más lo necesitan.
-¡Síguenos y sé parte del cambio!
+<p class="nota-seguridad">
+🔒 Pago protegido.
 </p>
-<div class="iconos-redes-flex">
-<a href="https://facebook.com/abecemex" target="_blank" rel="noopener noreferrer"
-class="icono-social-link" title="Facebook ABeCe" aria-label="Facebook ABeCe">
-<i class="fa-brands fa-facebook" aria-hidden="true"></i>
-</a>
-<a href="https://instagram.com/abece.mex/" target="_blank" rel="noopener noreferrer"
-class="icono-social-link" title="Instagram ABeCe" aria-label="Instagram ABeCe">
-<i class="fa-brands fa-instagram" aria-hidden="true"></i>
-</a>
 </div>
-</section>
+</div>
 
+ 
+    <!-- ==================== COMUNIDAD ==================== --> 
+    <section class="comunidad-seccion"> 
+ 
+        <h2>Nuestra Comunidad ABeCe</h2> 
+ 
+        <p class="subtitulo-comunidad"> 
+            Cada compra nos ayuda a abrazar a quienes más lo necesitan. 
+            ¡Síguenos y sé parte del cambio! 
+        </p> 
+ 
+        <div class="iconos-redes-flex"> 
+ 
+            <a href="https://facebook.com/abecemex" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="icono-social-link" 
+               title="Facebook ABeCe" 
+               aria-label="Facebook ABeCe"> 
+ 
+                <i class="fa-brands fa-facebook" aria-hidden="true"></i> 
+ 
+            </a> 
+ 
+            <a href="https://instagram.com/abece.mex/" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               class="icono-social-link" 
+               title="Instagram ABeCe" 
+               aria-label="Instagram ABeCe"> 
+ 
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i> 
+ 
+            </a> 
+ 
+        </div> 
+ 
+    </section> 
+ 
 <!-- ==================== FOOTER ==================== -->
 <footer>
 <div class="pie-columnas">
@@ -319,3 +354,4 @@ title="Chatea con ABeCe" aria-label="Chatea con ABeCe por WhatsApp">
 
 </body>
 </html>
+   

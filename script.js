@@ -1,4 +1,3 @@
-
 // Función para el botón general de WhatsApp en el Hero
 function mostrarMensaje() {
     alert("Gracias por visitar ABeCe. En breve te redirigiremos a nuestro canal de soporte en WhatsApp.");
@@ -369,40 +368,59 @@ function enviarMensajeContacto(event) {
     // Resetea los campos de texto
     document.getElementById("form-comunidad").reset();
 }
- 
-// CONTROLADOR DE LUPA FIJA AL COSTADO (SOLUCIÓN CONTRA SOBREPOSICIONES)
+// ==========================================================
+// ABeCe — CONTROLADOR DE LUPA DE PRODUCTOS
+// ==========================================================
+
 function ejecutarLupa(e, contenedor) {
+
     const img = contenedor.querySelector('.img-base-lupa');
     const lente = contenedor.querySelector('.lupa-lente');
- 
-    // Encendemos la ventana lateral
+
+    if (!img || !lente) {
+        return;
+    }
+
+    // Mostrar la lupa
     lente.style.display = "block";
- 
-    // Obtenemos la posición del contenedor actual
-    const rect = contenedor.getBoundingClientRect();
- 
-    // Calculamos las coordenadas del mouse dentro de tu ficha técnica
+
+    // Obtener dimensiones reales de la imagen
+    const rect = img.getBoundingClientRect();
+
+    // Posición del mouse dentro de la imagen
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
- 
-    // Convertimos las coordenadas a porcentajes exactos (0% a 100%)
-    const porcenX = (x / contenedor.offsetWidth) * 100;
-    const porcenY = (y / contenedor.offsetHeight) * 100;
- 
-    // Cargamos tu ficha técnica gigante (Zoom 250%) en el recuadro lateral
-    lente.style.backgroundImage = "url('" + img.src + "')";
-    lente.style.backgroundSize = (contenedor.offsetWidth * 2.5) + "px " + (contenedor.offsetHeight * 2.5) + "px";
- 
-    // Movemos el fondo milimétricamente según el porcentaje del puntero
-    lente.style.backgroundPosition = porcenX + "% " + porcenY + "%";
+
+    // Convertir posición a porcentaje
+    const porcentajeX = (x / rect.width) * 100;
+    const porcentajeY = (y / rect.height) * 100;
+
+    // Zoom
+    const zoom = 2.5;
+
+    // Colocar la imagen dentro de la lupa
+    lente.style.backgroundImage = `url("${img.src}")`;
+
+    lente.style.backgroundSize =
+        `${rect.width * zoom}px ${rect.height * zoom}px`;
+
+    // Mover la imagen ampliada
+    lente.style.backgroundPosition =
+        `${porcentajeX}% ${porcentajeY}%`;
 }
- 
+
+
 function apagarLupa(contenedor) {
-    // Apaga la ventana lateral cuando el cliente quita el mouse
+
     const lente = contenedor.querySelector('.lupa-lente');
+
+    if (!lente) {
+        return;
+    }
+
     lente.style.display = "none";
 }
- 
+
 // CONTROLADOR DEL SLIDER INTERACTIVO DE LA NUBE DE SUEÑOS (ESPINOZA SOUND LAB)
 const slidesBanner = document.querySelectorAll('.slide');
 const dotsBanner = document.querySelectorAll('.dot');
@@ -435,3 +453,5 @@ if (!reduceMotion) {
 cargarCarritoDesdeStorage();
 calcularTotales();
 actualizarPantallaCarrito();
+
+

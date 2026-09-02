@@ -733,82 +733,97 @@ footer{
     box-shadow: 0 5px 15px rgba(0,0,0,.08);
 }
 
-/* ==========================================================================
-   SISTEMA DE LUPA INTERACTIVA DINÁMICA (ESTILO CIMACO / WALMART)
-   ========================================================================== */
+/* ==========================================================
+   ABeCe — LUPA DE PRODUCTOS
+   Zoom lateral estilo tienda profesional
+   ========================================================== */
 
-/* Contenedor base de la foto (ACTUALIZADO PARA PROYECTAR HACIA AFUERA) */
+/* Contenedor de la imagen */
 .contenedor-lupa-premium {
     width: 100%;
-    height: auto;
-    border-radius: 12px;
     position: relative;
-    /* 💡 CAMBIO CLAVE: Cambiamos hidden por visible para que la lupa flote hacia afuera */
-    overflow: visible; 
+    overflow: visible;
     margin-bottom: 14px;
-    background-color: white;
+    background-color: #ffffff;
+    border-radius: 12px;
     cursor: crosshair;
 }
 
-/* El cuadro de zoom (Lente fija al costado estilo Cimaco - CORREGIDA) */
-.lupa-lente {
-    position: absolute;
-    border: 2px solid #6DA3CF; /* Tu Azul de marca */
-    border-radius: 16px;
-    box-shadow: 0 20px 50px rgba(26, 45, 66, 0.3);
-    width: 420px; /* Tamaño del recuadro de zoom */
-    height: 420px;
-    background-repeat: no-repeat;
-    display: none; /* Inicia oculto */
-    pointer-events: none;
-    
-    /* 💡 SOLUCIÓN CLAVE: Lo anclamos exactamente a la derecha de la tarjeta actual */
-    top: 0;
-    left: 105%; /* Lo empuja hacia afuera de la tarjeta para no tapar nada */
-    z-index: 9999; 
-    background-color: white;
+/* Imagen del producto */
+.img-base-lupa {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
 }
 
-/* ==========================================================================
-   SOLUCIÓN DEFINITIVA DE CAPAS PARA LA LUPA FIJA AL COSTADO
-   ========================================================================== */
-
-/* Aseguramos que la tarjeta que NO tiene el mouse encima se quede abajo */
+/* Tarjeta de producto */
 .tarjeta-producto {
     position: relative;
-    z-index: 1; /* Capa normal de fondo */
+    z-index: 1;
 }
 
-/* 💡 EL SECRETO: Cuando el cliente pasa el mouse sobre UNA tarjeta, 
-   esa tarjeta sube de nivel automáticamente por encima de todas las demás */
+/* La tarjeta activa queda por encima de las demás */
 .tarjeta-producto:hover {
-    z-index: 999; /* Sube al nivel más alto de la pantalla */
+    z-index: 999;
 }
 
-/* El cuadro de zoom (Aseguramos su posición fija limpia) */
+/* Ventana lateral de zoom */
 .lupa-lente {
     position: absolute;
+
+    top: 0;
+    left: calc(100% + 20px);
+
+    width: 400px;
+    height: 400px;
+
+    background-color: #ffffff;
+    background-repeat: no-repeat;
+
     border: 2px solid #6DA3CF;
     border-radius: 16px;
-    box-shadow: 0 20px 50px rgba(26, 45, 66, 0.25);
-    width: 420px;
-    height: 360px;
-    background-repeat: no-repeat;
+
+    box-shadow:
+        0 20px 50px rgba(26, 45, 66, 0.25);
+
     display: none;
+
     pointer-events: none;
-    
-    /* Lo posiciona flotando de forma exacta al costado derecho */
-    top: 0;
-    left: 105%; 
-    z-index: 9999; /* Máxima prioridad visual */
-    background-color: white;
+
+    z-index: 9999;
+
+    overflow: hidden;
 }
 
-/* Para la última tarjeta de la derecha (Cobija Rusia), 
-   proyectamos la lupa hacia la izquierda para que no se salga de la pantalla */
+/* Último producto:
+   la lupa aparece hacia la izquierda para no salirse de la pantalla */
 .tarjeta-producto:last-child .lupa-lente {
     left: auto;
-    right: 105%; 
+    right: calc(100% + 20px);
+}
+
+/* En pantallas medianas reducimos el tamaño */
+@media (max-width: 1100px) {
+
+    .lupa-lente {
+        width: 340px;
+        height: 340px;
+    }
+
+}
+
+/* En celular NO mostramos la lupa lateral */
+@media (max-width: 768px) {
+
+    .lupa-lente {
+        display: none !important;
+    }
+
+    .contenedor-lupa-premium {
+        cursor: default;
+    }
+
 }
 
 /*=========================
@@ -1183,5 +1198,124 @@ FIRMA PROFESIONAL: ESPINOZA SOUND LAB
     }
     .item-garantia {
         width: 100%;
+    }
+}
+
+/* ==========================================================================
+   UNIFICACIÓN DE IDENTIDAD VISUAL PREMIUM ABeCe (AUDITORÍA 31/AGO/2026)
+   ========================================================================== */
+
+/* 1. Jerarquía Tipográfica Limpia y Fluida (Sin sobreescribir tamaños) */
+body, p, li, a, input, textarea, select, button, label, 
+.env-cuerpo-modal p, .env-cuerpo-modal li, .legal-checkbox-wrap span {
+    font-family: 'Nunito', sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6, 
+.eyebrow, .stage-pill, .badge-float, .nombre-estudio,
+.env-cuerpo-modal h3, .pie-titulo, summary span {
+    font-family: 'Comfortaa', cursive !important;
+}
+
+/* 2. Optimización de Márgenes y Espacios del Carrito Deslizante */
+.env-linea-carrito {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #1A2D42; /* Tu Azul Medianoche */
+    opacity: 0.85;
+    margin: 10px 0 15px;
+    padding: 0 4px;
+}
+
+.env-btn-info {
+    background: #EAF2F8; /* Tu Azul Oveja Suave de fondo fijo */
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    line-height: 1;
+    padding: 5px;
+    display: inline-flex;
+    border-radius: 50%;
+    color: #6DA3CF; /* Tu Azul Oveja */
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.env-btn-info:hover {
+    background: #6DA3CF;
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+/* 3. Ajuste de Contenedores Modales Adaptables (Checkout e Información) */
+.env-cuerpo-modal {
+    text-align: left;
+    padding: 10px 5px;
+}
+
+.env-pill {
+    display: inline-block;
+    background: #F6D173; /* Tu Amarillo Dulce */
+    color: #1A2D42;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* 4. Bloque Legal de Mayoría de Edad Minimalista */
+.legal-checkbox-wrap {
+    margin: 20px 0 15px;
+    padding: 15px;
+    background: #F7F3EC; /* Tu Crema Algodón para hacer armonía */
+    border-left: 4px solid #6DA3CF; /* Detalle elegante de marca */
+    border-radius: 8px;
+    text-align: left;
+}
+
+.legal-checkbox-wrap .label-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #1A2D42;
+    cursor: pointer;
+}
+
+.legal-checkbox-wrap input[type="checkbox"] {
+    margin-top: 3px;
+    cursor: pointer;
+}
+
+.legal-checkbox-wrap a {
+    color: #6DA3CF;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+}
+
+.legal-checkbox-wrap a:hover {
+    color: #1A2D42;
+}
+
+/* 5. Barra de Garantías Recuperada del 2023 - Ajuste de Márgenes Teléfono */
+@media (max-width: 768px) {
+    .barra-garantias-abece {
+        margin: 20px 10px;
+        padding: 20px 15px;
+    }
+    .item-garantia {
+        gap: 12px;
+    }
+    .icono-garantia {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
     }
 }

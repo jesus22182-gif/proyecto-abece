@@ -93,51 +93,1231 @@ rel="stylesheet">
     </section> 
  
     <section class="tienda-seccion"> 
-        <h2>Nuestros Productos Oficiales</h2> 
+        <h2>Cojínes de Lactancia ABeCe</h2> 
         <div class="tienda-contenedor"> 
  
-<!-- Producto 1 --> 
-            <div class="tarjeta-producto"> 
-                <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" 
-onmouseleave="apagarLupa(this)"> 
-                    <img src="imagenes/cojin1.png" alt="Cojín Lactancia" class="img-base-lupa"> 
-                    <div class="lupa-lente"></div> 
-                </div> 
-                <h3>Cojín de Lactancia MOD:5000</h3> 
-                <p class="detalles-prod">46 x 56 x 20 cm</p> 
-                <p class="precio">$832 MXN</p> 
-                <button onclick="comprarProducto('Cojín de Lactancia MOD:5000',832)">Comprar Ahora</button> 
-            </div> 
+            <!-- Producto 1: Cojín de Lactancia con Variantes e Interactividad -->
+<div class="tarjeta-producto"> 
+    
+    <!-- Módulo de Lupa Premium con ID en la Imagen Base -->
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)"> 
+        <img id="img-principal-cojin" src="imagenes/cojin_rosa.png" alt="Cojín Lactancia ABeCe" class="img-base-lupa"> 
+        <div class="lupa-lente"></div> 
+    </div>
+
+    <!-- Títulos y Ficha Técnica -->
+    <h3>Cojínes de Lactancia/T.Burbuja </h3> 
+    <p class="detalles-prod">46 x 56 x 20 cm</p> 
+
+    <!-- MÓDULO UNIFICADO Y CORREGIDO DE VARIANTES DE COLOR -->
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-act">Rosa Burbuja</span></p>
+        <div class="botones-variantes-flex">
+            <!-- Botón Variante 1: Rosa (Inicia como Activo por defecto) -->
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteCojin('Rosa Burbuja', 'imagenes/cojin_rosa.png', 832, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <!-- Botón Variante 2: Azul -->
+            <button type="button" class="btn-variante" onclick="cambiarVarianteCojin('Azul Nube', 'imagenes/cojin_azul.png', 832, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <!-- Botón Variante 3: Blanco -->
+            <button type="button" class="btn-variante" onclick="cambiarVarianteCojin('Blanco Algodón', 'imagenes/cojin_blanco.png', 832, this)">
+                <span class="circulo-color" style="background-color: #ffffff; border: 1px solid #ccc;"></span> Blanco
+            </button>
+        </div>
+    </div> <!-- Cierre correcto del selector -->
+
+    <!-- Bloque de Salida Comercial Dinámica -->
+    <p class="precio" id="precio-cojin">$832 MXN</p> 
+    <button type="button" id="btn-compra-cojin" onclick="comprarProducto('Cojín de Lactancia (Rosa Burbuja)', 832)">Comprar Ahora</button> 
+    <!-- 💡 NUEVO: MÓDULO DE FICHAS TÉCNICAS ADAPTABLES (ESTILO AMAZON) -->
+    <div class="ficha-tecnica-tabs">
+        
+        <!-- Botonera de Selección -->
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('cojin-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cojin-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cojin-composicion', this)">Composición</button>
+        </div>
+
+        <!-- Contenedores de Información Real (HTML Puro) -->
+        <div class="tabs-contenido-bloque">
+            
+            <!-- Bloque 1: Beneficios (Inicia abierto por defecto) -->
+            <div id="cojin-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Soporte ergonómico:</strong> Favorece una postura cómoda y natural durante la alimentación.</li>
+                    <li><strong>Diseño envolvente:</strong> Reduce la tensión en espalda, cuello y brazos de la mamá.</li>
+                    <li><strong>Máximo confort:</strong> Funcionalidad estética ideal para el binomio madre e hijo.</li>
+                </ul>
+            </div>
+
+            <!-- Bloque 2: Etapas de Uso -->
+            <div id="cojin-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Etapa 1 (0 a 3 meses):</strong> Soporte ergonómico durante la alimentación.</li>
+                    <li><strong>Etapa 2 (3 a 6 meses):</strong> Apoyo supervisado para el descanso seguro del bebé.</li>
+                    <li><strong>Etapa 3 (6 meses en adelante):</strong> Soporte de ayuda para aprender a sentarse con supervisión.</li>
+                </ul>
+            </div>
+
+            <!-- Bloque 3: Detalle de Composición -->
+            <div id="cojin-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción:</strong> Funda con cierre y cojín forrado con tela Spunbond (repelente).</p>
+                    <p><strong>Tela:</strong> 90% Algodón, 10% Poliéster. Relleno de Fibra Siliconisada suave.</p>
+                    <p><strong>Lavado:</strong> Lavar funda en ciclo delicado. No usar secadora ni blanqueadores.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+            <!-- Producto 2: Cojín de Lactancia Velur Premium con Variantes -->
+<div class="tarjeta-producto"> 
+    
+    <!-- Módulo de Lupa Premium con ID Único e Integrado (Sin espacios) -->
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)"> 
+        <img id="img-principal-cojinvelur" src="imagenes/cojin_vrosa.png" alt="Cojín Lactancia Velur ABeCe" class="img-base-lupa"> 
+        <div class="lupa-lente"></div> 
+    </div>
+
+    <!-- Títulos y Ficha Técnica -->
+    <h3>Cojines de Lactancia Velur</h3> 
+    <p class="detalles-prod">46 x 56 x 20 cm</p> 
+
+    <!-- MÓDULO DE VARIANTES SÍNCRONO -->
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-cojinvelur">Rosa Velur</span></p>
+        <div class="botones-variantes-flex">
+            <!-- Botón Variante 1: Rosa (Activo por defecto) -->
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('cojinvelur', 'Rosa Velur', 'imagenes/cojin_vrosa.png', 832, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <!-- Botón Variante 2: Azul -->
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cojinvelur', 'Azul Velur', 'imagenes/cojin_vazul.png', 832, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <!-- Botón Variante 3: Blanco -->
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cojinvelur', 'Blanco Velur', 'imagenes/cojin_vblanco.png', 832, this)">
+                <span class="circulo-color" style="background-color: #ffffff; border: 1px solid #ccc;"></span> Blanco
+            </button>
+        </div>
+    </div>
+
+    <!-- Bloque de Salida Comercial Independiente -->
+    <p class="precio" id="precio-cojinvelur">$832 MXN</p> 
+    <button type="button" id="btn-compra-cojinvelur" onclick="comprarProducto('Cojín de Lactancia Velur (Rosa Velur)', 832)">Comprar Ahora</button>
+        <!-- MÓDULO DE FICHAS TÉCNICAS DINÁMICAS - LÍNEA VELUR PREMIUM -->
+    <div class="ficha-tecnica-tabs">
+        
+        <!-- Botonera de Selección Única para Velur -->
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('cojinvelur-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cojinvelur-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cojinvelur-composicion', this)">Composición</button>
+        </div>
+
+        <!-- Contenedores de Información Síncronos -->
+        <div class="tabs-contenido-bloque">
+            
+            <!-- Bloque 1: Beneficios Velur -->
+            <div id="cojinvelur-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Textura Ultra-Suave:</strong> Acabado satinado tipo velur que brinda una sensación térmica reconfortante al tacto del bebé.</li>
+                    <li><strong>Ergonomía certificada:</strong> Mantiene su firmeza ideal previniendo tensiones musculares en cuello y hombros.</li>
+                    <li><strong>Estética elegante:</strong> Un modelo de alta gama que combina perfectamente con los interiores modernos del hogar.</li>
+                </ul>
+            </div>
+
+            <!-- Bloque 2: Etapas Velur -->
+            <div id="cojinvelur-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Etapa 1 (0 a 4 meses):</strong> Aliado ergonómico premium para lactancia materna o tetero.</li>
+                    <li><strong>Etapa 2 (4 a 6 meses):</strong> Cojín nido antideslizante para siestas supervisadas del recién nacido.</li>
+                    <li><strong>Etapa 3 (6 meses en adelante):</strong> Barrera protectora de ayuda para el desarrollo del gateo y equilibrio.</li>
+                </ul>
+            </div>
+
+            <!-- Bloque 3: Composición Velur -->
+            <div id="cojinvelur-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción:</strong> Funda desmontable con costura invisible y cierre de seguridad oculto.</p>
+                    <p><strong>Tela exterior:</strong> 100% Velur Premium hipoalergénico. Forro interior de microfibra repelente.</p>
+                    <p><strong>Lavado:</strong> Funda lavable a máquina en agua fría. No usar plancha para conservar el brillo del velur.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+          <!-- Producto 3: Cojín de Lactancia Bordado Premium con Variantes -->
+<div class="tarjeta-producto"> 
+    
+    <!-- Módulo de Lupa Premium con ID Único e Integrado (Sin espacios) -->
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)"> 
+        <img id="img-principal-cojinbordado" src="imagenes/cojin_rosabordado.png" alt="Cojín Lactancia Bordado ABeCe" class="img-base-lupa"> 
+        <div class="lupa-lente"></div> 
+    </div>
+
+    <!-- Títulos y Ficha Técnica -->
+    <h3>Cojines de Lactancia Bordados</h3> 
+    <p class="detalles-prod">46 x 56 x 20 cm</p> 
+
+    <!-- MÓDULO DE VARIANTES SÍNCRONO -->
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-cojinbordado">Rosa Bordado</span></p>
+        <div class="botones-variantes-flex">
+            <!-- Botón Variante 1: Rosa (Activo por defecto) -->
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('cojinbordado', 'Rosa Bordado', 'imagenes/cojin_rosabordado.png', 832, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <!-- Botón Variante 2: Azul -->
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cojinbordado', 'Azul Bordado', 'imagenes/cojin_azulbordado.png', 832, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <!-- Botón Variante 3: Beige -->
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cojinbordado', 'Beige Bordado', 'imagenes/cojin_beigebordado.png', 832, this)">
+                <span class="circulo-color" style="background-color: #F5F5DC; border: 1px solid #ccc;"></span> Beige
+            </button>
+        </div>
+    </div>
+
+    <!-- Bloque de Salida Comercial Independiente -->
+    <p class="precio" id="precio-cojinbordado">$832 MXN</p> 
+    <button type="button" id="btn-compra-cojinbordado" onclick="comprarProducto('Cojín de Lactancia Bordado (Rosa Bordado)', 832)">Comprar Ahora</button>
+        <!-- MÓDULO DE FICHAS TÉCNICAS DINÁMICAS - LÍNEA BORDADO ARTESANAL -->
+    <div class="ficha-tecnica-tabs">
+        
+        <!-- Botonera de Selección Única para Bordados -->
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('cojinbordado-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cojinbordado-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cojinbordado-composicion', this)">Composición</button>
+        </div>
+
+        <!-- Contenedores de Información Síncronos -->
+        <div class="tabs-contenido-bloque">
+            
+            <!-- Bloque 1: Beneficios Bordado -->
+            <div id="cojinbordado-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Detalles artesanales:</strong> Bordados finos y suaves con hilos de algodón que no irritan la piel del lactante.</li>
+                    <li><strong>Soporte anatómico riguroso:</strong> Distribuye el peso del bebé de forma equitativa liberando la carga lumbar.</li>
+                    <li><strong>Identidad única:</strong> Una pieza delicada que destaca por su tradición textil y acabado artesanal.</li>
+                </ul>
+            </div>
+
+            <!-- Bloque 2: Etapas Bordado -->
+            <div id="cojinbordado-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Etapa 1 (0 a 3 meses):</strong> Posicionamiento idóneo del binomio madre-hijo para un acople correcto.</li>
+                    <li><strong>Etapa 2 (3 a 6 meses):</strong> Soporte de ayuda para estimular el control del torso del bebé boca abajo.</li>
+                    <li><strong>Etapa 3 (6 meses en adelante):</strong> Cojín de contención tipo nido para sus horas de juego y risas.</li>
+                </ul>
+            </div>
+
+            <!-- Bloque 3: Composición Bordado -->
+            <div id="cojinbordado-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción:</strong> Funda de algodón con bordado frontal de alta densidad y cojín repelente.</p>
+                    <p><strong>Tela base:</strong> 100% Algodón Pima orgánico. Relleno de Delcron siliconado indeformable.</p>
+                    <p><strong>Lavado:</strong> Se recomienda lavar la funda al revés o dentro de una malla protectora para cuidar los hilos.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</section>
+<section class="tienda-seccion">
+    <h2>Productos</h2> 
+        <div class="tienda-contenedor"> 
+
+
+            <!-- Producto 4: Sillón Colchón Antirreflujo con Variantes -->
+<div class="tarjeta-producto"> 
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)"> 
+        <!-- 💡 ID único para la imagen del sillón -->
+        <img id="img-principal-sillon" src="imagenes/sillon_turquesa.png" alt="Sillón Antirreflujo ABeCe" class="img-base-lupa"> 
+        <div class="lupa-lente"></div> 
+    </div>
+
+    <h3>Sillón Colchón Antirreflujo</h3> 
+    <p class="detalles-prod">86.5 x 44.5 x 27.5 cm</p> 
+
+    <div class="selector-variantes">
+        <!-- 💡 ID único para el texto de variante del sillón -->
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-sillon">Azul Turquesa </span></p>
+        <div class="botones-variantes-flex">
+    <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('sillon', 'Azul Turquesa', 'imagenes/sillon_turquesa.png', 2529, this)">
+        <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul T
+    </button>
+    <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('sillon', 'Rosa', 'imagenes/sillon_rosa.png', 2529, this)">
+        <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+    </button>
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('sillon', 'Blanco', 'imagenes/sillon_blanco.png', 2529, this)">
+                <span class="circulo-color" style="background-color: #ffffff; border: 1px solid #ccc;"></span> Blanco
+            </button>
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('sillon', 'azul', 'imagenes/sillon_azul.png', 2529, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-sillon">$2,529 MXN</p> 
+    <!-- 💡 ID único para el botón de compra del sillón -->
+    <button type="button" id="btn-compra-sillon" onclick="comprarProducto('Sillón Colchón Antirreflujo (Azul Turquesa)', 2529)">Comprar Ahora</button>
+        <!-- MÓDULO DE FICHAS TÉCNICAS DINÁMICAS - SILLÓN COLCHÓN ANTIRREFLUJO -->
+    <div class="ficha-tecnica-tabs">
+        
+        <!-- Botonera de Selección Única para el Sillón -->
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('sillon-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('sillon-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('sillon-composicion', this)">Composición</button>
+        </div>
+
+        <!-- Contenedores de Información Síncronos (Datos de Excel integrados) -->
+        <div class="tabs-contenido-bloque">
+            
+            <!-- Bloque 1: Ventajas y Beneficios de Salud -->
+            <div id="sillon-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Mayor Confort Médico:</strong> Eleva al bebé 30 grados, inclinación recomendada por pediatras para mitigar problemas de reflujo, cólicos, gases, resfriados, taponamiento e infecciones de oído.</li>
+                    <li><strong>Versatilidad en el Hogar:</strong> Es ideal para la alimentación con biberón, tiempo de juego o simplemente si tu bebé necesita un cómodo lugar para descansar.</li>
+                    <li><strong>Ergonomía Segura:</strong> Diseñado para mantener una postura anatómica óptima que favorece la digestión y el bienestar continuo del recién nacido.</li>
+                </ul>
+            </div>
+
+            <!-- Bloque 2: Recomendaciones e Instrucciones de Seguridad -->
+            <div id="sillon-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Seguridad del Lactante:</strong> Para bebés que aún no se pueden sentar por sí mismos, utilícelo de forma segura para dormir, alimentar y jugar.</li>
+                    <li><strong>Sujeción Firme:</strong> Siempre asegure el arnés al velcro y ajuste correctamente el cinturón de seguridad incorporado. Por ningún motivo deje al bebé sin supervisión.</li>
+                    <li><strong>Entorno Despejado:</strong> No lo coloque dentro de la cuna o cerca de superficies verticales, y evite agregar mantas, toallas u otros objetos blandos que puedan cubrir su rostro.</li>
+                </ul>
+            </div>
+
+            <!-- Bloque 3: Detalle de Composición Textil y Cuidado -->
+            <div id="sillon-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Colchón Base:</strong> Núcleo de Espuma Dimensionada Firme 16/18 S/F (1 Pza) de alta densidad.</p>
+                    <p><strong>Funda Removible:</strong> Tejido de Burbuja 100% Poliéster con revestimiento impermeable que protege la espuma para mayor longevidad (1 Pza).</p>
+                    <p><strong>Instrucciones de Lavado:</strong> Lavar la funda en lavadora en ciclo delicado. <strong>No usar blanqueadores</strong>. <strong>No usar secadora</strong> para conservar el textil.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
  
-            <!-- Producto 2 --> 
-            <div class="tarjeta-producto"> 
-                <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" 
-onmouseleave="apagarLupa(this)"> 
-                    <img src="imagenes/sillon.jpg" alt="Sillón" class="img-base-lupa"> 
-                    <div class="lupa-lente"></div> 
-                </div> 
-                <h3>Sillón Colchón Antirreflujo</h3> 
-                <p class="detalles-prod">86.5 x 44.5 x 27.5 cm</p> 
-                <p class="precio">$2,529 MXN</p> 
-                <button onclick="comprarProducto('Sillón Colchón Antirreflujo',2529)">Comprar Ahora</button> 
-            </div> 
+</div>
+
+            <!-- Producto 5: Cobija Rusia Doble Tela con Variantes -->
+<div class="tarjeta-producto"> 
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)"> 
+        <!-- 💡 ID único para la imagen de la cobija -->
+        <img id="img-principal-cobija" src="imagenes/cobija_azul.png" alt="Cobija Rusia ABeCe" class="img-base-lupa"> 
+        <div class="lupa-lente"></div> 
+    </div>
+
+    <h3>Cobija Rusia Doble Tela</h3> 
+    <p class="detalles-prod">Incluye oso de apego</p> 
+
+    <div class="selector-variantes">
+        <!-- 💡 ID único para el texto de variante de la cobija -->
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-cobija">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cobija','Azul Nube', 'imagenes/cobija_azul.png', 310, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cobija', 'Rosa', 'imagenes/cobija_rosa.png', 310, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cobija', 'Amarillo', 'imagenes/cobija_amarilla.png', 310, this)">
+    <span class="circulo-color" style="background-color: #E7D599;"></span> Amarillo
+</button>
+            </div>
+    </div>
+
+    <p class="precio" id="precio-cobija">$310 MXN</p> 
+    <!-- 💡 ID único para el botón de compra de la cobija -->
+    <button type="button" id="btn-compra-cobija" onclick="comprarProducto('Cobija Rusia Doble Tela (Blanco Oso)', 310)">Comprar Ahora</button>
+        <!-- MÓDULO DE FICHAS TÉCNICAS DINÁMICAS - COBIJA RUSIA CON OSO DE APEGO -->
+    <div class="ficha-tecnica-tabs">
+        
+        <!-- Botonera de Selección Única para la Cobija -->
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('cobija-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cobija-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cobija-composicion', this)">Composición</button>
+        </div>
+
+        <!-- Contenedores de Información Síncronos (Datos Reales extraídos) -->
+        <div class="tabs-contenido-bloque">
+            
+            <!-- Bloque 1: Beneficios de la Manta -->
+            <div id="cobija-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Suavidad y cercanía a la piel:</strong> Manta delgada de materiales ultra suaves y ligeros, brindando un cálido abrazo de mamá y comodidad incomparable al bebé.</li>
+                    <li><strong>Transpirable y Absorbente:</strong> Excelente capacidad de absorción altamente transpirable, ideal para mantener al bebé fresco y seco en todo momento.</li>
+                    <li><strong>Ideal para actividades al aire libre:</strong> Una opción ligera, portátil y delgada, perfecta para llevar de paseo y disfrutar al aire libre en cualquier momento.</li>
+                </ul>
+            </div>
+
+            <!-- Bloque 2: Etapas y Versatilidad de Uso -->
+            <div id="cobija-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Uso Versátil:</strong> Su tamaño ideal de 80 × 140 cm la hace perfecta para usarse de forma adaptable en el cochecito, la cuna o como capa extra de abrigo.</li>
+                    <li><strong>Fácil Transporte:</strong> Su diseño delgado, liviano y compacto permite transportarla y almacenarla en la pañalera sin batallar ni ocupar espacio excesivo.</li>
+                    <li><strong>Estimulación Sensorial:</strong> Incluye un oso de apego de 30 × 30 cm con diseño de puntos en relieve que proporciona mayor tacto al bebé a medida que crece.</li>
+                </ul>
+            </div>
+
+            <!-- Bloque 3: Detalle de Composición Textil (Ficha Técnica) -->
+            <div id="cobija-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Cobija Doble Tela con Oso de Apego color blanco.</p>
+                    <p><strong>Composición Textil:</strong> 100% Poliéster Premium de Nivel de Confort: Suave.</p>
+                    <p><strong>Medidas del Oso:</strong> Textura con puntos en relieve de dimensiones: 30 × 30 cms.</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en lavadora en ciclo delicado. <strong>No usar secadora</strong>. No usar blanqueadores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+         <!-- Producto 6: Cobija Burbuja Estampada Tela con Variantes -->
+<div class="tarjeta-producto"> 
+<div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)"> 
+<!-- 💡 ID único para la imagen de la cobija burbuja -->
+<img id="img-principal-cobija-burbuja" src="imagenes/cobija_burbujamarilla.png" alt="Cobija Burbuja ABeCe" class="img-base-lupa"> 
+<div class="lupa-lente"></div> 
+</div>
  
-            <!-- Producto 3 --> 
-            <div class="tarjeta-producto"> 
-                <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" 
-onmouseleave="apagarLupa(this)"> 
-                    <img src="imagenes/cobija.jpg" alt="Cobija" class="img-base-lupa"> 
-                    <div class="lupa-lente"></div> 
-                </div> 
-                <h3>Cobija Rusia Doble Tela</h3> 
-                <p class="detalles-prod">Incluye oso</p> 
-                <p class="precio">$310 MXN</p> 
-                <button onclick="comprarProducto('Cobija Rusia Doble Tela',310)">Comprar Ahora</button> 
-            </div> 
+<h3>Cobija Burbuja Estampado Tela</h3> 
+<p class="detalles-prod">Estampado de animalitos</p> 
  
-        </div> 
-    </section> 
+<div class="selector-variantes">
+<!-- 💡 ID único para el texto de variante de la cobija burbuja -->
+<p class="titulo-variante">Color/Textura: <span id="nombre-variante-cobija-burbuja">Amarillo</span></p>
+<div class="botones-variantes-flex">
+<button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cobija-burbuja','Azul', 'imagenes/cobija_burbujazul.png', 310, this)">
+<span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+</button>
+<button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cobija-burbuja', 'Rosa', 'imagenes/cobija_burbujrosa.png', 310, this)">
+<span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+</button>
+<button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('cobija-burbuja', 'Amarillo', 'imagenes/cobija_burbujamarilla.png', 310, this)">
+<span class="circulo-color" style="background-color: #E7D599;"></span> Amarillo
+</button>
+</div>
+</div>
  
+<p class="precio" id="precio-cobija-burbuja">$310 MXN</p> 
+<!-- 💡 ID único para el botón de compra de la cobija burbuja -->
+<button type="button" id="btn-compra-cobija-burbuja" onclick="comprarProducto('Cobija Burbuja Estampado Tela (Amarillo)', 310)">Comprar Ahora</button>
+<!-- MÓDULO DE FICHAS TÉCNICAS DINÁMICAS - COBIJA BURBUJA ESTAMPADA -->
+<div class="ficha-tecnica-tabs">
+<!-- Botonera de Selección Única para la Cobija Burbuja -->
+<div class="tabs-botones-flex">
+<button type="button" class="btn-tab activo" onclick="alternarTabABeCe('cobija-burbuja-beneficios', this)">Beneficios</button>
+<button type="button" class="btn-tab" onclick="alternarTabABeCe('cobija-burbuja-etapas', this)">Etapas</button>
+<button type="button" class="btn-tab" onclick="alternarTabABeCe('cobija-burbuja-composicion', this)">Composición</button>
+</div>
+ 
+<!-- Contenedores de Información Síncronos (Datos Reales extraídos) -->
+<div class="tabs-contenido-bloque">
+<!-- Bloque 1: Beneficios de la Manta -->
+<div id="cobija-burbuja-beneficios" class="contenido-tab-item activo">
+<ul>
+<li><strong>Suavidad y cercanía a la piel:</strong> Manta delgada de materiales ultra suaves y ligeros, brindando un cálido abrazo de mamá y comodidad incomparable al bebé.</li>
+<li><strong>Transpirable y Absorbente:</strong> Excelente capacidad de absorción altamente transpirable, ideal para mantener al bebé fresco y seco en todo momento.</li>
+<li><strong>Ideal para actividades al aire libre:</strong> Una opción ligera, portátil y delgada, perfecta para llevar de paseo y disfrutar al aire libre en cualquier momento.</li>
+</ul>
+</div>
+ 
+<!-- Bloque 2: Etapas y Versatilidad de Uso -->
+<div id="cobija-burbuja-etapas" class="contenido-tab-item">
+<ul>
+<li><strong>Uso Versátil:</strong> Su tamaño ideal de 80 × 140 cm la hace perfecta para usarse de forma adaptable en el cochecito, la cuna o como capa extra de abrigo.</li>
+<li><strong>Fácil Transporte:</strong> Su diseño delgado, liviano y compacto permite transportarla y almacenarla en la pañalera sin batallar ni ocupar espacio excesivo.</li>
+<li><strong>Estampado Divertido:</strong> Diseño con estampado de animalitos que estimula visualmente al bebé desde sus primeros meses.</li>
+</ul>
+</div>
+ 
+<!-- Bloque 3: Detalle de Composición Textil (Ficha Técnica) -->
+<div id="cobija-burbuja-composicion" class="contenido-tab-item">
+<div class="composicion-grid-mini">
+<p><strong>Descripción detallada:</strong> Cobija Burbuja con estampado de animalitos.</p>
+<p><strong>Composición Textil:</strong> 100% Poliéster Premium de Nivel de Confort: Suave.</p>
+<p><strong>Instrucciones de Cuidado:</strong> Lavar en lavadora en ciclo delicado. <strong>No usar secadora</strong>. No usar blanqueadores.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="tienda-seccion">
+    <h2>Productos</h2>
+        <div class="tienda-contenedor">
+
+            <div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-almohada-con-funda-burbuja" src="imagenes/almohada_burbujaazul.png" alt="almohada con funda burbuja ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>almohada con funda burbuja</h3>
+    <p class="detalles-prod">30x20</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-almohada-con-funda-burbuja">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('almohada-con-funda-burbuja', 'Azul', 'imagenes/almohada_burbujaazul.png', 170, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('almohada-con-funda-burbuja', 'Rosa', 'imagenes/almohada_burbujarosa.png', 170, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('almohada-con-funda-burbuja', 'Amarillo', 'imagenes/almohada_burbujaamarilla.png', 170, this)">
+                <span class="circulo-color" style="background-color: #E7D599;"></span> Amarillo
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-almohada-con-funda-burbuja">$170 MXN</p>
+    <button type="button" id="btn-compra-almohada-con-funda-burbuja" onclick="comprarProducto('almohada con funda burbuja (Azul)', 170)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('almohada-con-funda-burbuja-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('almohada-con-funda-burbuja-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('almohada-con-funda-burbuja-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="almohada-con-funda-burbuja-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Almohada burbuja ABeCe para bebe:</strong> con tela en relieve para mayor tacto, color(azul, Rosa y Amarillo. Súper suave y diseño sólido.
+
+SKU: 45061132 Model: 3041</li>
+                    <li><strong>Beneficio:</strong> Descripción pendiente.</li>
+                    <li><strong>Beneficio:</strong> Descripción pendiente.</li>
+                </ul>
+            </div>
+
+            <div id="almohada-con-funda-burbuja-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>para ,uso diario:</strong> Colección:
+Almohadas
+ 
+Espacio:
+Recámara
+ 
+Nivel de Confort:
+Super Suave</li>
+                    <li><strong>Uso:</strong> Descripción pendiente.</li>
+                    <li><strong>Uso:</strong> Descripción pendiente.</li>
+                </ul>
+            </div>
+
+            <div id="almohada-con-funda-burbuja-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Relleno:
+Fibra siliconada
+ 
+Colección:
+Almohadas
+ 
+Espacio:
+Recámara
+ 
+Nivel de Confort:
+Super Suave</p>
+                    <p><strong>Composición Textil:</strong> :Burbuja 100% Poliester/Tela A Rayas Poliester algodón/relleno de fibra siliconada</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en ciclo delicado, jabón Neutro  , no usar secadora.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-almohada-burbuja-tela" src="imagenes/almobubuja_azul.png" alt="Almohada Burbuja Tela ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Almohada Burbuja Tela</h3>
+    <p class="detalles-prod">30x20</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-almohada-burbuja-tela">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('almohada-burbuja-tela', 'Azul', 'imagenes/almobubuja_azul.png', 250, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('almohada-burbuja-tela', 'Rosa', 'imagenes/almobubuja_rosa.png', 250, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('almohada-burbuja-tela', 'Amarillo', 'imagenes/almobubuja_amarillo.png', 250, this)">
+                <span class="circulo-color" style="background-color: #E7D599;"></span> Amarillo
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('almohada-burbuja-tela', 'Blanco', 'imagenes/almobubuja_blanco.png', 250, this)">
+                <span class="circulo-color" style="background-color: #FFFFFF;"></span> Blanco
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-almohada-burbuja-tela">$250 MXN</p>
+    <button type="button" id="btn-compra-almohada-burbuja-tela" onclick="comprarProducto('Almohada Burbuja Tela (Azul)', 250)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('almohada-burbuja-tela-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('almohada-burbuja-tela-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('almohada-burbuja-tela-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="almohada-burbuja-tela-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Almohada Doble Vista:</strong> Nivel de Confort (suave)</li>
+                    <li><strong>Beneficio:</strong> Descripción pendiente.</li>
+                    <li><strong>Beneficio:</strong> Descripción pendiente.</li>
+                </ul>
+            </div>
+
+            <div id="almohada-burbuja-tela-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Uso Diario:</strong> Almohada Doble Vista y Nivel de Confort (suave)</li>
+                    <li><strong>Uso:</strong> Descripción pendiente.</li>
+                    <li><strong>Uso:</strong> Descripción pendiente.</li>
+                </ul>
+            </div>
+
+            <div id="almohada-burbuja-tela-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Almohada Doble Vista y Nivel de Confort (suave) Lavar en ciclo delicado, jabón Neutro  , no usar secadora.</p>
+                    <p><strong>Composición Textil:</strong> :Burbuja 100% Poliéster/Tela A Rayas Poliéster algodón</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en ciclo delicado, jabón Neutro  , no usar secadora.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-colchon-cambiador-curvo-funda-capitoneada" src="imagenes/colchoncambiador_blanco.png" alt="Colchón cambiador Curvo Funda capitoneada ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Colchón cambiador Curvo Funda capitoneada</h3>
+    <p class="detalles-prod">Largo 82cm  Ancho 44cm  Espesor de 7 cms.</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-colchon-cambiador-curvo-funda-capitoneada">Blanco</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('colchon-cambiador-curvo-funda-capitoneada', 'Blanco', 'imagenes/colchoncambiador_blanco.png', 950, this)">
+                <span class="circulo-color" style="background-color: #FFFFFF;"></span> Blanco
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-colchon-cambiador-curvo-funda-capitoneada">$950 MXN</p>
+    <button type="button" id="btn-compra-colchon-cambiador-curvo-funda-capitoneada" onclick="comprarProducto('Colchón cambiador Curvo Funda capitoneada (Blanco)', 950)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('colchon-cambiador-curvo-funda-capitoneada-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('colchon-cambiador-curvo-funda-capitoneada-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('colchon-cambiador-curvo-funda-capitoneada-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="colchon-cambiador-curvo-funda-capitoneada-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Colchón cambiador ABeCe Curvo:</strong> Colchón cambiador ABeCe para bebé, diseño curvo; elaborado en material sintético color blanco; colocar sobre superficies planas...</li>
+                    <li><strong>Beneficio:</strong> Descripción pendiente.</li>
+                    <li><strong>Beneficio:</strong> Descripción pendiente.</li>
+                </ul>
+            </div>
+
+            <div id="colchon-cambiador-curvo-funda-capitoneada-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Uso Diario:</strong> del mes 0 a 12 meses, y colocar sobre superficies planas al momento de usarlo</li>
+                    <li><strong>Uso:</strong> Descripción pendiente.</li>
+                    <li><strong>Uso:</strong> Descripción pendiente.</li>
+                </ul>
+            </div>
+
+            <div id="colchon-cambiador-curvo-funda-capitoneada-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Hule Espuma  Funda Capitoneada</p>
+                    <p><strong>Composición Textil:</strong> Espuma Poliuretano  Dimensionado Firme 16/18 S/F, Funda 65 % poliester 35% Algodón</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Limpiar con trapo húmedo y jabón neutro, colocar sobre superficies planas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            
+
+    </section>
+
+<section class="tienda-seccion">
+    <h2>Productos</h2>
+        <div class="tienda-contenedor">
+
+            <div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-colchon-cuna-antirreflujo-para-bebe-forro-toalla" src="imagenes/cuñaantirreflujo_blanco.png" alt="Colchón cuña antirreflujo para bebe forro toalla ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+<h3>Colchón cuña antirreflujo para bebe forro toalla</h3>
+    <p class="detalles-prod">Largo 61 cm  Ancho 39 cm  Espesor de 11 cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-colchon-cuna-antirreflujo-para-bebe-forro-toalla">Blanco</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('colchon-cuna-antirreflujo-para-bebe-forro-toalla', 'Blanco', 'imagenes/cuñaantirreflujo_blanco.png', 700, this)">
+                <span class="circulo-color" style="background-color: #FFFFFF;"></span> Blanco
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-colchon-cuna-antirreflujo-para-bebe-forro-toalla">$700 MXN</p>
+    <button type="button" id="btn-compra-colchon-cuna-antirreflujo-para-bebe-forro-toalla" onclick="comprarProducto('Colchón cuña antirreflujo para bebe forro toalla (Blanco)', 700)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('colchon-cuna-antirreflujo-para-bebe-forro-toalla-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('colchon-cuna-antirreflujo-para-bebe-forro-toalla-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('colchon-cuna-antirreflujo-para-bebe-forro-toalla-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="colchon-cuna-antirreflujo-para-bebe-forro-toalla-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Colchón Antirreflujo  Cuña  C/Funda Toalla 100% Algodón:</strong> Hule Espuma  ,Cilindros Largo .20  Ancho .10 Espesor 7.5 cms y Funda de Toalla 100% Algodón</li>
+                    <li><strong>Beneficio:</strong> Descripción pendiente.</li>
+                    <li><strong>Beneficio:</strong> Descripción pendiente.</li>
+                </ul>
+            </div>
+
+            <div id="colchon-cuna-antirreflujo-para-bebe-forro-toalla-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Uso Diario:</strong> No acostar al niño después de comer. Se recomienda cargarlo por unos minutos para que pase el efecto del reflujo</li>
+                    <li><strong>Versatil:</strong> Colchon Antirreflujo C/Funda  toalla 100% Algodon Color Bco.  Para mayor seguriudad del bebe ( Con revestimiento Impermeable que protege la espuma para mayor logenvidad) ;  Cilindros  Antivuelco ajustables a la posición del bebé mediante velcro; Ideal para recién nacidos y hasta 8 meses de edad</li>
+                    <li><strong>Uso:</strong> Descripción pendiente.</li>
+                </ul>
+            </div>
+
+            <div id="colchon-cuna-antirreflujo-para-bebe-forro-toalla-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Hule Espuma  ,Cilindros Largo .20  Ancho .10 Espesor 7.5 cms y Funda de Toalla 100% Algodón</p>
+                    <p><strong>Composición Textil:</strong> Colchón Antirreflujo   C/Funda Toalla 100% Algodón</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Funda Lavar lavadora ciclo delicado Usar jabón neutro No usar cloro No planchar  No Usar secadora</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-colchon-para-cuna-viajera-memory-form-con-tela-repelente" src="imagenes/colchoncuna_viajerablanco.png" alt="Colchón para cuna viajera Memory Form Con tela repelente ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Colchón para cuna viajera Memory Form Con tela repelente</h3>
+    <p class="detalles-prod">Largo 100 cm Ancho 67 cm Espesor de 5 cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-colchon-para-cuna-viajera-memory-form-con-tela-repelente">Blanco</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('colchon-para-cuna-viajera-memory-form-con-tela-repelente', 'Blanco', 'imagenes/colchoncuna_viajerablanco.png', 950, this)">
+                <span class="circulo-color" style="background-color: #FFFFFF;"></span> Blanco
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-colchon-para-cuna-viajera-memory-form-con-tela-repelente">$950 MXN</p>
+    <button type="button" id="btn-compra-colchon-para-cuna-viajera-memory-form-con-tela-repelente" onclick="comprarProducto('Colchón para cuna viajera Memory Form Con tela repelente (Blanco)', 950)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('colchon-para-cuna-viajera-memory-form-con-tela-repelente-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('colchon-para-cuna-viajera-memory-form-con-tela-repelente-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('colchon-para-cuna-viajera-memory-form-con-tela-repelente-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="colchon-para-cuna-viajera-memory-form-con-tela-repelente-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Suave y alto confort para viajes en familia:</strong> funda blanca color blanco repelente a fluidos para mayor longevidad</li>
+                    <li><strong>transpirable:</strong> funda repelente al agua</li>
+                    <li><strong>facil de transportar:</strong> cochon hule espuma con memory form facil de transportar</li>
+                </ul>
+            </div>
+
+            <div id="colchon-para-cuna-viajera-memory-form-con-tela-repelente-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>uso Diario:</strong> se puede usar desde 0 mes y hasta 12meses</li>
+                    <li><strong>Uso:</strong> Descripción pendiente.</li>
+                    <li><strong>Uso:</strong> Descripción pendiente.</li>
+                </ul>
+            </div>
+
+            <div id="colchon-para-cuna-viajera-memory-form-con-tela-repelente-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Hule Espuma  
+Funda C/Cierre</p>
+                    <p><strong>Composición Textil:</strong> Composición. Tela 68% Poliéster 32% Algodón</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar lavadora ciclo delicado Usar jabón neutro No usar cloro No planchar No Usar secadora</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada" src="imagenes/colchoncuna_viajeraniñoazul.png" alt="Colchón para cuna viajera Memory Form Con tela repelente Estampada ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Colchón para cuna viajera Memory Form Con tela repelente Estampada</h3>
+    <p class="detalles-prod">Largo 100 cm Ancho 67 cm Espesor 5 cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada">Azul-Niño</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada', 'Azul-Niño', 'imagenes/colchoncuna_viajeraniñoazul.png', 950, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul-Niño
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada', 'Rosa-Niña', 'imagenes/colchoncuna_viajeraniñarosa.png', 950, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa-Niña
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada">$950 MXN</p>
+    <button type="button" id="btn-compra-colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada" onclick="comprarProducto('Colchón para cuna viajera Memory Form Con tela repelente Estampada (Azul-Niño)', 950)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Colchón cuna viajera estampada:</strong> Funda con cierre , estampada repelente a fluidos para mayor longevidad</li>
+                    <li><strong>transpirable:</strong> repelente al agua</li>
+                    <li><strong>fácil de transportar:</strong> hule espuma con memory form</li>
+                </ul>
+            </div>
+
+            <div id="colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>uso diario:</strong> se puede usar desde el mes 0 y hasta 12 meses</li>
+                    <li><strong>versatilidad:</strong> se puede transportar si se llega a salir de casa</li>
+                    <li><strong>confort:</strong> confort para su uso y suavidad que se transmite al bebe</li>
+                </ul>
+            </div>
+
+            <div id="colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Hule Espuma  
+Funda C/Ciere
+Tela Impermeable que protege la espuma para mayor  longevidad</p>
+                    <p><strong>Composición Textil:</strong> Composición. Tela  Poliester  Algodón</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar lavadora ciclo delicado Usar jabón neutro No usar cloro No planchar No Usar secadora</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </div>
+</section>
+
+<section class="tienda-seccion"> 
+        <h2>ABeCe</h2> 
+        <div class="tienda-contenedor"> 
+ 
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico" src="imagenes/fularcanguro_negro.png" alt="Fular Para porteo Canguro Rebozo Porta bebes Ergonomico ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Fular Para porteo Canguro Rebozo Porta bebes Ergonomico</h3>
+    <p class="detalles-prod">largo 5mts x 45 cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico">Negro</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico', 'Negro', 'imagenes/fularcanguro_negro.png', 600, this)">
+                <span class="circulo-color" style="background-color: #1C1C1C;"></span> Negro
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico', 'Rosa', 'imagenes/fularcanguro_rosa.png', 600, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico">$600 MXN</p>
+    <button type="button" id="btn-compra-fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico" onclick="comprarProducto('Fular Para porteo Canguro Rebozo Porta bebes Ergonomico (Negro)', 600)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Diseño Híbrido Innovador:</strong> Al combinar las ventajas de un fular tradicional y una bandolera, brinda un ajuste óptimo, firme y muy rápido de colocar en el día a día.</li>
+                    <li><strong>Práctico Bolsillo Central:</strong> Incorpora un compartimento integrado en el centro de la prenda para tener siempre a la mano objetos pequeños esenciales como toallitas o llaves.</li>
+                    <li><strong>Conexión y Confort:</strong> Favorece el apego seguro manteniendo al bebé cerca del pecho materno o paterno, propiciando la calma mientras mantienes las manos libres.</li>
+                </ul>
+            </div>
+
+            <div id="fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Porteo Ergonómico Seguro:</strong> Ofrece una solución de transporte que respeta la postura natural del bebé, distribuyendo el peso de manera uniforme para evitar dolores de espalda en los padres.</li>
+                    <li><strong>Amplio Rango de Crecimiento:</strong> Diseñado para acompañar el desarrollo de tu hijo, con una edad recomendada que va desde los 0 hasta los 24 meses (apto para soportar un peso de 1 a 15 kilos).</li>
+                    <li><strong>Diversas Posiciones:</strong> Su estructura híbrida tipo bandolera permite acomodar al bebé en distintas posturas de porteo según su etapa de crecimiento y necesidades de descanso.</li>
+                </ul>
+            </div>
+
+            <div id="fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Fular para Porteo Ergonómico (Modelo 1708), diseñado como una versátil combinación entre fular y bandolera. Cuenta con un práctico bolsillo al centro y tiene unas medidas ideales de 5 metros de largo por 45 centímetros de ancho.</p>
+                    <p><strong>Composición Textil:</strong> Algodón Ergonómico de Alta Resistencia (Textura suave y flexible para el correcto soporte del bebé).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en lavadora en ciclo delicado. Plancha tibia si es necesario. NO USAR SECADORA Y NO UTILIZAR BLANQUEADORES.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-nido-contencion-azul" src="imagenes/nidocontencion_azul.png" alt="Nido Contención Azul ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Nido Contención Azul</h3>
+    <p class="detalles-prod">Largo  84cm x Ancho 50cm  x 15 ms</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-nido-contencion-azul">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('nido-contencion-azul', 'Azul', 'imagenes/nidocontencion_azul.png', 900, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('nido-contencion-azul', 'Rosa', 'imagenes/nidocontencion_rosa.png', 900, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-nido-contencion-azul">$900 MXN</p>
+    <button type="button" id="btn-compra-nido-contencion-azul" onclick="comprarProducto('Nido Contención Azul (Azul)', 900)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('nido-contencion-azul-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('nido-contencion-azul-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('nido-contencion-azul-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="nido-contencion-azul-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel Confort Suave:</strong> Su confección con tela suave tipo minky garantiza un entorno sumamente acogedor y acolchado, ideal para cuidar la delicada piel del recién nacido.</li>
+                    <li><strong>Fácil de Lavar y Mantener:</strong> Diseñado para la practicidad del día a día; la funda cuenta con cierre y los rellenos del borde y colchón son totalmente removibles para una limpieza rápida.</li>
+                    <li><strong>Espacio Higiénico y Seguro:</strong> Al permitir desmontar e higienizar cada elemento de forma independiente, asegura un entorno óptimo, saludable y libre de alérgenos para el bebé.</li>
+                </ul>
+            </div>
+
+            <div id="nido-contencion-azul-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Nido de Contención:</strong> Ofrece un espacio acotado y seguro que emula el vientre materno, ideal para el descanso supervisado, siestas y momentos de relajación del bebé.</li>
+                    <li><strong>Práctico y Versátil:</strong> Su diseño ligero permite moverlo fácilmente por la casa para mantener al bebé cerca, y viene acompañado de un oso de apego que le brinda seguridad emocional.</li>
+                    <li><strong>Colchón Doble Vista:</strong> Incluye un colchón reversible que te permite usarlo por ambos lados según tu preferencia, extendiendo el tiempo de uso y combinaciones.</li>
+                </ul>
+            </div>
+
+            <div id="nido-contencion-azul-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Nido de Contención en color azul con diseño de doble vista. El set de 3 piezas incluye 1 nido con funda con cierre, 1 colchón reversible (doble vista) y 1 tierno oso de apego tipo burbuja en color azul. Medidas: Largo 84 x Ancho 50 cm.</p>
+                    <p><strong>Composición Textil:</strong> Mezcla premium de Poliéster y Algodón (con tela suave tipo minky).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Para la funda: Use lavadora en ciclo delicado con agua tibia y jabón neutro. NO USAR SECADORA.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-set-de-3-sabanitas-sabanitas-recibidoras" src="imagenes/setsabanitasrecibidoras_estampadoazul.png" alt="Set  de 3 Sabanitas  Sabanitas Recibidoras ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Set  de 3 Sabanitas  Sabanitas Recibidoras</h3>
+    <p class="detalles-prod">75cm x 100 cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-set-de-3-sabanitas-sabanitas-recibidoras">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('set-de-3-sabanitas-sabanitas-recibidoras', 'Azul', 'imagenes/setsabanitasrecibidoras_estampadoazul.png', 400, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('set-de-3-sabanitas-sabanitas-recibidoras', 'Rosa', 'imagenes/setsabanitasrecibidoras_estampadorosa.png', 400, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-set-de-3-sabanitas-sabanitas-recibidoras">$400 MXN</p>
+    <button type="button" id="btn-compra-set-de-3-sabanitas-sabanitas-recibidoras" onclick="comprarProducto('Set  de 3 Sabanitas  Sabanitas Recibidoras (Azul)', 400)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('set-de-3-sabanitas-sabanitas-recibidoras-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('set-de-3-sabanitas-sabanitas-recibidoras-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('set-de-3-sabanitas-sabanitas-recibidoras-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="set-de-3-sabanitas-sabanitas-recibidoras-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel Suave:</strong> Ofrece un confort sumamente agradable al tacto, pensado especialmente para respetar y proteger la delicada piel del bebé sin causar rozaduras.</li>
+                    <li><strong>Elasticidad y Frescura:</strong> Elaborado con una mezcla premium de algodón y spandex que proporciona una ligera elasticidad para envolver al bebé de forma cómoda y ergonómica.</li>
+                    <li><strong>Diseños dinámicos:</strong> Incluye una variedad de tiernos estampados en tonos azules que aportan versatilidad visual y una estética infantil moderna a los accesorios del bebé.</li>
+                </ul>
+            </div>
+
+            <div id="set-de-3-sabanitas-sabanitas-recibidoras-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Sabanita Recibidora:</strong> Un elemento esencial para arrullar, envolver o recibir al niño recién nacido, proporcionándole un entorno seguro y una agradable calidez.</li>
+                    <li><strong>Uso diario y versátil:</strong> Ideales para cubrir el cochecito, usar como cambiador improvisado o proteger al bebé de las corrientes de aire durante sus salidas cotidianas.</li>
+                    <li><strong>Práctico Set de 3 piezas:</strong> Ofrece tres opciones funcionales que garantizan tener siempre una pieza de repuesto limpia ante los imprevistos o derrames comunes del día a día.</li>
+                </ul>
+            </div>
+
+            <div id="set-de-3-sabanitas-sabanitas-recibidoras-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Práctico Set de 3 Sabanitas Recibidoras en color azul con diferentes estampados (diseños variables), diseñadas con una medida ideal de .75 x 100 cm. para el cuidado del bebé.</p>
+                    <p><strong>Composición Textil:</strong> Tela de Punto con Algodón y Spandex</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Use lavadora en ciclo delicado, con agua fría y jabón neutro. No usar blanqueadores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="tienda-seccion"> 
+        <h2>ABeCe</h2> 
+        <div class="tienda-contenedor"> 
+ 
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-sabanitas-recibidoras" src="imagenes/sabanitaazul_gris.png" alt="Sabanitas Recibidoras ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Sabanitas Recibidoras</h3>
+    <p class="detalles-prod">75cm x 100 cm.</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-sabanitas-recibidoras">Azul-gris</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('sabanitas-recibidoras', 'Azul-gris', 'imagenes/sabanitaazul_gris.png', 500, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul-gris
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('sabanitas-recibidoras', 'Rosa-gris', 'imagenes/sabanitarosa_gris.png', 500, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa-gris
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-sabanitas-recibidoras">$500 MXN</p>
+    <button type="button" id="btn-compra-sabanitas-recibidoras" onclick="comprarProducto('Sabanitas Recibidoras (Azul-gris)', 500)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('sabanitas-recibidoras-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('sabanitas-recibidoras-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('sabanitas-recibidoras-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="sabanitas-recibidoras-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel Super Suave:</strong> Ofrece un nivel de confort ultra suave al tacto, ideal y sumamente amigable para cuidar la delicada piel del recién nacido.</li>
+                    <li><strong>100% Algodón:</strong> Fabricado íntegramente en tela de punto de algodón, un material natural altamente transpirable que evita acumulaciones de calor.</li>
+                    <li><strong>Lindos detalles y acabados:</strong> Cuenta con una hermosa vista a rayas alrededor de la prenda, aportando un diseño tierno, estético y moderno.</li>
+                </ul>
+            </div>
+
+            <div id="sabanitas-recibidoras-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Sabanita Recibidora:</strong> Diseñada especialmente para arrullar, cubrir y recibir al bebé desde sus primeros días de nacido, brindándole protección.</li>
+                    <li><strong>Uso diario:</strong> Ideal para el día a día en casa o durante paseos, manteniendo al bebé fresco y cómodo gracias a su confección de alta calidad.</li>
+                    <li><strong>Práctico Set de 2:</strong> Incluye dos piezas combinables en tonos Gris y Rosa a rayas, permitiendo tener siempre un repuesto limpio a la mano.</li>
+                </ul>
+            </div>
+
+            <div id="sabanitas-recibidoras-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Set de 2 Sabanitas Recibidoras (1 con detalle Rosa a rayas y 2 con detalle Gris a rayas). Medidas de .75 x 100 cm. ideales para el confort de tu bebé.</p>
+                    <p><strong>Composición Textil:</strong> Tela de Pto. 100% Algodón</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Use lavadora en ciclo delicado, con agua fría y jabón neutro. No usar blanqueadores. Plancha tibia si es necesario.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-juego-de-sabanas-cuna" src="imagenes/sabanacuna_gris.png" alt="Juego de Sabanas Cuna ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Juego de Sabanas Cuna</h3>
+    <p class="detalles-prod">70cm X 130cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-juego-de-sabanas-cuna">Gris</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('juego-de-sabanas-cuna', 'Gris', 'imagenes/sabanacuna_gris.png', 2000, this)">
+                <span class="circulo-color" style="background-color: #D3D3D3;"></span> Gris
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-juego-de-sabanas-cuna">$2000 MXN</p>
+    <button type="button" id="btn-compra-juego-de-sabanas-cuna" onclick="comprarProducto('Juego de Sabanas Cuna (Gris)', 2000)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('juego-de-sabanas-cuna-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('juego-de-sabanas-cuna-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('juego-de-sabanas-cuna-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="juego-de-sabanas-cuna-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Confort Suave:</strong> Posee un nivel de confort suave al tacto, ideal para proteger la delicada piel del bebé y propiciar un sueño profundo y reparador.</li>
+                    <li><strong>100% Algodón de Punto:</strong> Confeccionado enteramente en tela de punto de algodón, un material natural, hipoalergénico y altamente transpirable que evita la sudoración.</li>
+                    <li><strong>Set completo de 3 piezas:</strong> Incluye sábana de cajón, sábana plana y una linda funda con vivo gris, ofreciendo una solución práctica, combinable y de diseño tierno.</li>
+                </ul>
+            </div>
+
+            <div id="juego-de-sabanas-cuna-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Ropa de Cuna:</strong> Set especialmente diseñado para vestir la cuna del bebé, garantizándole un espacio acogedor, seguro y limpio para sus horas de sueño.</li>
+                    <li><strong>Uso diario:</strong> Ideal para el descanso cotidiano gracias a su tejido fresco, resistente a las lavadas frecuentes y perfecto para mantener la higiene de la cuna.</li>
+                    <li><strong>Ajuste perfecto:</strong> Con medidas de 70 x 1.30 m. y una sábana de cajón adaptable que se mantiene firmemente fija al colchón para mayor seguridad del bebé.</li>
+                </ul>
+            </div>
+
+            <div id="juego-de-sabanas-cuna-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Juego de sábanas para cuna en color blanco con detalle azul a rayas. El set incluye 3 piezas: 1 sábana de cajón, 1 sábana plana y 1 funda con vivo en color gris, diseñadas con una medida de 70 x 1.30 m.</p>
+                    <p><strong>Composición Textil:</strong> Tela de Punto 100% Algodón</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Use lavadora en ciclo delicado, con agua fría y jabón neutro.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-juego-de-sabanas-mini-cuna-colecho-moises" src="imagenes/sabanaminicunacolecho_moisesazul.png" alt="Juego de Sabanas  Mini Cuna/Colecho/Moises ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Juego de Sabanas  Mini Cuna/Colecho/Moises</h3>
+    <p class="detalles-prod">Largo  95cm  x Ancho 70cm  x 08 cm.</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-juego-de-sabanas-mini-cuna-colecho-moises">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('juego-de-sabanas-mini-cuna-colecho-moises', 'Azul', 'imagenes/sabanaminicunacolecho_moisesazul.png', 750, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('juego-de-sabanas-mini-cuna-colecho-moises', 'Rosa', 'imagenes/sabanaminicunacolecho_moisesrosa.png', 750, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('juego-de-sabanas-mini-cuna-colecho-moises', 'Gris', 'imagenes/sabanaminicunacolecho_moisesgris.png', 750, this)">
+                <span class="circulo-color" style="background-color: #D3D3D3;"></span> Gris
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-juego-de-sabanas-mini-cuna-colecho-moises">$750 MXN</p>
+    <button type="button" id="btn-compra-juego-de-sabanas-mini-cuna-colecho-moises" onclick="comprarProducto('Juego de Sabanas  Mini Cuna/Colecho/Moises (Azul)', 750)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('juego-de-sabanas-mini-cuna-colecho-moises-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('juego-de-sabanas-mini-cuna-colecho-moises-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('juego-de-sabanas-mini-cuna-colecho-moises-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="juego-de-sabanas-mini-cuna-colecho-moises-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel Suave:</strong> Su textura premium brinda un confort suave y terso, cuidando la delicada piel del bebé desde sus primeros meses de vida.</li>
+                    <li><strong>100% Algodón Premium:</strong> Elaborado enteramente con fibra natural de algodón que favorece una óptima transpiración, manteniendo una temperatura agradable.</li>
+                    <li><strong>Estilo Tierno y Cohesivo:</strong> Luce un distinguido detalle rosa a rayas en la sábana plana y en la funda, aportando un toque decorativo, estético y moderno al dormitorio.</li>
+                </ul>
+            </div>
+
+            <div id="juego-de-sabanas-mini-cuna-colecho-moises-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Multicompatible:</strong> Diseñado para adaptarse de forma exacta a distintos espacios de descanso del bebé como Mini Cuna, Colecho, Moisés y cunas tipo Next2me.</li>
+                    <li><strong>Máximo Ajuste y Seguridad:</strong> La sábana de cajón cuenta con elástico a todo el alrededor para un agarre firme al colchón, evitando que se desplace mientras el bebé duerme.</li>
+                    <li><strong>Sistema Innovador en Sábana Plana:</strong> Incorpora un diseño práctico con cajones con resorte en la zona de la piecera para asegurar una mejor sujeción y orden en la cama.</li>
+                </ul>
+            </div>
+
+            <div id="juego-de-sabanas-mini-cuna-colecho-moises-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Juego de sábanas para Mini Cuna, Colecho, Moisés y Next2me en color blanco con un tierno detalle rosa a rayas. El set de 3 piezas incluye una sábana de cajón, una sábana plana y una funda a juego.</p>
+                    <p><strong>Composición Textil:</strong> 100% Algodón (Tela de Punto)</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Use lavadora en ciclo delicado, con agua tibia y jabón neutro. Utilizar blanqueador sin cloro cuando sea necesario. Secar en secadora en ciclo lento a temperatura baja. Plancha tibia si se desea.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+
+
 <!-- ==================== CHECKOUT ==================== -->
 <div id="modal-pago" class="modal-oculto" role="dialog" aria-modal="true" aria-labelledby="modal-pago-titulo">
 <div class="contenido-modal">
@@ -277,7 +1457,7 @@ Pagar con Tarjeta
  
         <p class="subtitulo-comunidad"> 
             Cada compra nos ayuda a abrazar a quienes más lo necesitan. 
-            ¡Síguenos y sé parte del cambio! 
+            ¡Síguenos en nuestras redes sociales! 
         </p> 
  
         <div class="iconos-redes-flex"> 
@@ -314,12 +1494,12 @@ Pagar con Tarjeta
 <div class="pie-col">
 <p class="pie-titulo">Legal</p>
 <a href="aviso-privacidad.html">Aviso de Privacidad</a>
-<a href="beneficios.html#ayuda-legal">Términos y Condiciones</a>
+<a href="contacto.html#ayuda-legal">Términos y Condiciones</a>
 </div>
 <div class="pie-col">
 <p class="pie-titulo">Servicio</p>
-<a href="beneficios.html#ayuda-envios">Políticas de entrega</a>
-<a href="beneficios.html#ayuda-envios">Cambios y devoluciones</a>
+<a href="contacto.html#ayuda-envios">Políticas de entrega</a>
+<a href="contacto.html#ayuda-envios">Cambios y devoluciones</a>
 </div>
 </div>
 
@@ -353,5 +1533,4 @@ title="Chatea con ABeCe" aria-label="Chatea con ABeCe por WhatsApp">
 </a>
 
 </body>
-</html>
-   
+</html>    

@@ -454,4 +454,137 @@ cargarCarritoDesdeStorage();
 calcularTotales();
 actualizarPantallaCarrito();
 
+// CONTROLADOR DE VARIANTES CON VINCULACIÓN A LA LUPA INTERACTIVA ABeCe
+function cambiarVarianteCojin(nombreVersion, rutaImagen, precio, botonActivo) {
+    // 1. Cambia la imagen que ve el usuario en la pantalla
+    const imgBase = document.getElementById('img-principal-cojin');
+    imgBase.src = rutaImagen;
+    
+    // 2. Actualiza el texto descriptivo de la variante
+    document.getElementById('nombre-variante-act').innerText = nombreVersion;
+    
+    // 3. Sincroniza el botón de compra para meter al carrito el color correcto
+    document.getElementById('btn-compra-cojin').setAttribute('onclick', `comprarProducto('Cojín de Lactancia (${nombreVersion})', ${precio})`);
+    
+    // 4. Mantenimiento visual de botones activos (estilo swatches)
+    const contenedor = botonActivo.closest('.botones-variantes-flex');
+    contenedor.querySelectorAll('.btn-variante').forEach(btn => btn.classList.remove('activo'));
+    botonActivo.classList.add('activo');
+}
+
+// CONTROLADOR DE VARIANTES UNIVERSAL MULTIPRODUCTO ABeCe
+function cambiarVarianteUniversal(productoClave, nombreVersion, rutaImagen, precio, botonActivo) {
+    // 1. Sincroniza la imagen base correspondiente
+    const imgBase = document.getElementById(`img-principal-${productoClave}`);
+    if (imgBase) imgBase.src = rutaImagen;
+
+    // 2. Sincroniza el texto descriptivo del color
+    const txtVersion = document.getElementById(`nombre-variante-${productoClave}`);
+    if (txtVersion) txtVersion.innerText = nombreVersion;
+
+    // 3. Sincroniza el precio visual independiente
+    const txtPrecio = document.getElementById(`precio-${productoClave}`);
+    if (txtPrecio) txtPrecio.innerText = `$${precio} MXN`;
+
+    // 4. Sincroniza el botón de compra final inyectando la variable exacta
+    const btnCompra = document.getElementById(`btn-compra-${productoClave}`);
+    if (btnCompra) {
+        // Formateamos el título de salida comercial según el identificador limpio
+        let tituloFormateado = 'Producto ABeCe';
+        
+        switch(productoClave) {
+            case 'cojin':
+                tituloFormateado = 'Cojín de Lactancia';
+                break;
+            case 'cojinvelur':
+                tituloFormateado = 'Cojín de Lactancia Velur';
+                break;
+            case 'cojinbordado':
+                tituloFormateado = 'Cojín de Lactancia Bordado';
+                break;
+            case 'sillon':
+                tituloFormateado = 'Sillón Colchón Antirreflujo';
+                break;
+            case 'cobija':
+                tituloFormateado = 'Cobija Rusia Doble Tela';
+                break;
+            case 'cobija-burbuja':
+                tituloFormateado = 'Cobija Burbuja Estampada';
+                break;
+            case 'almohada-con-funda-burbuja':
+                tituloFormateado = 'Almohada con Funda Burbuja';
+                break;
+            case 'almohada-burbuja-tela':
+                tituloFormateado = 'Almohada Burbuja Tela';
+                break;
+            case 'colchon-cambiador-curvo-funda-capitoneada':
+                tituloFormateado = 'Colchón Cambiador Curvo Funda Capitoneada';
+                break;
+            case 'colchon-cuna-antirreflujo-para-bebe-forro-toalla':
+                tituloFormateado = 'Colchón Cuña Antirreflujo para Bebé Forro Toalla';
+                break;
+            case 'colchon-para-cuna-viajera-memory-form-con-tela-repelente':
+                tituloFormateado = 'Colchón para Cuna Viajera Memory Form con Tela Repelente';
+                break;
+            case 'colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada':
+                tituloFormateado = 'Colchón para Cuna Viajera Memory Form con Tela Repelente Estampada';
+                break;
+            case 'juego-de-sabanas-mini-cuna-colecho-moises':
+                tituloFormateado = 'Juego de Sábanas Mini Cuna Colecho Moisés';
+                break;
+            case 'juego-de-sabanas-cuna':
+                tituloFormateado = 'Juego de Sábanas Cuna';
+                break;
+            case 'sabanitas-recibidoras':
+                tituloFormateado = 'Sabanitas Recibidoras';
+                break;
+            case 'set-de-3-sabanitas-sabanitas-recibidoras':
+                tituloFormateado = 'Set de 3 Sábanas Recibidoras';
+                break;
+            case 'nido-contencion-azul':
+                tituloFormateado = 'Nido de Contención';
+                break;
+            case 'fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico':
+                tituloFormateado = 'Fular para Porteo Ergonómico';
+                break;
+        }
+
+        btnCompra.setAttribute('onclick', `comprarProducto('${tituloFormateado} (${nombreVersion})', ${precio})`);
+    }
+
+    // 5. Mapeo estético de swatches activos
+    const contenedor = botonActivo.closest('.botones-variantes-flex');
+    if (contenedor) {
+        contenedor.querySelectorAll('.btn-variante').forEach(btn => btn.classList.remove('activo'));
+        botonActivo.classList.add('activo');
+    }
+}
+
+
+// CONTROLADOR DE PESTAÑAS DE INFORMACIÓN DE PRODUCTO ABeCe
+function alternarTabABeCe(tabIdDestino, botonPresionado) {
+    // 1. Localiza el contenedor de la tarjeta actual para no alterar otros productos
+    const tarjetaContenedor = botonPresionado.closest('.tarjeta-producto');
+    if (!tarjetaContenedor) return;
+
+    // 2. Apaga el contenido que estaba abierto y enciende el seleccionado (Buscando solo dentro de esta tarjeta)
+    tarjetaContenedor.querySelectorAll('.contenido-tab-item').forEach(bloque => {
+        bloque.classList.remove('activo');
+    });
+    
+    const tabDestino = tarjetaContenedor.querySelector(`#${tabIdDestino}`);
+    if (tabDestino) {
+        tabDestino.classList.add('activo');
+    }
+
+    // 3. Mantenimiento estético de los botones (ilumina la pestaña activa)
+    botonPresionado.closest('.tabs-botones-flex').querySelectorAll('.btn-tab').forEach(btn => {
+        btn.classList.remove('activo');
+    });
+    botonPresionado.classList.add('activo');
+}
+
+
+
+
 

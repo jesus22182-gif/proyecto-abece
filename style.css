@@ -1319,3 +1319,106 @@ h1, h2, h3, h4, h5, h6,
         font-size: 22px;
     }
 }
+
+/* SECTOR DE VARIANTES PREMIUM */
+.selector-variantes {
+    margin: 12px 0;
+    text-align: left;
+}
+.titulo-variante {
+    font-size: 13px;
+    color: #666666;
+    margin: 0 0 8px 0;
+}
+.titulo-variante span {
+    font-weight: 700;
+    color: #1A2D42; /* Tu Azul Medianoche */
+}
+.botones-variantes-flex {
+    display: flex;
+    gap: 10px;
+}
+.btn-variante {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(26, 45, 66, 0.15);
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+.circulo-color {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+/* Cuando el botón está seleccionado */
+.btn-variante.activo {
+    border-color: #6DA3CF; /* Tu Azul Oveja */
+    background-color: #EAF2F8;
+    font-weight: 700;
+    color: #1A2D42;
+}
+
+/* ==========================================================================
+   MÓDULO DE PESTAÑAS INTERACTIVAS DE FICHA TÉCNICA
+   ========================================================================== */
+.ficha-tecnica-tabs {
+    margin-top: 20px;
+    border: 1px solid rgba(26, 45, 66, 0.1);
+    border-radius: 12px;
+    background-color: #ffffff;
+    overflow: hidden;
+}
+.tabs-botones-flex {
+    display: flex;
+    background-color: #F7F3EC; /* Tu Crema Algodón base */
+    border-bottom: 1px solid rgba(26, 45, 66, 0.1);
+}
+.btn-tab {
+    flex: 1;
+    padding: 10px 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666666;
+    transition: all 0.2s ease;
+}
+.btn-tab.activo {
+    background-color: #ffffff;
+    color: #1A2D42; /* Tu Azul Medianoche */
+    font-weight: 700;
+}
+/* Control de visibilidad de los bloques */
+.contenido-tab-item {
+    display: none; /* Oculto por defecto */
+    padding: 15px;
+    text-align: left;
+}
+.contenido-tab-item.activo {
+    display: block; /* Solo se muestra el que tiene la clase activo */
+}
+.contenido-tab-item ul {
+    margin: 0;
+    padding-left: 20px;
+}
+.contenido-tab-item li {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #444444;
+    margin-bottom: 8px;
+}
+.composicion-grid-mini p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0 0 8px 0;
+    color: #444444;
+}
+

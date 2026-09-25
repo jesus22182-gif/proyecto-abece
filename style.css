@@ -1049,8 +1049,10 @@ FIRMA PROFESIONAL: ESPINOZA SOUND LAB
 }
 
 .logo-estudio {
-    height: 35px; /* Tamaño discreto y sumamente elegante */
-    width: auto;
+    display: block;
+    width: 100%;
+    max-width: 130px;
+    height: auto;
     opacity: 0.85;
     transition: var(--transicion);
     margin-bottom: 5px;
@@ -1815,7 +1817,7 @@ nav {
 .menu {
     position: fixed;
     top: 88px;
-    right: clamp(16px, 4vw, 58px);
+    left: clamp(16px, 4vw, 58px);
     z-index: 1600;
     width: min(300px, calc(100vw - 32px));
     padding: 18px;
@@ -1828,7 +1830,7 @@ nav {
     border-radius: 28px 18px 30px 20px;
     box-shadow: var(--sombra-premium);
     transform: translateY(-12px) scale(.96);
-    transform-origin: top right;
+    transform-origin: top left;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;

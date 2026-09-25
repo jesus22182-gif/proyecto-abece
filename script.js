@@ -1,9 +1,3 @@
-// Función para el botón general de WhatsApp en el Hero
-function mostrarMensaje() {
-    alert("Gracias por visitar ABeCe. En breve te redirigiremos a nuestro canal de soporte en WhatsApp.");
-    window.open("https://wa.me", "_blank"); // Aquí puedes cambiar el número por el tuyo en el futuro
-}
- 
 // ============================================================
 // VARIABLES GLOBALES DEL SISTEMA E-COMMERCE
 // ============================================================
@@ -12,6 +6,7 @@ function mostrarMensaje() {
 // por cada unidad comprada. Ej: { nombre, precio, cantidad: 3 }
 // en lugar de tres entradas idénticas de "Cojín".
 let carrito = [];
+const imagenesProductos = new Map();
  
 // CORREGIDO: "total" ahora es el TOTAL A PAGAR (subtotal + envío),
 // no solo la suma de productos. subtotal y envio se recalculan
@@ -26,6 +21,7 @@ const UMBRAL_ENVIO_GRATIS = 1600;
  
 // Clave usada para guardar el carrito en el navegador del cliente
 const CLAVE_CARRITO_STORAGE = "abece_carrito";
+const CLAVE_CHECKOUT_STORAGE = "abece_checkout_resumen";
  
 // ============================================================
 // NUEVO: PERSISTENCIA DEL CARRITO (localStorage)
@@ -35,6 +31,12 @@ const CLAVE_CARRITO_STORAGE = "abece_carrito";
 function guardarCarritoEnStorage() {
     try {
         localStorage.setItem(CLAVE_CARRITO_STORAGE, JSON.stringify(carrito));
+        localStorage.setItem(CLAVE_CHECKOUT_STORAGE, JSON.stringify({
+            productos: carrito,
+            subtotal: Number(subtotal),
+            envio: Number(envio),
+            total: Number(total)
+        }));
     } catch (error) {
         // Si el navegador bloquea localStorage (modo incógnito estricto, etc.)
         // el carrito simplemente seguirá funcionando solo en memoria.
@@ -56,6 +58,30 @@ function cargarCarritoDesdeStorage() {
         console.warn("No se pudo leer el carrito guardado:", error);
         carrito = [];
     }
+}
+
+function claveProducto(nombre, precio) {
+    return nombre + "|" + precio;
+}
+
+function registrarImagenesProductos() {
+    document.querySelectorAll("[id^='btn-compra-']").forEach(function (boton) {
+        const tarjeta = boton.closest(".tarjeta-producto");
+        const imagen = tarjeta && tarjeta.querySelector("img[id^='img-principal-']");
+        const datosCompra = boton.getAttribute("onclick") || "";
+        const coincidencia = datosCompra.match(/comprarProducto\('(.+)',\s*([0-9.]+)/);
+
+        if (imagen && coincidencia) {
+            imagenesProductos.set(
+                claveProducto(coincidencia[1], Number(coincidencia[2])),
+                imagen.getAttribute("src")
+            );
+        }
+    });
+}
+
+function obtenerImagenProducto(producto) {
+    return producto.imagen || imagenesProductos.get(claveProducto(producto.nombre, Number(producto.precio))) || "imagenes/logo.png";
 }
  
 // ============================================================
@@ -96,17 +122,20 @@ function alternarCarrito(event) {
 }
  
 // 2. FUNCIÓN AL DAR CLIC EN "COMPRAR AHORA" EN LAS VITRINAS
-function comprarProducto(nombre, precio) {
+function comprarProducto(nombre, precio, rutaImagen) {
     // CORREGIDO: si el producto ya está en el carrito, solo aumentamos
     // su cantidad en lugar de crear una fila duplicada.
     const productoExistente = carrito.find(function (producto) {
         return producto.nombre === nombre && producto.precio === precio;
     });
+
+    const imagen = rutaImagen || imagenesProductos.get(claveProducto(nombre, precio));
  
     if (productoExistente) {
         productoExistente.cantidad += 1;
+        if (imagen) productoExistente.imagen = imagen;
     } else {
-        carrito.push({ nombre: nombre, precio: precio, cantidad: 1 });
+        carrito.push({ nombre: nombre, precio: precio, cantidad: 1, imagen: imagen || "imagenes/logo.png" });
     }
  
     // Recalculamos subtotal, envío y total
@@ -118,10 +147,8 @@ function comprarProducto(nombre, precio) {
     // Actualizamos los datos en pantalla
     actualizarPantallaCarrito();
  
-    // Experiencia Pro: Abre el carrito de forma automática deslizándose al agregar
-    const carritoHtml = document.getElementById("carrito-compras");
-    carritoHtml.classList.remove("carrito-cerrado");
-    carritoHtml.classList.add("carrito-abierto");
+    // Comprar Ahora lleva directamente al checkout con el producto ya guardado.
+    window.location.href = "checkout.html";
 }
  
 // 3. FUNCIÓN QUE DIBUJA EL CARRITO LATERAL Y ACTUALIZA EL CONTADOR DEL MENÚ
@@ -129,6 +156,8 @@ function actualizarPantallaCarrito() {
     const listaHtml = document.getElementById("lista-carrito");
     const totalHtml = document.getElementById("total-precio");
     const contadorHtml = document.getElementById("contador-productos");
+
+    if (!listaHtml || !totalHtml) return;
  
     // Limpiamos la lista para evitar duplicar textos viejos
     listaHtml.innerHTML = "";
@@ -137,37 +166,60 @@ function actualizarPantallaCarrito() {
     // mostrando su cantidad y el subtotal de esa línea.
     carrito.forEach((producto, indice) => {
         const elementoLista = document.createElement("li");
-        elementoLista.style.display = "flex";
-        elementoLista.style.justifyContent = "space-between";
-        elementoLista.style.alignItems = "center";
-        elementoLista.style.marginBottom = "8px";
+        elementoLista.className = "item-carrito";
  
         // Texto descriptivo del artículo: Nombre, cantidad y subtotal de esa línea
         const subtotalProducto = producto.precio * producto.cantidad;
-        const textoProducto = document.createElement("span");
-        textoProducto.innerText =
-            producto.nombre +
-            " · Cantidad: " + producto.cantidad +
-            " · $" + producto.precio.toLocaleString('es-MX') + " c/u" +
-            " · Subtotal: $" + subtotalProducto.toLocaleString('es-MX') + " MXN";
+        const textoProducto = document.createElement("div");
+        textoProducto.className = "detalle-carrito";
+        textoProducto.innerHTML =
+            "<strong>" + producto.nombre + "</strong>" +
+            "<span>$" + producto.precio.toLocaleString('es-MX') + " c/u · $" + subtotalProducto.toLocaleString('es-MX') + " MXN</span>";
+
+        const controlesCantidad = document.createElement("div");
+        controlesCantidad.className = "selector-cantidad";
+
+        const botonMenos = document.createElement("button");
+        botonMenos.type = "button";
+        botonMenos.className = "boton-cantidad";
+        botonMenos.innerText = producto.cantidad === 1 ? "🗑" : "−";
+        botonMenos.setAttribute("aria-label", producto.cantidad === 1 ? "Eliminar " + producto.nombre : "Disminuir cantidad de " + producto.nombre);
+        botonMenos.onclick = function() { actualizarCantidad(indice, -1); };
+
+        const cantidad = document.createElement("span");
+        cantidad.className = "valor-cantidad";
+        cantidad.innerText = producto.cantidad;
+        cantidad.setAttribute("aria-label", "Cantidad: " + producto.cantidad);
+
+        const botonMas = document.createElement("button");
+        botonMas.type = "button";
+        botonMas.className = "boton-cantidad";
+        botonMas.innerText = "+";
+        botonMas.setAttribute("aria-label", "Aumentar cantidad de " + producto.nombre);
+        botonMas.onclick = function() { actualizarCantidad(indice, 1); };
+
+        controlesCantidad.appendChild(botonMenos);
+        controlesCantidad.appendChild(cantidad);
+        controlesCantidad.appendChild(botonMas);
  
         // Botón con la X roja discreta (elimina la línea completa de ese producto)
         const botonEliminar = document.createElement("button");
-        botonEliminar.innerText = "❌";
+        botonEliminar.innerText = "×";
+        botonEliminar.className = "boton-eliminar-carrito";
         botonEliminar.setAttribute("aria-label", "Quitar " + producto.nombre + " del carrito");
-        botonEliminar.style.background = "transparent";
-        botonEliminar.style.padding = "2px 5px";
-        botonEliminar.style.fontSize = "10px";
-        botonEliminar.style.border = "none";
-        botonEliminar.style.cursor = "pointer";
  
         // Asignamos la acción para eliminar solo este producto
         botonEliminar.onclick = function() {
             eliminarProductoIndividual(indice);
         };
  
+        const acciones = document.createElement("div");
+        acciones.className = "acciones-carrito";
+        acciones.appendChild(controlesCantidad);
+        acciones.appendChild(botonEliminar);
+
         elementoLista.appendChild(textoProducto);
-        elementoLista.appendChild(botonEliminar);
+        elementoLista.appendChild(acciones);
         listaHtml.appendChild(elementoLista);
     });
  
@@ -186,6 +238,19 @@ function actualizarPantallaCarrito() {
         const totalUnidades = carrito.reduce((acumulado, producto) => acumulado + producto.cantidad, 0);
         contadorHtml.innerText = totalUnidades;
     }
+}
+
+function actualizarCantidad(indice, cambio) {
+    const producto = carrito[indice];
+    if (!producto) return;
+
+    producto.cantidad += cambio;
+    if (producto.cantidad <= 0) carrito.splice(indice, 1);
+
+    calcularTotales();
+    guardarCarritoEnStorage();
+    actualizarPantallaCarrito();
+    if (typeof renderizarCheckout === "function") renderizarCheckout();
 }
  
 // NUEVO: crea (la primera vez) o actualiza el bloque de Subtotal / Envío
@@ -241,41 +306,16 @@ function vaciarCarrito() {
     alert("Se han eliminado todos los productos del carrito.");
 }
  
-// 6. FUNCIÓN QUE ABRE EL MODAL DE PAGO Y DESPLAZA LA PANTALLA
+// 6. FUNCIÓN QUE GUARDA EL CARRITO Y ABRE LA PÁGINA DE CHECKOUT
 function abrirCheckoutGlobal() {
     if (carrito.length === 0) {
         alert("🛒 Tu carrito está vacío. ¡Agrega algún producto de ABeCe antes de finalizar tu compra!");
         return;
     }
- 
-    const modal = document.getElementById("modal-pago");
-    const txtTotal = document.getElementById("checkout-total");
-    const txtProducto = document.getElementById("checkout-producto");
- 
-    // Limpiamos el formulario anterior por seguridad
-    document.getElementById("form-checkout").reset();
-    document.getElementById("campos-fiscales").className = "oculto-fiscal";
- 
-    // Aseguramos que los totales mostrados en el checkout estén frescos
+
     calcularTotales();
- 
-    const totalUnidades = carrito.reduce((acumulado, producto) => acumulado + producto.cantidad, 0);
-    const textoEnvio = envio === 0 ? "Gratis" : ("$" + envio.toLocaleString('es-MX') + " MXN");
- 
-    // Inyectamos la información del acumulado real en las etiquetas correspondientes,
-    // ahora con el desglose de Subtotal / Envío / Total.
-    txtProducto.innerHTML = "Has seleccionado: <strong>" + totalUnidades + " artículo(s)</strong> en tu carrito.";
-    txtTotal.innerHTML =
-        "Subtotal: $" + subtotal.toLocaleString('es-MX') + " MXN<br>" +
-        "Envío: " + textoEnvio + "<br>" +
-        "<strong>Total a pagar: $" + total.toLocaleString('es-MX') + ".00 MXN</strong>";
- 
-    // Mostramos la ventana modal quitando la clase que la esconde
-    modal.classList.remove("modal-oculto");
-    modal.classList.add("modal-visible");
- 
-    // Desplazamiento automático suave hacia la zona del Checkout
-    modal.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    guardarCarritoEnStorage();
+    window.location.href = "checkout.html";
 }
  
 function cerrarCheckout() {
@@ -310,64 +350,99 @@ function alternarModuloFiscal() {
     }
 }
  
-// 8. FINALIZACIÓN DE COMPRA Y REDIRECCIÓN BANCARIA (ACTUALIZADO CON VALIDACIÓN)
-function procesarPagoBancario(event) {
-    event.preventDefault(); // Detiene el reinicio automático de la página
- 
-    const nombreCliente = document.getElementById("chk-nombre").value;
-    const correoCliente = document.getElementById("chk-correo").value;
-    const telefonoCliente = document.getElementById("chk-telefono").value;
-    const pideFactura = document.getElementById("chk-necesita-factura").checked;
- 
-    // 💡 CAPTURA Y UNIFICACIÓN AUTOMÁTICA DE LA DIRECCIÓN
-    const calle = document.getElementById("chk-calle").value;
-    const colonia = document.getElementById("chk-colonia").value;
-    const cp = document.getElementById("chk-cp").value;
-    const municipio = document.getElementById("chk-municipio").value;
-    const estado = document.getElementById("chk-estado").value;
- 
-    // Formateamos la dirección completa en una sola línea profesional
-    const direccionCompletaUnificada = `${calle}, Col. ${colonia}, C.P. ${cp}, ${municipio}, ${estado}.`;
- 
-    let mensajeFiscal = "";
-    if (pideFactura) {
-        const rfc = document.getElementById("fisc-rfc").value;
-        const cfdi = document.getElementById("fisc-cfdi").value;
-        mensajeFiscal = "\n📝 Datos Fiscales validados para el RFC: " + rfc + " (Uso CFDI: " + cfdi + ")";
+async function procesarPagoBancario(event) {
+    event.preventDefault();
+
+    calcularTotales();
+
+    const nombreCliente = document.getElementById("chk-nombre").value.trim();
+    const correoCliente = document.getElementById("chk-correo").value.trim();
+    const telefonoCliente = document.getElementById("chk-telefono").value.trim();
+
+    const calle = document.getElementById("chk-calle").value.trim();
+    const colonia = document.getElementById("chk-colonia").value.trim();
+    const cp = document.getElementById("chk-cp").value.trim();
+    const municipio = document.getElementById("chk-municipio").value.trim();
+    const estado = document.getElementById("chk-estado").value.trim();
+
+    const necesitaFactura =
+        document.getElementById("chk-necesita-factura").checked;
+
+    const pedido = {
+        cliente: {
+            nombre: nombreCliente,
+            correo: correoCliente,
+            telefono: telefonoCliente
+        },
+
+        envio: {
+            calle,
+            colonia,
+            codigoPostal: cp,
+            municipio,
+            estado,
+            direccionCompleta:
+                `${calle}, Col. ${colonia}, C.P. ${cp}, ${municipio}, ${estado}.`
+        },
+
+        facturacion: {
+            necesitaFactura,
+            rfc: necesitaFactura
+                ? document.getElementById("fisc-rfc").value.trim()
+                : "",
+            razonSocial: necesitaFactura
+                ? document.getElementById("fisc-razon").value.trim()
+                : "",
+            codigoPostal: necesitaFactura
+                ? document.getElementById("fisc-cp").value.trim()
+                : "",
+            cfdi: necesitaFactura
+                ? document.getElementById("fisc-cfdi").value
+                : ""
+        },
+
+        items: carrito.map(producto => ({
+            title: producto.nombre,
+            price: Number(producto.precio),
+            quantity: Number(producto.cantidad)
+        })),
+
+        customerInfo: {
+            nombre: nombreCliente,
+            correo: correoCliente,
+            telefono: telefonoCliente
+        },
+
+        subtotal: Number(subtotal),
+        costoEnvio: Number(envio),
+        total: Number(total)
+    };
+
+    try {
+        const respuesta = await fetch("http://localhost:3000/api/mercado-pago/create-payment", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(pedido)
+        });
+
+        const datos = await respuesta.json();
+
+        if (!respuesta.ok) {
+            throw new Error(datos.error || "No se pudo iniciar el pago.");
+        }
+
+        // No vaciamos el carrito todavía.
+        // El correo y el folio oficial se generan únicamente
+        // después de que el webhook confirma el pago.
+        window.location.href = datos.init_point;
+    } catch (error) {
+        console.error(error);
+        alert("No fue posible iniciar el pago. Intenta nuevamente.");
     }
- 
-    // Aseguramos que el total incluya el envío antes de mostrarlo/cobrarlo
-    calcularTotales();
- 
-    // Alerta de confirmación con la dirección armada
-    alert(
-        "✨ ¡Gracias por tu compra, " + nombreCliente + "! ✨\n\n" +
-        "📦 Orden de entrega registrada en:\n" + direccionCompletaUnificada + "\n" +
-        mensajeFiscal + "\n\n" +
-        "Te redirigiremos de forma 100% segura a la pasarela bancaria de Mercado Pago para procesar tu pago de $" +
-        total.toLocaleString('es-MX') + " MXN con tarjeta (incluye envío)."
-    );
- 
-    // (El resto de tu función window.open, vaciar carrito y cerrar checkout se queda exactamente igual)
-    window.open("https://mercadopago.com", "_blank");
-    carrito = [];
-    calcularTotales();
-    guardarCarritoEnStorage();
-    actualizarPantallaCarrito();
-    cerrarCheckout();
 }
- 
-// Función exclusiva para el formulario de la página contacto.html
-function enviarMensajeContacto(event) {
-    event.preventDefault(); // Detiene el reinicio automático de la página
- 
-    const nombre = document.getElementById("fc-nombre").value;
- 
-    alert("✉️ ¡Gracias por escribirnos, " + nombre + "!\n\nHemos recibido tu mensaje de forma exitosa en ventasabece@gmail.com. Un asesor de ABeCe se pondrá en contacto contigo muy pronto.");
- 
-    // Resetea los campos de texto
-    document.getElementById("form-comunidad").reset();
-}
+
 // ==========================================================
 // ABeCe — CONTROLADOR DE LUPA DE PRODUCTOS
 // ==========================================================
@@ -383,6 +458,21 @@ function ejecutarLupa(e, contenedor) {
 
     // Mostrar la lupa
     lente.style.display = "block";
+
+    const contenedorRect = contenedor.getBoundingClientRect();
+    const anchoLente = lente.offsetWidth || 400;
+    const separacion = 20;
+    const espacioDerecho = window.innerWidth - contenedorRect.right;
+    const espacioIzquierdo = contenedorRect.left;
+    const abrirIzquierda = espacioDerecho < anchoLente + separacion && espacioIzquierdo >= anchoLente + separacion;
+
+    if (abrirIzquierda || espacioIzquierdo > espacioDerecho) {
+        lente.style.left = "auto";
+        lente.style.right = `calc(100% + ${separacion}px)`;
+    } else {
+        lente.style.right = "auto";
+        lente.style.left = `calc(100% + ${separacion}px)`;
+    }
 
     // Obtener dimensiones reales de la imagen
     const rect = img.getBoundingClientRect();
@@ -431,6 +521,8 @@ let indexBanner = 0;
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  
 function goToBanner(n) {
+    if (!slidesBanner.length || !dotsBanner.length || !pillBanner) return;
+
     slidesBanner[indexBanner].classList.remove('active');
     dotsBanner[indexBanner].classList.remove('active');
     indexBanner = n;
@@ -439,11 +531,144 @@ function goToBanner(n) {
     pillBanner.textContent = labelsBanner[indexBanner];
 }
  
-dotsBanner.forEach(d => d.addEventListener('click', () => goToBanner(parseInt(d.dataset.i))));
+dotsBanner.forEach(d => d.addEventListener('click', () => goToBanner(parseInt(d.dataset.i, 10))));
  
-if (!reduceMotion) {
+if (slidesBanner.length > 1 && dotsBanner.length === slidesBanner.length && !reduceMotion) {
     setInterval(() => goToBanner((indexBanner + 1) % slidesBanner.length), 4200);
 }
+
+const botonMenu = document.getElementById('boton-menu');
+const menuPrincipal = document.getElementById('menu-principal');
+
+function alternarMenu() {
+    if (!botonMenu || !menuPrincipal) return;
+
+    const menuAbierto = menuPrincipal.classList.toggle('menu-abierto');
+    botonMenu.classList.toggle('menu-abierto', menuAbierto);
+    botonMenu.setAttribute('aria-expanded', String(menuAbierto));
+    botonMenu.setAttribute('aria-label', menuAbierto ? 'Cerrar menú de navegación' : 'Abrir menú de navegación');
+}
+
+if (botonMenu && menuPrincipal) {
+    botonMenu.addEventListener('click', alternarMenu);
+    menuPrincipal.addEventListener('click', event => {
+        if (event.target.matches('a')) {
+            menuPrincipal.classList.remove('menu-abierto');
+            botonMenu.classList.remove('menu-abierto');
+            botonMenu.setAttribute('aria-expanded', 'false');
+            botonMenu.setAttribute('aria-label', 'Abrir menú de navegación');
+        }
+    });
+}
+
+// Índice de búsqueda del catálogo: cada entrada conserva variantes y su destino.
+const indiceProductosABeCe = [
+    { nombre: "Cojines de Lactancia", variantes: "Rosa Burbuja, Azul Nube, Blanco Algodón", cardIndex: 0, palabras: "cojin cojines lactancia rosa burbuja azul nube blanco algodon" },
+    { nombre: "Cojines de Lactancia Velur", variantes: "Rosa Velur, Azul Velur, Blanco Velur", cardIndex: 1, palabras: "cojin cojines lactancia velur rosa azul blanco" },
+    { nombre: "Cojines de Lactancia Bordados", variantes: "Rosa, Azul, Beige", cardIndex: 2, palabras: "cojin cojines lactancia bordado bordados rosa azul beige" },
+    { nombre: "Sillón Colchón Antirreflujo", variantes: "Azul Turquesa, Rosa, Blanco, Azul", cardIndex: 3, palabras: "sillon colchon antirreflujo azul turquesa rosa blanco" },
+    { nombre: "Cobija Rusia Doble Tela", variantes: "Azul, Rosa, Amarillo", cardIndex: 4, palabras: "cobija rusia doble tela azul rosa amarillo" },
+    { nombre: "Cobija Rusia con Oso de Apego", variantes: "Incluye Oso de Apego", cardIndex: 4, palabras: "cobija rusia oso apego" },
+    { nombre: "Cobija Burbuja Estampado Tela", variantes: "Azul, Rosa, Amarillo", cardIndex: 5, palabras: "cobija burbuja estampado tela azul rosa amarillo" },
+    { nombre: "Almohada con Funda Burbuja", variantes: "Azul, Rosa, Amarillo", cardIndex: 6, palabras: "almohada funda burbuja azul rosa amarillo" },
+    { nombre: "Almohada Burbuja Tela", variantes: "Azul, Rosa, Amarillo, Blanco", cardIndex: 7, palabras: "almohada burbuja tela azul rosa amarillo blanco" },
+    { nombre: "Colchón Cambiador Curvo Funda Capitoneada", variantes: "Blanco", cardIndex: 8, palabras: "colchon cambiador curvo funda capitoneada blanco" },
+    { nombre: "Colchón Cuña Antirreflujo para Bebé Forro Toalla", variantes: "Blanco", cardIndex: 9, palabras: "colchon cuña antirreflujo bebe forro toalla blanco" },
+    { nombre: "Colchón para Cuna Viajera Memory Form con Tela Repelente", variantes: "Blanco", cardIndex: 10, palabras: "colchon cuna viajera memory form tela repelente blanco" },
+    { nombre: "Colchón para Cuna Viajera Memory Form con Tela Repelente Estampada", variantes: "Azul-Niño, Rosa-Niña", cardIndex: 11, palabras: "colchon cuna viajera memory form tela repelente estampada azul niño rosa niña" },
+    { nombre: "Fular para Porteo Canguro Rebozo Porta Bebés Ergonómico", variantes: "Negro, Rosa", cardIndex: 12, palabras: "fular porteo canguro rebozo porta bebes ergonomico negro rosa" },
+    { nombre: "Nido Contención Azul / Rosa", variantes: "Incluye Oso de Apego", cardIndex: 13, palabras: "nido contencion azul rosa oso apego" },
+    { nombre: "Set de 3 Sabanitas Sabanitas Recibidoras", variantes: "Azul, Rosa", cardIndex: 14, palabras: "set 3 sabanitas recibidoras azul rosa" },
+    { nombre: "Sabanitas Recibidoras", variantes: "Azul-gris, Rosa-gris", cardIndex: 15, palabras: "sabanitas recibidoras azul gris rosa" },
+    { nombre: "Juego de Sábanas para Cuna", variantes: "Gris", cardIndex: 16, palabras: "juego sabanas cuna gris" },
+    { nombre: "Juego de Sábanas para Mini Cuna y Colecho", variantes: "Blanco", cardIndex: 17, palabras: "juego sabanas mini cuna colecho blanco" },
+    { nombre: "Cuellera para Soporte de Cabeza", variantes: "Azul, Rosa, Amarillo", cardIndex: 18, palabras: "cuellera soporte cabeza azul rosa amarillo" },
+    { nombre: "Cuellera Pequeña", variantes: "Azul, Rosa, Amarillo", cardIndex: 19, palabras: "cuellera pequeña azul rosa amarillo" },
+    { nombre: "Cojín Térmico", variantes: "Semillas y hierbas", cardIndex: 20, palabras: "cojin termico colicos semillas hierbas" },
+    { nombre: "Oso de Apego Relleno", variantes: "Azul, Rosa, Blanco", cardIndex: 21, palabras: "oso apego relleno azul rosa blanco" },
+    { nombre: "Oso de Apego", variantes: "Azul, Rosa, Blanco", cardIndex: 22, palabras: "oso apego sin relleno azul rosa blanco" },
+    { nombre: "Saquito para Dormir", variantes: "Mantita para bebé", cardIndex: 23, palabras: "saquito dormir mantita" },
+    { nombre: "Andarín", variantes: "Apoyo para primeros pasos", cardIndex: 24, palabras: "andarin primeros pasos" },
+    { nombre: "Protector de Cambiador", variantes: "Protección suave", cardIndex: 25, palabras: "protector cambiador" },
+    { nombre: "Set de 3 Repetidores", variantes: "Azul, Rosa", cardIndex: 26, palabras: "set repetidores" },
+    { nombre: "Toalla Bordada con Capucha", variantes: "Suave para después del baño", cardIndex: 27, palabras: "toalla bordada capucha" },
+    { nombre: "Toalla con Capucha de Conejito", variantes: "Suave y acogedora", cardIndex: 28, palabras: "toalla capucha conejito" },
+    { nombre: "Set de Toallas Faciales", variantes: "Uso diario", cardIndex: 29, palabras: "set toallas faciales" },
+    { nombre: "Edredón para Cuna Viajera con Osito", variantes: "Incluye sábana", cardIndex: 30, palabras: "edredon cuna viajera osito" },
+    { nombre: "Edredón para Cuna Viajera", variantes: "Sábana blanca", cardIndex: 31, palabras: "edredon cuna viajera sabana blanca" },
+    { nombre: "Edredón para Minicuna con Osito", variantes: "Incluye sábana", cardIndex: 32, palabras: "edredon minicuna osito" },
+    { nombre: "Edredón para Minicuna", variantes: "Sábana de algodón", cardIndex: 33, palabras: "edredon minicuna sabana algodon" },
+    { nombre: "Edredón para Moisés", variantes: "Sábana blanca", cardIndex: 34, palabras: "edredon moises sabana blanca" },
+    { nombre: "Mantita de Apego", variantes: "Suave para sus siestas", cardIndex: 35, palabras: "mantita apego" }
+];
+
+function textoBusqueda(texto) {
+    return texto.toLocaleLowerCase('es-MX').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
+
+function prepararDestinosBusqueda() {
+    if (!/productos\.html$/i.test(window.location.pathname)) return;
+    const tarjetas = Array.from(document.querySelectorAll('.tarjeta-producto'));
+    indiceProductosABeCe.forEach(function (producto, indice) {
+        const tarjeta = tarjetas[producto.cardIndex];
+        producto.id = producto.id || 'producto-catalogo-' + producto.cardIndex;
+        producto.enlace = 'productos.html#' + producto.id;
+        if (tarjeta && !tarjeta.id) tarjeta.id = producto.id;
+    });
+    const destinoHash = window.location.hash ? document.getElementById(window.location.hash.slice(1)) : null;
+    if (destinoHash) setTimeout(() => destinoHash.scrollIntoView({ behavior: 'smooth', block: 'center' }), 0);
+}
+
+function iniciarBuscadorABeCe() {
+    const formulario = document.getElementById('buscador-abece');
+    const entrada = document.getElementById('entrada-busqueda');
+    const sugerencias = document.getElementById('sugerencias-busqueda');
+    if (!formulario || !entrada || !sugerencias) return;
+    indiceProductosABeCe.forEach(producto => {
+        producto.id = 'producto-catalogo-' + producto.cardIndex;
+        producto.enlace = 'productos.html#' + producto.id;
+    });
+    prepararDestinosBusqueda();
+
+    function mostrarSugerencias() {
+        const consulta = textoBusqueda(entrada.value.trim());
+        const resultados = consulta ? indiceProductosABeCe.filter(producto => textoBusqueda(producto.nombre + ' ' + producto.variantes + ' ' + producto.palabras).includes(consulta)).slice(0, 10) : [];
+        sugerencias.innerHTML = resultados.map(producto => '<button type="button" class="sugerencia-busqueda" role="option" data-producto-id="' + producto.id + '"><strong>' + producto.nombre + '</strong><small>' + producto.variantes + '</small></button>').join('');
+        sugerencias.classList.toggle('visible', resultados.length > 0);
+        entrada.setAttribute('aria-expanded', String(resultados.length > 0));
+    }
+
+    function abrirResultado(producto) {
+        const destino = document.getElementById(producto.id) || document.querySelectorAll('.tarjeta-producto')[producto.cardIndex];
+        if (destino) {
+            destino.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            destino.classList.add('resultado-busqueda');
+            setTimeout(() => destino.classList.remove('resultado-busqueda'), 1600);
+        } else {
+            window.location.href = producto.enlace;
+        }
+        sugerencias.classList.remove('visible');
+        entrada.setAttribute('aria-expanded', 'false');
+    }
+
+    entrada.addEventListener('input', mostrarSugerencias);
+    sugerencias.addEventListener('click', event => {
+        const boton = event.target.closest('[data-producto-id]');
+        const producto = boton && indiceProductosABeCe.find(item => item.id === boton.dataset.productoId);
+        if (producto) abrirResultado(producto);
+    });
+    formulario.addEventListener('submit', event => {
+        event.preventDefault();
+        const consulta = textoBusqueda(entrada.value.trim());
+        const producto = indiceProductosABeCe.find(item => textoBusqueda(item.nombre + ' ' + item.variantes + ' ' + item.palabras).includes(consulta));
+        if (producto) abrirResultado(producto);
+    });
+    document.addEventListener('click', event => {
+        if (!formulario.contains(event.target)) sugerencias.classList.remove('visible');
+    });
+}
+
+iniciarBuscadorABeCe();
  
 // ============================================================
 // NUEVO: AL CARGAR CUALQUIER PÁGINA DEL SITIO, RECUPERAMOS EL
@@ -451,8 +676,14 @@ if (!reduceMotion) {
 // DE INMEDIATO, ANTES DE QUE EL USUARIO ABRA EL CARRITO.
 // ============================================================
 cargarCarritoDesdeStorage();
+registrarImagenesProductos();
+carrito.forEach(function (producto) {
+    if (!producto.imagen) producto.imagen = obtenerImagenProducto(producto);
+});
 calcularTotales();
-actualizarPantallaCarrito();
+if (document.getElementById('lista-carrito')) {
+    actualizarPantallaCarrito();
+}
 
 // CONTROLADOR DE VARIANTES CON VINCULACIÓN A LA LUPA INTERACTIVA ABeCe
 function cambiarVarianteCojin(nombreVersion, rutaImagen, precio, botonActivo) {
@@ -464,7 +695,7 @@ function cambiarVarianteCojin(nombreVersion, rutaImagen, precio, botonActivo) {
     document.getElementById('nombre-variante-act').innerText = nombreVersion;
     
     // 3. Sincroniza el botón de compra para meter al carrito el color correcto
-    document.getElementById('btn-compra-cojin').setAttribute('onclick', `comprarProducto('Cojín de Lactancia (${nombreVersion})', ${precio})`);
+    document.getElementById('btn-compra-cojin').setAttribute('onclick', `comprarProducto('Cojín de Lactancia (${nombreVersion})', ${precio}, '${rutaImagen}')`);
     
     // 4. Mantenimiento visual de botones activos (estilo swatches)
     const contenedor = botonActivo.closest('.botones-variantes-flex');
@@ -472,7 +703,7 @@ function cambiarVarianteCojin(nombreVersion, rutaImagen, precio, botonActivo) {
     botonActivo.classList.add('activo');
 }
 
-// CONTROLADOR DE VARIANTES UNIVERSAL MULTIPRODUCTO ABeCe
+    // CONTROLADOR DE VARIANTES UNIVERSAL MULTIPRODUCTO ABeCe
 function cambiarVarianteUniversal(productoClave, nombreVersion, rutaImagen, precio, botonActivo) {
     // 1. Sincroniza la imagen base correspondiente
     const imgBase = document.getElementById(`img-principal-${productoClave}`);
@@ -547,9 +778,64 @@ function cambiarVarianteUniversal(productoClave, nombreVersion, rutaImagen, prec
             case 'fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico':
                 tituloFormateado = 'Fular para Porteo Ergonómico';
                 break;
+            case 'cuellera-soporte-para-cabeza':
+                tituloFormateado = 'Cuellera Soporte para cabeza';
+                break;
+            case 'cuellera-soporte-para-cabeza-chica':
+                tituloFormateado = 'Cuellera Soporte para cabeza chica';
+                break;
+            case 'cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas':
+                tituloFormateado = 'Cojín térmico anti Cólicos para bebé (semillas y hierbas)';
+                break;
+            case 'oso-de-apego-relleno':
+                tituloFormateado = 'Oso de Apego';
+                break;
+            case 'oso-de-apego-sin-relleno':
+                tituloFormateado = 'Oso de Apego (sin relleno)';
+                break;
+           case  'saquito-para-dormir-para-bebe':
+                tituloFormateado = 'Saquito para dormir Para bebe';
+                break;
+           case  'andarin':
+                tituloFormateado = 'ANDARIN';
+                break;
+           case  'protector-para-colchon-cambiador':
+                tituloFormateado = 'protector para colchon cambiador';
+                break;
+           case  'set-de-3-repetidores-toalla':
+                tituloFormateado = 'Set  de 3  Repetidores Toalla';
+                break;
+           case  'toalla-con-capucha-para-bebe-bordado':
+                tituloFormateado = 'toalla con capucha para bebe bordado';
+                break;
+           case  'toalla-con-capucha-para-bebe-diseno-de-conejo':
+                tituloFormateado = 'Toalla con capucha para bebe Diseño de conejo';
+                break;
+           case  'toalla-facial-para-bebe-100-algodon-7-piezas':
+                tituloFormateado = 'Toalla facial para bebe 100% algodón 7 piezas';
+                break;
+           case  'edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego':
+                tituloFormateado = 'Edredon Para cuna viajera Doble Burbuja Con Oso de apego';
+                break;
+           case  'edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco':
+                tituloFormateado = 'Edredon Para cuna viajera Doble Burbuja Con sabana de cajon blanco';
+                break;
+           case  'edredon-para-minicuna-doble-burbuja-con-oso-de-apego':
+                tituloFormateado = 'Edredon para minicuna doble / Burbuja Con oso de apego';
+                break;
+           case  'edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon':
+                tituloFormateado = 'Edredon para minicuna doble / Burbuja Con sabana de cajon algodón';
+                break;
+           case  'edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca':
+                tituloFormateado = 'Edredón para minicuna Moisés Incluye sabana de cajón blanca';
+                break;
+           case  'mantita-de-apego-oso':
+                tituloFormateado = 'Mantita de apego Oso';
+                break;
+
         }
 
-        btnCompra.setAttribute('onclick', `comprarProducto('${tituloFormateado} (${nombreVersion})', ${precio})`);
+        btnCompra.setAttribute('onclick', `comprarProducto('${tituloFormateado} (${nombreVersion})', ${precio}, '${rutaImagen}')`);
     }
 
     // 5. Mapeo estético de swatches activos

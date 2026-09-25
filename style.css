@@ -22,7 +22,7 @@ ABECE 2.1 - style.css
 body{
     background:var(--color-fondo);
     color:var(--color-primario);
-    font-family:'Poppins',sans-serif;
+    font-family:'Nunito',sans-serif;
     line-height:1.6;
 }
 
@@ -329,6 +329,55 @@ button:hover{
     z-index:1500;
 }
 
+.item-carrito{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:12px;
+    padding:10px 0;
+    border-bottom:1px solid rgba(109,163,207,.2);
+}
+
+.detalle-carrito{ min-width:0; flex:1; }
+.detalle-carrito strong,
+.detalle-carrito span{ display:block; overflow-wrap:anywhere; }
+.detalle-carrito strong{ color:#263f55; font-size:13px; }
+.detalle-carrito span{ color:#718397; font-size:11px; margin-top:3px; }
+.acciones-carrito{ display:flex; align-items:center; gap:7px; flex-shrink:0; }
+.selector-cantidad{
+    display:flex;
+    align-items:center;
+    min-height:30px;
+    border:1px solid #c8dcea;
+    border-radius:9px;
+    background:#f7fbfd;
+    overflow:hidden;
+}
+.boton-cantidad{
+    width:28px;
+    height:28px;
+    padding:0;
+    border:0;
+    background:transparent;
+    color:#365f78;
+    font-size:17px;
+    line-height:1;
+    cursor:pointer;
+}
+.boton-cantidad:hover{ background:#e3f0f6; }
+.valor-cantidad{ min-width:20px; color:#263f55; font-size:13px; font-weight:700; text-align:center; }
+.boton-eliminar-carrito{
+    padding:0 3px;
+    border:0;
+    background:transparent;
+    color:#8da0ad;
+    font-size:20px;
+    line-height:1;
+    cursor:pointer;
+}
+.boton-eliminar-carrito:hover{ color:#b85c68; }
+
 .carrito-cerrado{
     transform:translateX(100%);
 }
@@ -401,7 +450,7 @@ button:hover{
     padding:12px;
     border:1px solid #ccc;
     border-radius:10px;
-    font-family:'Poppins',sans-serif;
+    font-family:'Nunito',sans-serif;
 }
 
 #form-checkout input:focus,
@@ -1249,6 +1298,268 @@ h1, h2, h3, h4, h5, h6,
     transform: scale(1.1);
 }
 
+/* ==========================================================================\n+   CARRUSEL DE TOALLAS PARA BEBE\n+   ========================================================================== */
+.carrusel-toallas {
+    width: 100%;
+    padding: 10px 0;
+    scroll-margin-top: 80px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #F7F3EC 0%, #EAF2F8 100%);
+}
+
+.carrusel-toallas-intro {
+    max-width: 760px;
+    margin: 0 auto 18px;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.carrusel-etiqueta,
+.slide-kicker,
+.slide-numero {
+    font-family: 'Comfortaa', cursive;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.carrusel-etiqueta {
+    color: var(--color-secundario);
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.carrusel-toallas-intro h2 {
+    margin-bottom: 8px;
+    color: var(--color-primario);
+    font-family: 'Comfortaa', cursive;
+    font-size: clamp(24px, 3vw, 32px);
+    line-height: 1.2;
+}
+
+.carrusel-toallas-intro > p:last-child {
+    max-width: 54ch;
+    margin: 0 auto;
+    color: #526679;
+    font-size: 14px;
+}
+
+.rail {
+    display: flex;
+    gap: 24px;
+    max-width: 1180px;
+    margin: 5px auto 0;
+    padding: 10px max(24px, calc((100% - 972px) / 2));
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overscroll-behavior-x: contain;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-secundario) transparent;
+}
+
+.rail::-webkit-scrollbar { height: 8px; }
+.rail::-webkit-scrollbar-thumb { background: var(--color-secundario); border-radius: 20px; }
+.rail::-webkit-scrollbar-track { background: transparent; }
+
+.rail .slide {
+    position: relative;
+    inset: auto;
+    flex: 0 0 min(440px, calc(100vw - 40px));
+    width: 100%;
+    max-width: 440px;
+    height: 360px;
+    min-height: 0;
+    padding: 20px 24px;
+    overflow: hidden;
+    border-radius: 18px;
+    background: #F7F3EC;
+    box-shadow: 0 18px 42px rgba(26, 45, 66, .14);
+    opacity: 1;
+    scroll-snap-align: start;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.rail .slide:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 24px 48px rgba(26, 45, 66, .18);
+}
+
+.rail .slide::after {
+    position: absolute;
+    right: -80px;
+    bottom: -90px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .4);
+    content: '';
+}
+
+.rail .s1 { background: #F7F3EC; }
+.rail .s2 { background: #EAF2F8; }
+.rail .s3 { background: #E5F0E6; }
+.rail .s4 { background: #F6D173; }
+
+.slide-contenido {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.slide-numero {
+    margin-bottom: 10px;
+    color: rgba(26, 45, 66, .56);
+    font-size: 11px;
+}
+
+.slide-icono {
+    margin: 0 0 12px;
+    font-size: 42px;
+    line-height: 1;
+}
+
+.slide-kicker {
+    margin-bottom: 6px;
+    color: var(--color-secundario);
+    font-size: 12px;
+}
+
+.s4 .slide-kicker { color: var(--color-primario); }
+
+.rail .slide h3 {
+    max-width: 13ch;
+    margin-bottom: 9px;
+    color: var(--color-primario);
+    font-family: 'Comfortaa', cursive;
+    font-size: clamp(21px, 2.3vw, 26px);
+    line-height: 1.2;
+}
+
+.slide-texto {
+    max-width: 38ch;
+    color: #40566A;
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.slide-lista {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+    margin: 2px 0 10px;
+    padding: 0;
+    list-style: none;
+}
+
+.slide-lista li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: #40566A;
+    font-size: 13px;
+    line-height: 1.25;
+}
+
+.slide-lista li p { margin: 0; }
+
+.slide-lista-numerada li > span,
+.slide-lista-checks li > span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 24px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-family: 'Comfortaa', cursive;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.slide-lista-numerada li > span {
+    color: var(--color-primario);
+    background: #FFFFFF;
+}
+
+.slide-lista-checks li > span {
+    color: #FFFFFF;
+    background: #6C9B70;
+    font-size: 15px;
+}
+
+.slide-boton {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 6px;
+    padding: 8px 13px;
+    border-radius: 12px;
+    color: var(--color-primario);
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.slide-boton:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(26, 45, 66, .14); }
+.slide-boton-secundario { background: #FFFFFF; }
+.slide-boton-azul { background: var(--color-secundario); color: #FFFFFF; }
+.slide-boton-amarillo { background: var(--color-acento); }
+.slide-boton-valla { background: #F6D173; }
+
+.rail-navegacion {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.rail-navegacion a {
+    min-width: 38px;
+    padding: 7px 9px;
+    border: 1px solid rgba(26, 45, 66, .16);
+    border-radius: 8px;
+    color: var(--color-primario);
+    font-family: 'Comfortaa', cursive;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    transition: background .2s ease, border-color .2s ease;
+}
+
+.rail-navegacion a:hover,
+.rail-navegacion a:focus-visible {
+    border-color: var(--color-secundario);
+    background: #FFFFFF;
+}
+
+@media (max-width: 600px) {
+    .carrusel-toallas { padding: 60px 0 54px; }
+    .rail { gap: 16px; padding-right: 20px; padding-left: 20px; }
+    .rail .slide {
+        flex-basis: calc(100vw - 40px);
+        width: calc(100vw - 40px);
+        height: calc((100vw - 40px) * 1.25);
+        min-height: 560px;
+        padding: 34px 28px;
+    }
+    .rail .slide h3 { font-size: 27px; }
+    .slide-lista { gap: 12px; }
+    .slide-lista li { font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rail { scroll-behavior: auto; }
+    .rail .slide, .slide-boton { transition: none; }
+}
+
 /* 3. Ajuste de Contenedores Modales Adaptables (Checkout e Información) */
 .env-cuerpo-modal {
     text-align: left;
@@ -1420,5 +1731,590 @@ h1, h2, h3, h4, h5, h6,
     line-height: 1.5;
     margin: 0 0 8px 0;
     color: #444444;
+}
+
+/* ============================================================
+   SISTEMA VISUAL ABeCe - LA NUBE DE SUENOS
+   ============================================================ */
+:root {
+    --color-fondo: #F7F3EC;
+    --color-primario: #1A2D42;
+    --color-secundario: #6DA3CF;
+    --color-claro: #EAF3FA;
+    --color-acento: #F6D173;
+    --color-blanco: #EAF3FA;
+    --sombra-premium: 0 18px 45px rgba(26, 45, 66, .12);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+[id] {
+    scroll-margin-top: 80px;
+}
+
+body {
+    background: var(--color-fondo);
+    color: var(--color-primario);
+    font-family: 'Nunito', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-primario);
+    font-family: 'Comfortaa', sans-serif;
+    letter-spacing: 0;
+}
+
+p, li, a, button, input, textarea, select, label {
+    font-family: 'Nunito', sans-serif;
+}
+
+nav {
+    min-height: 78px;
+    padding: 14px clamp(20px, 5vw, 72px);
+    background: var(--color-fondo);
+    border-bottom: 1px solid var(--color-claro);
+    box-shadow: 0 8px 25px rgba(26, 45, 66, .07);
+}
+
+.logo-marca {
+    width: 88px;
+}
+
+.boton-menu {
+    position: relative;
+    z-index: 1601;
+    width: 48px;
+    height: 48px;
+    padding: 11px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background: var(--color-claro);
+    border: 1px solid var(--color-secundario);
+    border-radius: 17px 22px 15px 21px;
+    box-shadow: none;
+}
+
+.boton-menu span {
+    width: 22px;
+    height: 2px;
+    display: block;
+    background: var(--color-primario);
+    border-radius: 99px;
+    transition: transform .25s ease, opacity .2s ease;
+}
+
+.boton-menu.menu-abierto span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.boton-menu.menu-abierto span:nth-child(2) { opacity: 0; }
+.boton-menu.menu-abierto span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.menu {
+    position: fixed;
+    top: 88px;
+    right: clamp(16px, 4vw, 58px);
+    z-index: 1600;
+    width: min(300px, calc(100vw - 32px));
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+    background: var(--color-claro);
+    border: 1px solid var(--color-secundario);
+    border-radius: 28px 18px 30px 20px;
+    box-shadow: var(--sombra-premium);
+    transform: translateY(-12px) scale(.96);
+    transform-origin: top right;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease, visibility .25s ease;
+}
+
+.menu.menu-abierto {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.menu a,
+#enlace-carrito {
+    padding: 12px 16px;
+    color: var(--color-primario);
+    border-radius: 16px 12px 17px 13px;
+    background: transparent;
+}
+
+.menu a:hover,
+.menu a:focus-visible {
+    color: var(--color-primario);
+    background: var(--color-fondo);
+}
+
+.menu #enlace-carrito {
+    margin-top: 6px;
+    background: var(--color-acento);
+}
+
+section {
+    padding-top: clamp(56px, 8vw, 96px);
+    padding-bottom: clamp(56px, 8vw, 96px);
+}
+
+.hero-premium {
+    background: var(--color-fondo);
+}
+
+.cloud-bg.c3,
+.contenedor-lupa-premium,
+.lupa-lente {
+    background: var(--color-claro);
+}
+
+.hero-text h1 span,
+.link-contacto-directo,
+.icono-social-link:hover,
+.contacto-desarrollador a {
+    color: var(--color-secundario);
+}
+
+.eyebrow,
+.stage-pill,
+.badge-float,
+.env-pill {
+    background: var(--color-claro);
+    color: var(--color-primario);
+}
+
+.btn-primary-banner,
+.btn-pago-tarjeta,
+.env-pill {
+    background: var(--color-acento);
+    color: var(--color-primario);
+}
+
+button:not(.boton-menu):not(.cerrar-modal):not(.cerrar-carrito-x):not(.env-btn-info):not(.btn-pago-tarjeta) {
+    background: var(--color-claro);
+    color: var(--color-primario);
+}
+
+.tarjeta-producto,
+.contenido-modal,
+.info-contacto,
+.formulario-contacto-caja,
+.tarjeta-redes,
+.tarjeta-video,
+.tarjeta-identidad,
+.valor-item,
+.barra-garantias-abece {
+    background: var(--color-claro);
+    box-shadow: var(--sombra-premium);
+}
+
+.detalles-prod,
+.subtitulo-contacto,
+.subtitulo-valores,
+.subtitulo-comunidad,
+.nota-atencion,
+.banner-valor p,
+.valor-item p,
+.texto-garantia p,
+.numero-whatsapp,
+.contacto-desarrollador {
+    color: var(--color-primario);
+}
+
+#carrito-compras {
+    background: var(--color-claro);
+    border-left-color: var(--color-secundario);
+}
+
+.modal-visible {
+    background: rgba(26, 45, 66, .62);
+}
+
+.modulo-facturacion,
+.legal-checkbox-wrap,
+.tarjeta-info,
+.icono-garantia {
+    background: var(--color-fondo);
+}
+
+#form-checkout input,
+#form-checkout textarea,
+#form-checkout select,
+#form-comunidad input,
+#form-comunidad textarea {
+    color: var(--color-primario);
+    background: var(--color-fondo);
+    border-color: var(--color-secundario);
+    font-family: 'Nunito', sans-serif;
+}
+
+.btn-whatsapp,
+.btn-whatsapp-flotante {
+    background: var(--color-secundario);
+    color: var(--color-fondo);
+    box-shadow: 0 10px 25px rgba(26, 45, 66, .18);
+}
+
+.btn-whatsapp:hover,
+.btn-whatsapp-flotante:hover {
+    background: var(--color-primario);
+}
+
+.fb,
+.ig {
+    background: var(--color-secundario);
+    color: var(--color-fondo);
+}
+
+.fb:hover,
+.ig:hover {
+    background: var(--color-primario);
+}
+
+footer {
+    background: var(--color-primario);
+    color: var(--color-claro);
+}
+
+footer a,
+.nombre-estudio {
+    color: var(--color-claro);
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: row;
+        gap: 16px;
+    }
+
+    .logo-marca {
+        width: 76px;
+        margin: 0;
+    }
+
+    .menu {
+        top: 82px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+/* Cabecera compacta y buscador predictivo ABeCe */
+.navbar-abece {
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2vw, 30px);
+    padding: 8px clamp(16px, 4vw, 56px);
+    background: #fff;
+}
+
+.nav-identidad, .nav-acciones, .enlace-logo-marca { display: flex; align-items: center; }
+.nav-identidad { flex: 0 0 auto; gap: 12px; }
+.enlace-logo-marca { gap: 9px; }
+.navbar-abece .logo-marca { width: 62px; }
+.dominio-marca { color: var(--color-primario); font: 700 14px/1 'Comfortaa', sans-serif; white-space: nowrap; }
+.navbar-abece .boton-menu { width: 40px; height: 40px; padding: 9px; border-radius: 15px 19px 14px 18px; }
+.buscador-abece { position: relative; display: flex; flex: 1 1 520px; min-width: 180px; max-width: 760px; margin: 0 auto; }
+.buscador-abece input { width: 100%; height: 42px; padding: 0 52px 0 17px; border: 2px solid #d7e5ef; border-radius: 12px; color: var(--color-primario); background: #f8fbfd; font-size: 14px; }
+.buscador-abece input:focus { outline: none; border-color: var(--color-secundario); box-shadow: 0 0 0 3px rgba(109,163,207,.18); }
+.buscador-abece > button { position: absolute; right: 0; top: 0; width: 48px; height: 42px; padding: 0; border-radius: 0 10px 10px 0; background: var(--color-acento); }
+.buscador-abece > button:hover { transform: none; }
+.sugerencias-busqueda { position: absolute; z-index: 1700; top: calc(100% + 6px); left: 0; right: 0; display: none; padding: 6px; background: #fff; border: 1px solid #d7e5ef; border-radius: 12px; box-shadow: 0 14px 30px rgba(26,45,66,.14); }
+.sugerencias-busqueda.visible { display: block; }
+.sugerencia-busqueda { display: block; width: 100%; padding: 10px 12px; border: 0; border-radius: 8px; background: transparent; text-align: left; color: var(--color-primario); cursor: pointer; }
+.sugerencia-busqueda:hover, .sugerencia-busqueda:focus { background: #f0f7fb; outline: none; }
+.sugerencia-busqueda small { display: block; color: #6b7d8c; font-size: 12px; }
+.navbar-abece .nav-acciones { position: relative; flex: 0 0 auto; }
+.navbar-abece #enlace-carrito { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; padding: 0; color: var(--color-primario); background: transparent; font-size: 21px; }
+.navbar-abece #enlace-carrito:hover { color: var(--color-secundario); transform: none; }
+.navbar-abece #contador-productos { position: absolute; top: -2px; right: -3px; min-width: 18px; height: 18px; padding: 0 4px; border: 2px solid #fff; border-radius: 99px; background: var(--color-primario); color: #fff; font: 800 11px/14px 'Nunito', sans-serif; text-align: center; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (max-width: 768px) {
+    .navbar-abece { flex-wrap: wrap; gap: 8px 12px; padding: 7px 14px 10px; }
+    .nav-identidad { flex: 1 1 auto; min-width: 0; }
+    .navbar-abece .logo-marca { width: 54px; }
+    .dominio-marca { font-size: 12px; }
+    .navbar-abece .nav-acciones { order: 1; }
+    .buscador-abece { order: 2; flex: 1 0 100%; max-width: none; }
+    .menu { top: 58px; }
+}
+
+/* Catalogo premium: tarjetas amplias, compra visible y ficha desplegable */
+.tienda-contenedor {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px;
+}
+
+.tienda-contenedor > .tarjeta-producto:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc((100% - 34px) / 2);
+}
+
+.tarjeta-producto {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF !important;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(26, 45, 66, 0.07);
+    padding: 20px 28px;
+}
+
+.tarjeta-producto .contenedor-lupa-premium { order: 1; }
+.tarjeta-producto h3 { order: 2; }
+.tarjeta-producto .detalles-prod { order: 3; }
+.tarjeta-producto .precio { order: 4; }
+.tarjeta-producto [id^="btn-compra-"] { order: 5; }
+.tarjeta-producto .selector-variantes { order: 6; }
+.tarjeta-producto .ficha-tecnica-tabs { order: 7; }
+
+.tarjeta-producto .precio {
+    margin: 8px 0;
+    color: var(--color-primario);
+}
+
+.tarjeta-producto h3 {
+    margin: 8px 0;
+}
+
+.tarjeta-producto .contenedor-lupa-premium {
+    height: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+.tarjeta-producto .img-base-lupa {
+    width: 100%;
+    max-height: 280px;
+    height: 100%;
+    object-fit: contain;
+}
+
+.tarjeta-producto [id^="btn-compra-"] {
+    width: 100%;
+    margin: 0 0 12px;
+    padding: 14px 22px;
+    border-radius: 25px;
+    background: #F6D173 !important;
+    color: #1A2D42 !important;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+}
+
+.botones-variantes-flex {
+    align-items: center;
+    gap: 12px;
+}
+
+.btn-variante {
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: transparent !important;
+    font-size: 0;
+    line-height: 0;
+}
+
+.btn-variante .circulo-color {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: block;
+}
+
+.btn-variante.activo {
+    border-color: #1A2D42;
+    background: transparent !important;
+}
+
+.ficha-tecnica-tabs {
+    width: 100%;
+    margin-top: 18px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    overflow: visible;
+}
+
+.tabs-botones-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: transparent;
+    border: 0;
+}
+
+.btn-tab {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 4px;
+    border-top: 1px solid rgba(26, 45, 66, 0.12);
+    border-radius: 0;
+    background: transparent !important;
+    color: #1A2D42;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.btn-tab::before {
+    color: #1A2D42;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+.btn-tab:nth-child(1)::before { content: 'Beneficios de Salud'; }
+.btn-tab:nth-child(2)::before { content: 'Etapas de Uso'; }
+.btn-tab:nth-child(3)::before { content: 'Composición y Cuidado'; }
+.btn-tab::after {
+    content: '+';
+    color: #1A2D42;
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1;
+}
+.btn-tab.activo::after { content: '-'; }
+.btn-tab { font-size: 0; }
+
+.contenido-tab-item {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 14px;
+    background: #F7F3EC;
+    color: #1A2D42;
+    opacity: 0;
+    transition: max-height .35s ease, opacity .25s ease, padding .35s ease;
+}
+
+.contenido-tab-item.activo {
+    max-height: 900px;
+    padding: 14px;
+    opacity: 1;
+}
+
+.contenido-tab-item li,
+.composicion-grid-mini p {
+    color: #1A2D42;
+}
+
+@media (max-width: 768px) {
+    .tienda-contenedor {
+        grid-template-columns: 1fr;
+    }
+
+    .tienda-contenedor > .tarjeta-producto:last-child:nth-child(odd) {
+        grid-column: auto;
+        width: 100%;
+    }
+
+    .tarjeta-producto {
+        padding: 22px;
+    }
+}
+
+/* ============================================================
+   IDENTIDAD GLOBAL ABeCe
+   ============================================================ */
+:root {
+    --color-fondo: #F7F3EC;
+    --color-primario: #1A2D42;
+    --color-secundario: #6DA3CF;
+    --color-acento: #F6D173;
+    --color-blanco: #FFFFFF;
+}
+
+body {
+    background: var(--color-fondo);
+    color: var(--color-primario);
+    font-family: 'Nunito', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.logo-marca, .eyebrow, .stage-pill, .badge-float, .pie-titulo,
+.nombre-estudio {
+    font-family: 'Comfortaa', sans-serif !important;
+}
+
+p, li, a, input, textarea, select, button, label {
+    font-family: 'Nunito', sans-serif;
+}
+
+a { color: var(--color-secundario); }
+
+.btn-primary-banner,
+button[type="submit"],
+[id^="btn-compra-"],
+#btn-pagar {
+    background: var(--color-acento);
+    color: var(--color-primario);
+}
+
+footer {
+    background: var(--color-primario);
+    color: var(--color-blanco);
+    font-family: 'Nunito', sans-serif;
+}
+
+footer a,
+footer p,
+footer span,
+footer .pie-titulo,
+footer .nombre-estudio {
+    color: var(--color-blanco) !important;
+    font-family: 'Nunito', sans-serif !important;
+}
+
+footer .pie-titulo,
+footer .nombre-estudio {
+    font-weight: 800;
+}
+
+.intro-productos {
+    max-width: 620px;
+    margin: -54px auto 34px;
+    padding: 0 24px;
+    color: var(--color-primario);
+    opacity: .78;
+}
+
+/* ==========================================================================\n+   FOTO DE CIERRE DEL CARRUSEL DE TOALLAS\n+   ========================================================================== */
+.foto-cierre-toallas {
+    max-width: 900px;
+    margin: 8px auto 10px;
+    padding: 0 20px;
+}
+
+.foto-cierre-toallas img {
+    display: block;
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(26, 45, 66, 0.12);
 }
 

@@ -23,22 +23,19 @@ rel="stylesheet">
 </head>
 <body> 
  
-<nav> 
-    <a href="index.html" class="enlace-logo-marca"> 
-        <img src="imagenes/logo.png" alt="Logotipo ABECE" class="logo-marca"> 
-    </a> 
-    <div class="menu"> 
- 
-    <a href="index.html">Inicio</a> 
-    <a href="productos.html">Productos</a> 
-    <a href="beneficios.html">Beneficios</a> 
-    <a href="identidad.html">Identidad</a> <!-- Verifica que esta línea esté en todas las páginas --> 
-    <a href="contacto.html">Contacto</a> 
-    <a href="#" id="enlace-carrito" onclick="alternarCarrito(event)"> 
-        🛒 Mi Carrito (<span id="contador-productos">0</span>) 
-    </a> 
-</div> 
-</nav> 
+<nav class="navbar-abece" aria-label="Navegación principal">
+<div class="nav-identidad"><button type="button" class="boton-menu" id="boton-menu" aria-label="Abrir menú de navegación" aria-controls="menu-principal" aria-expanded="false"><span></span><span></span><span></span></button><a href="index.html" class="enlace-logo-marca" aria-label="Ir al inicio de ABeCe"><img src="imagenes/logo.png" alt="Logotipo ABeCe" class="logo-marca"><span class="dominio-marca">abecemex.com</span></a></div>
+<form class="buscador-abece" id="buscador-abece" role="search" autocomplete="off"><label class="sr-only" for="entrada-busqueda">Buscar en abecemex.com</label><input id="entrada-busqueda" name="q" type="search" placeholder="Buscar en abecemex.com cojines, cobijas, fulares..." aria-controls="sugerencias-busqueda" aria-expanded="false"><button type="submit" aria-label="Buscar"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button><div class="sugerencias-busqueda" id="sugerencias-busqueda" role="listbox"></div></form>
+<div class="nav-acciones"><a href="#" id="enlace-carrito" class="nav-carrito" onclick="alternarCarrito(event)" aria-label="Abrir mi carrito" title="Abrir mi carrito"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i><span id="contador-productos">0</span></a>
+<div class="menu" id="menu-principal">
+<a href="index.html">Inicio</a>
+<a href="productos.html">Productos</a>
+<a href="beneficios.html">Beneficios</a>
+<a href="identidad.html">Nuestra Historia</a>
+<a href="contacto.html">Contacto</a>
+</div>
+</div>
+</nav>
  
     <!-- El Carrito también vive aquí para que puedan ver lo que llevan --> 
     <div id="carrito-compras" class="carrito-cerrado"> 
@@ -93,7 +90,8 @@ rel="stylesheet">
     </section> 
  
     <section class="tienda-seccion"> 
-        <h2>Cojínes de Lactancia ABeCe</h2> 
+        <h2>Apoyo suave para alimentar y abrazar</h2>
+        <p class="intro-productos">Elige con calma el cojín que acompañará tus tomas y esos primeros momentos de descanso juntos.</p>
         <div class="tienda-contenedor"> 
  
             <!-- Producto 1: Cojín de Lactancia con Variantes e Interactividad -->
@@ -106,7 +104,7 @@ rel="stylesheet">
     </div>
 
     <!-- Títulos y Ficha Técnica -->
-    <h3>Cojínes de Lactancia/T.Burbuja </h3> 
+    <h3>Cojín de lactancia para sentirte más cómodo</h3>
     <p class="detalles-prod">46 x 56 x 20 cm</p> 
 
     <!-- MÓDULO UNIFICADO Y CORREGIDO DE VARIANTES DE COLOR -->
@@ -165,9 +163,9 @@ rel="stylesheet">
             <!-- Bloque 3: Detalle de Composición -->
             <div id="cojin-composicion" class="contenido-tab-item">
                 <div class="composicion-grid-mini">
-                    <p><strong>Descripción:</strong> Funda con cierre y cojín forrado con tela Spunbond (repelente).</p>
-                    <p><strong>Tela:</strong> 90% Algodón, 10% Poliéster. Relleno de Fibra Siliconisada suave.</p>
-                    <p><strong>Lavado:</strong> Lavar funda en ciclo delicado. No usar secadora ni blanqueadores.</p>
+                    <p><strong>Para tus momentos juntos:</strong> Una funda suave con cierre práctico y un cojín que ayuda a sostener a tu bebé durante la lactancia.</p>
+                    <p><strong>Materiales:</strong> Tela agradable al tacto y relleno de fibra suave para acompañarte con comodidad.</p>
+                    <p><strong>Cuidados:</strong> Lava la funda en ciclo delicado. Evita la secadora y los blanqueadores para conservar su suavidad.</p>
                 </div>
             </div>
 
@@ -185,7 +183,7 @@ rel="stylesheet">
     </div>
 
     <!-- Títulos y Ficha Técnica -->
-    <h3>Cojines de Lactancia Velur</h3> 
+    <h3>Cojín de lactancia Velur para noches más tranquilas</h3>
     <p class="detalles-prod">46 x 56 x 20 cm</p> 
 
     <!-- MÓDULO DE VARIANTES SÍNCRONO -->
@@ -244,9 +242,9 @@ rel="stylesheet">
             <!-- Bloque 3: Composición Velur -->
             <div id="cojinvelur-composicion" class="contenido-tab-item">
                 <div class="composicion-grid-mini">
-                    <p><strong>Descripción:</strong> Funda desmontable con costura invisible y cierre de seguridad oculto.</p>
-                    <p><strong>Tela exterior:</strong> 100% Velur Premium hipoalergénico. Forro interior de microfibra repelente.</p>
-                    <p><strong>Lavado:</strong> Funda lavable a máquina en agua fría. No usar plancha para conservar el brillo del velur.</p>
+                    <p><strong>Para tus momentos juntos:</strong> Una funda desmontable y agradable que hace más sencillo encontrar una postura cómoda al alimentar a tu bebé.</p>
+                    <p><strong>Materiales:</strong> Velur suave e hipoalergénico con un forro interior práctico para el día a día.</p>
+                    <p><strong>Cuidados:</strong> Lava la funda en agua fría. No la planches para conservar su textura acogedora.</p>
                 </div>
             </div>
 
@@ -264,7 +262,7 @@ rel="stylesheet">
     </div>
 
     <!-- Títulos y Ficha Técnica -->
-    <h3>Cojines de Lactancia Bordados</h3> 
+    <h3>Cojín de lactancia bordado, suave y especial</h3>
     <p class="detalles-prod">46 x 56 x 20 cm</p> 
 
     <!-- MÓDULO DE VARIANTES SÍNCRONO -->
@@ -323,9 +321,9 @@ rel="stylesheet">
             <!-- Bloque 3: Composición Bordado -->
             <div id="cojinbordado-composicion" class="contenido-tab-item">
                 <div class="composicion-grid-mini">
-                    <p><strong>Descripción:</strong> Funda de algodón con bordado frontal de alta densidad y cojín repelente.</p>
-                    <p><strong>Tela base:</strong> 100% Algodón Pima orgánico. Relleno de Delcron siliconado indeformable.</p>
-                    <p><strong>Lavado:</strong> Se recomienda lavar la funda al revés o dentro de una malla protectora para cuidar los hilos.</p>
+                    <p><strong>Para tus momentos juntos:</strong> Un detalle bordado que acompaña la lactancia con una sensación cálida y familiar.</p>
+                    <p><strong>Materiales:</strong> Algodón suave y relleno que conserva su forma para que puedas usarlo una y otra vez.</p>
+                    <p><strong>Cuidados:</strong> Lava la funda al revés o dentro de una malla para cuidar cada hilo del bordado.</p>
                 </div>
             </div>
 
@@ -335,7 +333,7 @@ rel="stylesheet">
 </div>
 </section>
 <section class="tienda-seccion">
-    <h2>Productos</h2> 
+    <h2>Más formas de acompañar su descanso</h2>
         <div class="tienda-contenedor"> 
 
 
@@ -347,7 +345,7 @@ rel="stylesheet">
         <div class="lupa-lente"></div> 
     </div>
 
-    <h3>Sillón Colchón Antirreflujo</h3> 
+    <h3>Sillón antirreflujo para un descanso más cómodo</h3>
     <p class="detalles-prod">86.5 x 44.5 x 27.5 cm</p> 
 
     <div class="selector-variantes">
@@ -425,7 +423,7 @@ rel="stylesheet">
         <div class="lupa-lente"></div> 
     </div>
 
-    <h3>Cobija Rusia Doble Tela</h3> 
+    <h3>Cobija de doble tela para envolverlo con ternura</h3>
     <p class="detalles-prod">Incluye oso de apego</p> 
 
     <div class="selector-variantes">
@@ -498,8 +496,8 @@ rel="stylesheet">
 <div class="lupa-lente"></div> 
 </div>
  
-<h3>Cobija Burbuja Estampado Tela</h3> 
-<p class="detalles-prod">Estampado de animalitos</p> 
+<h3>Cobija Burbuja con estampados que acompañan sus siestas</h3>
+<p class="detalles-prod">El Estampado interno puede variar</p> 
  
 <div class="selector-variantes">
 <!-- 💡 ID único para el texto de variante de la cobija burbuja -->
@@ -562,7 +560,7 @@ rel="stylesheet">
 </div>
 </section>
 <section class="tienda-seccion">
-    <h2>Productos</h2>
+    <h2>Más formas de acompañar su descanso</h2>
         <div class="tienda-contenedor">
 
             <div class="tarjeta-producto">
@@ -571,7 +569,7 @@ rel="stylesheet">
         <div class="lupa-lente"></div>
     </div>
 
-    <h3>almohada con funda burbuja</h3>
+    <h3>Almohada con funda Burbuja para acurrucarlo</h3>
     <p class="detalles-prod">30x20</p>
 
     <div class="selector-variantes">
@@ -652,7 +650,7 @@ Super Suave</p>
         <div class="lupa-lente"></div>
     </div>
 
-    <h3>Almohada Burbuja Tela</h3>
+    <h3>Almohada Burbuja de tela suave</h3>
     <p class="detalles-prod">30x20</p>
 
     <div class="selector-variantes">
@@ -717,7 +715,7 @@ Super Suave</p>
         <div class="lupa-lente"></div>
     </div>
 
-    <h3>Colchón cambiador Curvo Funda capitoneada</h3>
+    <h3>Colchón cambiador curvo para hacerlo más sencillo</h3>
     <p class="detalles-prod">Largo 82cm  Ancho 44cm  Espesor de 7 cms.</p>
 
     <div class="selector-variantes">
@@ -772,7 +770,7 @@ Super Suave</p>
     </section>
 
 <section class="tienda-seccion">
-    <h2>Productos</h2>
+    <h2>Más formas de acompañar su descanso</h2>
         <div class="tienda-contenedor">
 
             <div class="tarjeta-producto">
@@ -781,7 +779,7 @@ Super Suave</p>
         <div class="lupa-lente"></div>
     </div>
 
-<h3>Colchón cuña antirreflujo para bebe forro toalla</h3>
+<h3>Colchón cuña para acompañar su descanso</h3>
     <p class="detalles-prod">Largo 61 cm  Ancho 39 cm  Espesor de 11 cm</p>
 
     <div class="selector-variantes">
@@ -837,7 +835,7 @@ Super Suave</p>
         <div class="lupa-lente"></div>
     </div>
 
-    <h3>Colchón para cuna viajera Memory Form Con tela repelente</h3>
+    <h3>Colchón para cuna viajera, suave y práctico</h3>
     <p class="detalles-prod">Largo 100 cm Ancho 67 cm Espesor de 5 cm</p>
 
     <div class="selector-variantes">
@@ -894,7 +892,7 @@ Funda C/Cierre</p>
         <div class="lupa-lente"></div>
     </div>
 
-    <h3>Colchón para cuna viajera Memory Form Con tela repelente Estampada</h3>
+    <h3>Colchón estampado para cuna viajera</h3>
     <p class="detalles-prod">Largo 100 cm Ancho 67 cm Espesor 5 cm</p>
 
     <div class="selector-variantes">
@@ -962,7 +960,7 @@ Tela Impermeable que protege la espuma para mayor  longevidad</p>
         <div class="lupa-lente"></div>
     </div>
 
-    <h3>Fular Para porteo Canguro Rebozo Porta bebes Ergonomico</h3>
+    <h3>Fular ergonómico para llevarlo cerquita de ti</h3>
     <p class="detalles-prod">largo 5mts x 45 cm</p>
 
     <div class="selector-variantes">
@@ -1021,7 +1019,7 @@ Tela Impermeable que protege la espuma para mayor  longevidad</p>
         <div class="lupa-lente"></div>
     </div>
 
-    <h3>Nido Contención Azul</h3>
+    <h3>Nido de contención para sentirse arropado</h3>
     <p class="detalles-prod">Largo  84cm x Ancho 50cm  x 15 ms</p>
 
     <div class="selector-variantes">
@@ -1080,7 +1078,7 @@ Tela Impermeable que protege la espuma para mayor  longevidad</p>
         <div class="lupa-lente"></div>
     </div>
 
-    <h3>Set  de 3 Sabanitas  Sabanitas Recibidoras</h3>
+    <h3>Set de 3 sabanitas para recibirlo con suavidad</h3>
     <p class="detalles-prod">75cm x 100 cm</p>
 
     <div class="selector-variantes">
@@ -1144,7 +1142,7 @@ Tela Impermeable que protege la espuma para mayor  longevidad</p>
         <div class="lupa-lente"></div>
     </div>
 
-    <h3>Sabanitas Recibidoras</h3>
+    <h3>Sabanitas recibidoras para noches acogedoras</h3>
     <p class="detalles-prod">75cm x 100 cm.</p>
 
     <div class="selector-variantes">
@@ -1203,7 +1201,7 @@ Tela Impermeable que protege la espuma para mayor  longevidad</p>
         <div class="lupa-lente"></div>
     </div>
 
-    <h3>Juego de Sabanas Cuna</h3>
+    <h3>Juego de sábanas para su cunita</h3>
     <p class="detalles-prod">70cm X 130cm</p>
 
     <div class="selector-variantes">
@@ -1259,7 +1257,7 @@ Tela Impermeable que protege la espuma para mayor  longevidad</p>
         <div class="lupa-lente"></div>
     </div>
 
-    <h3>Juego de Sabanas  Mini Cuna/Colecho/Moises</h3>
+    <h3>Juego de sábanas para mini cuna y colecho</h3>
     <p class="detalles-prod">Largo  95cm  x Ancho 70cm  x 08 cm.</p>
 
     <div class="selector-variantes">
@@ -1315,6 +1313,1121 @@ Tela Impermeable que protege la espuma para mayor  longevidad</p>
     </div>
 </div>
 </section>
+
+<section class="tienda-seccion"> 
+        <h2>ABeCe</h2> 
+        <div class="tienda-contenedor"> 
+ 
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-cuellera-soporte-para-cabeza" src="imagenes/cuelleragde_azul.png" alt="Cuellera Soporte para cabeza ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Cuellera para acompañar sus primeros paseos</h3>
+    <p class="detalles-prod">23cm x 23cm x 8cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-cuellera-soporte-para-cabeza">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('cuellera-soporte-para-cabeza', 'Azul', 'imagenes/cuelleragde_azul.png', 299, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cuellera-soporte-para-cabeza', 'Rosa', 'imagenes/cuelleragde_rosa.png', 299, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cuellera-soporte-para-cabeza', 'Amarillo', 'imagenes/cuelleragde_amarilla.png', 299, this)">
+                <span class="circulo-color" style="background-color: #E7D599;"></span> Amarillo
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-cuellera-soporte-para-cabeza">$299 MXN</p>
+    <button type="button" id="btn-compra-cuellera-soporte-para-cabeza" onclick="comprarProducto('Cuellera Soporte para cabeza (Azul)', 299)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('cuellera-soporte-para-cabeza-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cuellera-soporte-para-cabeza-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cuellera-soporte-para-cabeza-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="cuellera-soporte-para-cabeza-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Prevención de Lesiones:</strong> Ayuda a prevenir eficazmente los molestos dolores, la rigidez del cuello y las malas posturas cervicales causadas por el cabeceo involuntario al dormir.</li>
+                    <li><strong>Tela Súper Suave:</strong> Confeccionada con un tejido Extra suave de texturas que resulta sumamente agradable al contacto con la cara y piel del niño, evitando rozaduras.</li>
+                    <li><strong>Ergonómica y Segura:</strong> Su forma semicircular se adapta de manera anatómica al cuello del pequeño, manteniéndolo alineado de forma natural sin restar libertad de movimiento.</li>
+                </ul>
+            </div>
+
+            <div id="cuellera-soporte-para-cabeza-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Ideal para Viajes:</strong> Diseñada específicamente para ofrecer una máxima comodidad y un soporte adecuado en la cabeza cuando el niño duerme en el asiento del auto o carriola.</li>
+                    <li><strong>Rango de Edad Recomendado:</strong> Acompaña el crecimiento de tu hijo en sus etapas de exploración, siendo un accesorio apto para usarse desde un año en adelante y hasta los 5 años de edad.</li>
+                    <li><strong>Práctica y Ligera:</strong> Gracias a su tamaño de 23x23 cm y su peso de apenas 100 gramos, es sumamente fácil de transportar en cualquier pañalera, mochila o bolso de viaje.</li>
+                </ul>
+            </div>
+
+            <div id="cuellera-soporte-para-cabeza-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Cuellera y soporte ergonómico para la cabeza del bebé, ideal para brindar una excelente estabilidad y confort durante los traslados. Cuenta con unas dimensiones compactas de 23 x 23 x 8 centímetros y un peso ultra ligero de solo 100 gramos.</p>
+                    <p><strong>Composición Textil:</strong> Tela de texturas acolchadas súper suave (Tipo Burbuja / Minky de alta calidad).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en lavadora en ciclo delicado. NO USAR SECADORA.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-cuellera-soporte-para-cabeza-chica" src="imagenes/cuellerachica_azul.png" alt="Cuellera Soporte para cabeza chica ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Cuellera pequeña para llevarlo cómodo</h3>
+    <p class="detalles-prod">19cm x 19cm x 6.5cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-cuellera-soporte-para-cabeza-chica">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('cuellera-soporte-para-cabeza-chica', 'Azul', 'imagenes/cuellerachica_azul.png', 200, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cuellera-soporte-para-cabeza-chica', 'Rosa', 'imagenes/cuellerachica_rosa.png', 200, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cuellera-soporte-para-cabeza-chica', 'Amarillo', 'imagenes/cuellerachica_amarilla.png', 200, this)">
+                <span class="circulo-color" style="background-color: #E7D599;"></span> Amarillo
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-cuellera-soporte-para-cabeza-chica">$200 MXN</p>
+    <button type="button" id="btn-compra-cuellera-soporte-para-cabeza-chica" onclick="comprarProducto('Cuellera Soporte para cabeza chica (Azul)', 200)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('cuellera-soporte-para-cabeza-chica-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cuellera-soporte-para-cabeza-chica-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cuellera-soporte-para-cabeza-chica-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="cuellera-soporte-para-cabeza-chica-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Prevención de Lesiones:</strong> Ayuda a prevenir eficazmente los molestos dolores, la rigidez del cuello y las malas posturas cervicales causadas por el cabeceo involuntario al dormir.</li>
+                    <li><strong>Tela Súper Suave:</strong> Confeccionada con un tejido extrasuave de texturas que resulta sumamente agradable al contacto con la cara y piel del niño, evitando rozaduras.</li>
+                    <li><strong>Ergonómica y Segura:</strong> Su forma semicircular se adapta de manera anatómica al cuello del pequeño, manteniéndolo alineado de forma natural sin restar libertad de movimiento.</li>
+                </ul>
+            </div>
+
+            <div id="cuellera-soporte-para-cabeza-chica-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Ideal para Viajes:</strong> Diseñada específicamente para ofrecer una máxima comodidad y un soporte adecuado en la cabeza cuando el niño duerme en el asiento del auto o carriola.</li>
+                    <li><strong>Rango de Edad Recomendado:</strong> Acompaña el crecimiento de tu hijo en sus primeras etapas , siendo un accesorio apto para usarse desde 2 meses y hasta su 1 año de edad.</li>
+                    <li><strong>Práctica y Ligera:</strong> Gracias a su tamaño de 19cm x 19cm x 6.5cm y su peso de apenas 85 gramos, es sumamente fácil de transportar en cualquier pañalera, mochila o bolso de viaje.</li>
+                </ul>
+            </div>
+
+            <div id="cuellera-soporte-para-cabeza-chica-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Cuellera y soporte ergonómico para la cabeza del bebé, ideal para brindar una excelente estabilidad y confort durante los traslados. Cuenta con unas dimensiones compactas de  19cm x 19cm x 6.5cm  y un peso ultra ligero de solo 85 gramos.</p>
+                    <p><strong>Composición Textil:</strong> Tela de texturas acolchadas súper suave (Tipo Burbuja / Minky de alta calidad).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en máquina en ciclo delicado. No usar secadora.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas" src="imagenes/cojintermicoanticolicos_azul.png" alt="Cojín térmico anti Cólicos para bebé (semillas y hierbas) ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Cojín térmico para aliviar sus momentos de incomodidad</h3>
+    <p class="detalles-prod">cinto de 12 cm de ancho</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas', 'Azul', 'imagenes/cojintermicoanticolicos_azul.png', 550, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas', 'Rosa', 'imagenes/cojintermicoanticolicos_rosa.png', 550, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas">$550 MXN</p>
+    <button type="button" id="btn-compra-cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas" onclick="comprarProducto('Cojín térmico anti Cólicos para bebé (semillas y hierbas) (Azul)', 550)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Terapia de Calor Segura:</strong> Proporciona un calor envolvente, suave y controlado directamente en el abdomen, promoviendo la relajación muscular y calmando el dolor de forma instantánea.</li>
+                    <li><strong>Siete Hierbas Naturales:</strong> Contiene una mezcla exclusiva de ingredientes botánicos como lavanda, manzanilla, menta y hierba de limón que liberan propiedades aromáticas relajantes al calentarse.</li>
+                    <li><strong>Cinturilla Ajustable Ergonómica:</strong> Fabricada en una felpa sumamente suave al tacto que abraza cómodamente el cuerpo del bebé, manteniéndose fija en su lugar sin apretar ni causar rozaduras.</li>
+                </ul>
+            </div>
+
+            <div id="cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Alivio de Cólicos y Gases:</strong> Diseñado para calmar de forma natural las molestias estomacales del bebé quisquilloso causadas por cólicos, gases acumulados, estreñimiento o reflujo ácido.</li>
+                    <li><strong>Modo de Uso Sencillo:</strong> Caliente la bolsa de semillas en el microondas por solo 15 segundos, colóquela dentro del bolsillo de la cinturilla y envuelva suavemente el vientre de su bebé.</li>
+                    <li><strong>Bienestar en Segundos:</strong> Una solución rápida y efectiva para el día a día que ayuda a transformar el llanto por incomodidad en un estado de tranquilidad y relajación absoluta para el niño.</li>
+                </ul>
+            </div>
+
+            <div id="cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Cojín térmico anti cólicos para bebé en color rosa. El sistema incluye una cinturilla ajustable de felpa suave y una bolsa interior térmica rellena con una mezcla natural de semillas y siete hierbas aromáticas.</p>
+                    <p><strong>Composición Textil:</strong> Cinturilla de felpa suave (bolsa interior de tela resistente al calor con relleno de semillas y hierbas naturales como lavanda, manzanilla, hierba de limón y menta).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Cinturilla de felpa: Lavar a mano o en ciclo delicado con jabón neutro. Bolsa de semillas: NO lavar ni mojar bajo ninguna circunstancia; mantener en un lugar seco y limpio.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+
+<section class="tienda-seccion"> 
+        <h2>ABeCe</h2> 
+        <div class="tienda-contenedor"> 
+ 
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-oso-de-apego-relleno" src="imagenes/osoapegoazul_relleno.png" alt="Oso de Apego Relleno ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Oso de apego relleno para abrazar y acompañar</h3>
+    <p class="detalles-prod">largo 28 cm 20cm de ancho</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-oso-de-apego-relleno">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('oso-de-apego-relleno', 'Azul', 'imagenes/osoapegoazul_relleno.png', 310, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('oso-de-apego-relleno', 'Rosa', 'imagenes/osoapegorosa_relleno.png', 310, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('oso-de-apego-relleno', 'Blanco', 'imagenes/osoapegoblanco_relleno.png', 310, this)">
+                <span class="circulo-color" style="background-color: #FFFFFF;"></span> Blanco
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-oso-de-apego-relleno">$310 MXN</p>
+    <button type="button" id="btn-compra-oso-de-apego-relleno" onclick="comprarProducto('Oso de Apego Relleno (Azul)', 310)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('oso-de-apego-relleno-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('oso-de-apego-relleno-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('oso-de-apego-relleno-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="oso-de-apego-relleno-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel Confort Suave:</strong> Ofrece una textura acolchada de nivel suave, sumamente tersa y amigable que cuida en todo momento la delicada y sensible piel del bebé.</li>
+                    <li><strong>Divertida Tela Burbuja:</strong> Confeccionado en tela tipo burbuja que proporciona un relieve único y llamativo, ayudando a relajar al bebé a través de su agradable experiencia táctil.</li>
+                    <li><strong>Variedad de Colores Tiernos:</strong> Disponible en una hermosa gama de tonos neutros e infantiles (azul, rosa y gris), lo que facilita su combinación estética con cualquier habitación o pañalera.</li>
+                </ul>
+            </div>
+
+            <div id="oso-de-apego-relleno-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Objeto de Apego Esencial:</strong> Funciona como un excelente objeto transicional que brinda al recién nacido una profunda sensación de acompañamiento, seguridad y calma en sus momentos de descanso.</li>
+                    <li><strong>Compañero del Día a Día:</strong> Gracias a su tamaño de 28x20 cm, es ideal para llevarlo a todas partes, ya sea en la carriola durante los paseos diarios o en el auto para relajar al bebé.</li>
+                    <li><strong>Estimulación Temprana:</strong> Perfecto para acompañar el desarrollo sensorial del niño desde sus primeros meses de vida, permitiéndole explorar nuevas texturas mediante el tacto de forma segura.</li>
+                </ul>
+            </div>
+
+            <div id="oso-de-apego-relleno-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Tierno Oso de Apego Pachón en color azul (disponible también en rosa y gris). Diseñado con unas medidas ideales y compactas de largo 28 x ancho 20 centímetros para el óptimo manejo del bebé.</p>
+                    <p><strong>Composición Textil:</strong> Tela burbuja 100% Poliéster.</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en lavadora en ciclo delicado. No usar secadora y no usar blanqueadores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-oso-de-apego-sin-relleno" src="imagenes/osoapego_azul.png" alt="Oso de Apego (sin relleno) ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Oso de apego para crear su pequeño ritual</h3>
+    <p class="detalles-prod">28cm x 20cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-oso-de-apego-sin-relleno">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('oso-de-apego-sin-relleno', 'Azul', 'imagenes/osoapego_azul.png', 270, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('oso-de-apego-sin-relleno', 'Rosa', 'imagenes/osoapego_rosa.png', 270, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('oso-de-apego-sin-relleno', 'Blanco', 'imagenes/osoapego_blanco.png', 270, this)">
+                <span class="circulo-color" style="background-color: #FFFFFF;"></span> Blanco
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-oso-de-apego-sin-relleno">$270 MXN</p>
+    <button type="button" id="btn-compra-oso-de-apego-sin-relleno" onclick="comprarProducto('Oso de Apego (sin relleno) (Azul)', 270)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('oso-de-apego-sin-relleno-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('oso-de-apego-sin-relleno-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('oso-de-apego-sin-relleno-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="oso-de-apego-sin-relleno-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel Confort Suave:</strong> Ofrece una textura acolchada de nivel suave, sumamente tersa y amigable que cuida en todo momento la delicada y sensible piel del bebé.</li>
+                    <li><strong>Divertida Tela Burbuja:</strong> Confeccionado en tela tipo burbuja que proporciona un relieve único y llamativo, ayudando a relajar al bebé a través de su agradable experiencia táctil.</li>
+                    <li><strong>Variedad de Colores Tiernos:</strong> Disponible en una hermosa gama de tonos neutros e infantiles (azul, rosa y gris), lo que facilita su combinación estética con cualquier habitación o pañalera.</li>
+                </ul>
+            </div>
+
+            <div id="oso-de-apego-sin-relleno-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Objeto de Apego Esencial:</strong> Funciona como un excelente objeto transicional que brinda al recién nacido una profunda sensación de acompañamiento, seguridad y calma en sus momentos de descanso.</li>
+                    <li><strong>Compañero del Día a Día:</strong> Gracias a su tamaño de 28x20 cm, es ideal para llevarlo a todas partes, ya sea en la carriola durante los paseos diarios o en el auto para relajar al bebé.</li>
+                    <li><strong>Estimulación Temprana:</strong> Perfecto para acompañar el desarrollo sensorial del niño desde sus primeros meses de vida, permitiéndole explorar nuevas texturas mediante el tacto de forma segura.</li>
+                </ul>
+            </div>
+
+            <div id="oso-de-apego-sin-relleno-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Tierno Oso de Apego Pachón en color azul (disponible también en rosa y gris). Diseñado con unas medidas ideales y compactas de largo 28 x ancho 20 centímetros para el óptimo manejo del bebé.</p>
+                    <p><strong>Composición Textil:</strong> Tela burbuja 100% Poliéster.</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en lavadora en ciclo delicado. No usar secadora y no usar blanqueadores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-saquito-para-dormir-para-bebe" src="imagenes/saquitoparadormir_bebeazul.png" alt="Saquito para dormir Para bebe ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Saquito para dormir y descansar calientito</h3>
+    <p class="detalles-prod">Largo 64 cm x Ancho 39 cm.</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-saquito-para-dormir-para-bebe">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('saquito-para-dormir-para-bebe', 'Azul', 'imagenes/saquitoparadormir_bebeazul.png', 785, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('saquito-para-dormir-para-bebe', 'Rosa', 'imagenes/saquitoparadormir_beberosa.png', 785, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('saquito-para-dormir-para-bebe', 'Amarillo', 'imagenes/saquitoparadormir_bebeamarillo.png', 785, this)">
+                <span class="circulo-color" style="background-color: #E7D599;"></span> Amarillo
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('saquito-para-dormir-para-bebe', 'Blanco', 'imagenes/saquitoparadormir_bebeblanco.png', 785, this)">
+                <span class="circulo-color" style="background-color: #FFFFFF;"></span> Blanco
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-saquito-para-dormir-para-bebe">$785 MXN</p>
+    <button type="button" id="btn-compra-saquito-para-dormir-para-bebe" onclick="comprarProducto('Saquito para dormir Para bebe (Azul)', 785)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('saquito-para-dormir-para-bebe-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('saquito-para-dormir-para-bebe-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('saquito-para-dormir-para-bebe-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="saquito-para-dormir-para-bebe-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Doble Tela para Mayor Confort:</strong> Su estructura de doble capa actúa como un excelente aislante térmico, manteniendo al bebé a una temperatura óptima y acogedora toda la noche.</li>
+                    <li><strong>Textura Estimulante y Suave:</strong> El forro interior y la tela burbuja ofrece un nivel de confort ultrasuave y una experiencia táctil sumamente relajante para el lactante.</li>
+                    <li><strong>Libertad de Movimiento:</strong> Su forma ampliada en la base permite que el bebé patalee y mueva sus piernas libremente, favoreciendo el desarrollo saludable de sus caderas.</li>
+                </ul>
+            </div>
+
+            <div id="saquito-para-dormir-para-bebe-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Sueño Seguro:</strong> Diseñado para sustituir de forma segura el uso de cobijas sueltas en la cuna, reduciendo riesgos y garantizando un descanso protegido.</li>
+                    <li><strong>Etapa de Recién Nacido:</strong> Ajuste ideal y anatómico con dimensiones pensadas especialmente para bebés en sus primeros meses, con una edad recomendada de 0 a 6 meses.</li>
+                    <li><strong>Prácticos Broches:</strong> Incorpora un sistema de broches superiores en los hombros que facilita colocar y retirar al bebé suavemente sin despertarlo.</li>
+                </ul>
+            </div>
+
+            <div id="saquito-para-dormir-para-bebe-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Saquito para dormir para bebé (Sleeping bag) diseñado con doble tela para mayor confort. El diseño cuenta con una capa exterior con textura de burbuja y con un interior, tierno y estampado variado en algodon. Medidas: Largo 64 cm x Ancho 39 cm.</p>
+                    <p><strong>Composición Textil:</strong> Confección premium de doble capa (Algodón estampado y Poliéster tipo burbuja/minky ultra suave).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en máquina en ciclo delicado.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="tienda-seccion"> 
+        <h2>ABeCe</h2> 
+        <div class="tienda-contenedor">
+
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-andarin" src="imagenes/andarinazul_niño.png" alt="ANDARIN ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Andarín para descubrir el mundo a su ritmo</h3>
+    <p class="detalles-prod">20cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-andarin">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('andarin', 'Azul', 'imagenes/andarinazul_niño.png', 450, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('andarin', 'Rosa', 'imagenes/andarinrosa_niña.png', 450, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-andarin">$450 MXN</p>
+    <button type="button" id="btn-compra-andarin" onclick="comprarProducto('ANDARIN (Azul)', 450)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('andarin-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('andarin-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('andarin-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="andarin-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Confort Acojinado y Suave:</strong> Posee una estructura interna acolchada y reforzada de nivel suave que abraza el torso del bebé, brindándole una máxima comodidad y seguridad sin lastimarlo.</li>
+                    <li><strong>Ajuste Lateral de Seguridad:</strong> Incorpora prácticos ajustadores en los laterales equipados con pasa cintas de seguridad, lo que permite adaptar el arnés de forma exacta y firme al cuerpo del niño.</li>
+                    <li><strong>Tirantes Regulables al Peso:</strong> Cuenta con correas superiores ajustables que distribuyen la fuerza correctamente, permitiendo a los padres guiar al bebé cómodamente y mantener una postura recta.</li>
+                </ul>
+            </div>
+
+            <div id="andarin-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Exploración y Autonomía:</strong> Acompaña al niño en una de las etapas más importantes de su vida, impulsándolo a explorar el entorno por cuenta propia a partir de los 8 meses de edad.</li>
+                    <li><strong>Desarrollo del Equilibrio:</strong> Al mantener los brazos completamente libres, el pequeño puede balancearse de forma natural, logrando desarrollar su equilibrio y confianza de manera más rápida.</li>
+                    <li><strong>Soporte Seguro hasta 14 kg:</strong> Diseñado con un rango de resistencia ideal para soportar de manera óptima y ergonómica el peso de tu bebé durante todo su proceso de aprendizaje de la marcha.</li>
+                </ul>
+            </div>
+
+            <div id="andarin-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Arnés andarín ergonómico para los primeros pasos del niño (Modelo 2106), disponible en diferentes estampados. Cuenta con un diseño acojinado y reforzado con tirantes ajustables al peso, ajustadores laterales con pasa cintas de seguridad y una firme argolla metálica central que le permite tener los brazos libres. Soporta un peso máximo de hasta 14 kilos.</p>
+                    <p><strong>Composición Textil:</strong> Cuerpo: 70% Algodón, 30% Poliéster | Tirantes: 100% Polipropileno.</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar antes de usar. Use lavadora en ciclo delicado con agua fría y jabón neutro. Secar plano a la sombra. No usar secadora, no usar blanqueadores y no planchar. (Nota de seguridad: Mientras el bebé camina, no se debe cargar, levantar o mecer utilizando los tirantes).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+ 
+
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-protector-para-colchon-cambiador" src="imagenes/protectorcolchoncambiador_azul.png" alt="protector para colchon cambiador ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Protector para mantener su cambiador limpio</h3>
+    <p class="detalles-prod">83 x 45 x 7</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-protector-para-colchon-cambiador">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('protector-para-colchon-cambiador', 'Azul', 'imagenes/protectorcolchoncambiador_azul.png', 700, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('protector-para-colchon-cambiador', 'Rosa', 'imagenes/protectorcolchoncambiador_rosa.png', 700, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('protector-para-colchon-cambiador', 'Amarillo', 'imagenes/protectorcolchoncambiador_amarillo.png', 700, this)">
+                <span class="circulo-color" style="background-color: #E7D599;"></span> Amarillo
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('protector-para-colchon-cambiador', 'Blanco', 'imagenes/protectorcolchoncambiador_blanco.png', 700, this)">
+                <span class="circulo-color" style="background-color: #FFFFFF;"></span> Blanco
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-protector-para-colchon-cambiador">$700 MXN</p>
+    <button type="button" id="btn-compra-protector-para-colchon-cambiador" onclick="comprarProducto('protector para colchon cambiador (Azul)', 700)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('protector-para-colchon-cambiador-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('protector-para-colchon-cambiador-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('protector-para-colchon-cambiador-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="protector-para-colchon-cambiador-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel Súper Suave:</strong> Confeccionado en tela burbuja que ofrece un nivel de confort súper suave al contacto, cuidando la piel delicada del bebé y aportando máxima tranquilidad.</li>
+                    <li><strong>Ajuste Firme Perimetral:</strong> Incorpora un sistema de elástico a todo el alrededor que se ciñe perfectamente al colchón, evitando que la funda se mueva o se desplace con el movimiento.</li>
+                    <li><strong>Protección Anti Manchas:</strong> Actúa como una barrera protectora eficaz que resguarda la superficie del colchón contra líquidos y suciedad, siendo muy fácil de lavar en casa.</li>
+                </ul>
+            </div>
+
+            <div id="protector-para-colchon-cambiador-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Uso Diario en Cambiador:</strong> Diseñado especialmente para colocarse sobre el colchón cambiador, moisés o mini cuna, facilitando una rutina diaria higiénica durante el cambio de pañal.</li>
+                    <li><strong>Edad Recomendada:</strong> Un accesorio esencial y duradero idóneo para acompañar todas las etapas del lactante, brindando un servicio óptimo desde los 0 hasta los 24 meses de edad.</li>
+                    <li><strong>Compatibilidad Múltiple:</strong> Gracias a sus dimensiones de 83 x 45 cm., se adapta de forma versátil a los formatos estándar de colchones cambiadores y espacios de descanso pequeños.</li>
+                </ul>
+            </div>
+
+            <div id="protector-para-colchon-cambiador-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Funda protectora para colchón cambiador, mini cuna y moisés (Modelo 4026) en color burbuja rosa. Cuenta con un elástico perimetral a todo el alrededor para garantizar un ajuste firme. Diseñada con unas medidas perfectas de 83 x 45 x 7 cm. para mantener el cambiador de tu bebé siempre limpio, protegido y libre de manchas.</p>
+                    <p><strong>Composición Textil:</strong> Tela Burbuja 100% Poliéster (Textura ultra suave de secado rápido).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavable a máquina. Use lavadora en ciclo delicado con agua fría y jabón neutro. Utilizar blanqueador sin cloro cuando sea necesario. No usar secadora.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-set-de-3-repetidores-toalla" src="imagenes/repetidoresbebe_azul.png" alt="Set  de 3  Repetidores Toalla ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Set de 3 repetidores para secarlo con cariño</h3>
+    <p class="detalles-prod">45cm x 21 cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-set-de-3-repetidores-toalla">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('set-de-3-repetidores-toalla', 'Azul', 'imagenes/repetidoresbebe_azul.png', 347, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('set-de-3-repetidores-toalla', 'Rosa', 'imagenes/repetidoresbebe_rosa.png', 347, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-set-de-3-repetidores-toalla">$347 MXN</p>
+    <button type="button" id="btn-compra-set-de-3-repetidores-toalla" onclick="comprarProducto('Set  de 3  Repetidores Toalla (Azul)', 347)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('set-de-3-repetidores-toalla-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('set-de-3-repetidores-toalla-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('set-de-3-repetidores-toalla-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="set-de-3-repetidores-toalla-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel de Textura Suave:</strong> Ofrece un acabado sumamente terso al tacto, ideal para entrar en contacto frecuente con la piel de la boca y mejillas del recién nacido sin causar irritación.</li>
+                    <li><strong>100% Algodón Absorbente:</strong> Confeccionado íntegramente en toalla de algodón puro, un material noble y natural que retiene la humedad de forma rápida y eficiente en cada uso.</li>
+                    <li><strong>Hermoso Acabado en Bies:</strong> Cuenta con un fino remate texturizado en los bordes con un tierno patrón a rayas en tonos neutros (azul, blanco y gris) que aporta durabilidad y estilo.</li>
+                </ul>
+            </div>
+
+            <div id="set-de-3-repetidores-toalla-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Protector de Hombro (Repetidor):</strong> Diseñado especialmente para colocarse sobre el hombro de los padres al momento de sacar el aire o hacer repetir al bebé, protegiendo la ropa de fluidos.</li>
+                    <li><strong>Uso Diario y Multiusos:</strong> Un básico imprescindible en la pañalera, ideal para limpiar la delicada carita del lactante, derrames de leche o babitas durante la lactancia y dentición.</li>
+                    <li><strong>Práctico Set de 3 Piezas:</strong> Su formato de tres unidades te permite tener siempre un paño limpio de repuesto a la mano mientras los otros se encuentran en proceso de lavado.</li>
+                </ul>
+            </div>
+
+            <div id="set-de-3-repetidores-toalla-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Práctico Set de 3 Repetidores para bebé (Modelo 1802) confeccionados en toalla de alta absorción. El paquete incluye 3 piezas con bies decorativo a rayas en diferentes combinaciones cromáticas: 1 con detalle Azul, 1 con detalle Blanco y 1 con detalle Gris. Diseñados con una medida ideal de 45 x 21 cm.</p>
+                    <p><strong>Composición Textil:</strong> Toalla 100% Algodón (Tejido natural de textura suave).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Use lavadora en ciclo delicado, con agua fría y jabón neutro para conservar la suavidad de las fibras.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+
+<section class="tienda-seccion"> 
+        <h2>ABeCe</h2> 
+        <div class="tienda-contenedor">
+
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-toalla-con-capucha-para-bebe-bordado" src="imagenes/Toallabordado_azul.png" alt="toalla con capucha para bebe bordado ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Toalla bordada con capucha para después del baño</h3>
+    <p class="detalles-prod">Largo  1 metro x Ancho .70 cm.</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-toalla-con-capucha-para-bebe-bordado">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('toalla-con-capucha-para-bebe-bordado', 'Azul', 'imagenes/Toallabordado_azul.png', 575, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('toalla-con-capucha-para-bebe-bordado', 'Rosa', 'imagenes/Toallabordado_rosa.png', 575, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('toalla-con-capucha-para-bebe-bordado', 'Gris', 'imagenes/Toallabordado_gris.png', 575, this)">
+                <span class="circulo-color" style="background-color: #D3D3D3;"></span> Gris
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-toalla-con-capucha-para-bebe-bordado">$575 MXN</p>
+    <button type="button" id="btn-compra-toalla-con-capucha-para-bebe-bordado" onclick="comprarProducto('toalla con capucha para bebe bordado (Azul)', 575)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('toalla-con-capucha-para-bebe-bordado-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('toalla-con-capucha-para-bebe-bordado-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('toalla-con-capucha-para-bebe-bordado-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="toalla-con-capucha-para-bebe-bordado-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel Confort Suave:</strong> Ofrece un tacto sumamente blando, terso y amigable que respeta al máximo la delicada y sensible piel del bebé tras el contacto con el agua.</li>
+                    <li><strong>Innovadora Doble Vista:</strong> Confeccionada con una estructura de doble tela que combina los beneficios absorbentes de la toalla de algodón con la elegancia texturizada del piqué.</li>
+                    <li><strong>Hermoso Bordado en Capucha:</strong> Cuenta con un fino y tierno acabado bordado en color rosa sobre la capucha, lo que aporta una estética infantil muy delicada, moderna y decorativa.</li>
+                </ul>
+            </div>
+
+            <div id="toalla-con-capucha-para-bebe-bordado-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Toalla con Capucha:</strong> Diseñada especialmente para envolver por completo al bebé al salir de la tina, cubriendo su cabecita de forma inmediata para evitar corrientes de aire.</li>
+                    <li><strong>Secado Diario Eficiente:</strong> Ideal para la rutina del baño diario en casa, albercas o días de playa, ofreciendo una experiencia cómoda y un secado rápido desde los primeros meses.</li>
+                    <li><strong>Amplia Cobertura (.70 x 1 m):</strong> Sus generosas dimensiones permiten envolver al niño cómodamente durante sus distintas etapas de crecimiento, asegurando una larga vida útil al producto.</li>
+                </ul>
+            </div>
+
+            <div id="toalla-con-capucha-para-bebe-bordado-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Toalla de baño infantil con diseño de doble tela y doble vista (Modelo 1611). Cuenta con una práctica capucha integrada que luce un hermoso detalle bordado en color rosa. Diseñada con unas amplias dimensiones de 1 metro de largo por 70 centímetros de ancho.</p>
+                    <p><strong>Composición Textil:</strong> Doble Tela: Toalla 100% Algodón y Tela Piqué 100% Algodón.</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Use lavadora en ciclo delicado, con agua fría y jabón neutro.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-toalla-con-capucha-para-bebe-diseno-de-conejo" src="imagenes/Toallaconejo_azul.png" alt="Toalla con capucha para bebe Diseño de conejo ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Toalla con capucha de conejito para envolverlo</h3>
+    <p class="detalles-prod">Largo  1 metro x Ancho 70 cm.</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-toalla-con-capucha-para-bebe-diseno-de-conejo">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('toalla-con-capucha-para-bebe-diseno-de-conejo', 'Azul', 'imagenes/Toallaconejo_azul.png', 575, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('toalla-con-capucha-para-bebe-diseno-de-conejo', 'Rosa', 'imagenes/Toallaconejo_rosa.png', 575, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-toalla-con-capucha-para-bebe-diseno-de-conejo">$575 MXN</p>
+    <button type="button" id="btn-compra-toalla-con-capucha-para-bebe-diseno-de-conejo" onclick="comprarProducto('Toalla con capucha para bebe Diseño de conejo (Azul)', 575)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('toalla-con-capucha-para-bebe-diseno-de-conejo-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('toalla-con-capucha-para-bebe-diseno-de-conejo-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('toalla-con-capucha-para-bebe-diseno-de-conejo-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="toalla-con-capucha-para-bebe-diseno-de-conejo-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel de Confort Suave:</strong> Ofrece un tacto sumamente blando y terso que respeta la delicada piel del bebé, brindándole una experiencia de secado agradable y libre de fricciones molestas.</li>
+                    <li><strong>100% Algodón de Alta Absorción:</strong> Fabricada íntegramente con fibras naturales de algodón puro que retienen la humedad de forma ultra rápida, manteniendo al niño seco y calientito.</li>
+                    <li><strong>Lindo Diseño Divertido:</strong> Cuenta con detalles bordados de conejo y un vivo a rayas en tono azul, transformando el momento del baño en una actividad alegre, estética y muy tierna.</li>
+                </ul>
+            </div>
+
+            <div id="toalla-con-capucha-para-bebe-diseno-de-conejo-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Salida de Baño Segura:</strong> Su capucha temática permite cubrir inmediatamente la cabeza del lactante al salir del agua, protegiéndolo de manera eficiente contra corrientes de aire</li>
+                    <li><strong>Uso Cotidiano y Versátil:</strong> Un accesorio esencial perfecto tanto para la rutina del baño diario en el hogar como para llevar a las clases de natación, albercas o días de playa.</li>
+                    <li><strong>Amplia Cobertura (.70 x 1 m):</strong> Diseñada con una longitud generosa que envuelve al niño con total comodidad, asegurando un uso prolongado durante sus diferentes etapas de crecimiento.</li>
+                </ul>
+            </div>
+
+            <div id="toalla-con-capucha-para-bebe-diseno-de-conejo-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Divertida toalla de baño infantil con capucha integrada en diseño de Conejo (Color azul-Color Rosa). Confeccionada con un amplio tamaño de 1 metro de largo por 70 centímetros de ancho, ideal para cubrir por completo y secar cómodamente a tu bebé después del baño.</p>
+                    <p><strong>Composición Textil:</strong> Toalla 100% Algodón (Tejido natural y altamente absorbente).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Use lavadora en ciclo delicado, con agua fría y jabón neutro para mantener la suavidad de las fibras.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-toalla-facial-para-bebe-100-algodon-7-piezas" src="imagenes/toallafacialbebe_azul.png" alt="Toalla facial para bebe 100% algodón 7 piezas ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Set de toallas faciales suaves para cada día</h3>
+    <p class="detalles-prod">17cm x 17cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-toalla-facial-para-bebe-100-algodon-7-piezas">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('toalla-facial-para-bebe-100-algodon-7-piezas', 'Azul', 'imagenes/toallafacialbebe_azul.png', 300, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('toalla-facial-para-bebe-100-algodon-7-piezas', 'Rosa', 'imagenes/toallafacialbebe_rosa.png', 300, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-toalla-facial-para-bebe-100-algodon-7-piezas">$300 MXN</p>
+    <button type="button" id="btn-compra-toalla-facial-para-bebe-100-algodon-7-piezas" onclick="comprarProducto('Toalla facial para bebe 100% algodón 7 piezas (Azul)', 300)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('toalla-facial-para-bebe-100-algodon-7-piezas-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('toalla-facial-para-bebe-100-algodon-7-piezas-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('toalla-facial-para-bebe-100-algodon-7-piezas-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="toalla-facial-para-bebe-100-algodon-7-piezas-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel de Confort Suave:</strong> Ofrecen una textura blanda y tersa que respeta al máximo la piel sensible y fina del recién nacido, evitando cualquier tipo de rozadura o irritación.</li>
+                    <li><strong>Confección de Doble Tela:</strong> Su estructura de doble capa de algodón natural multiplica su capacidad de absorción y durabilidad, reteniendo la humedad de manera inmediata.</li>
+                    <li><strong>Set Completo Semanal (7 piezas):</strong> Al incluir siete unidades independientes, te garantiza tener cubiertas las necesidades de limpieza de toda la semana o contar siempre con repuestos limpios.</li>
+                </ul>
+            </div>
+
+            <div id="toalla-facial-para-bebe-100-algodon-7-piezas-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Limpieza Facial Delicada:</strong> Diseñadas específicamente para limpiar con total suavidad la carita del bebé, remover residuos de leche después de alimentarlo o limpiar las babitas.</li>
+                    <li><strong>Higiene Diaria y Rutina:</strong> Un accesorio esencial para la rutina diaria de aseo, perfecto para la hora del baño, el momento de la comida o para refrescar al lactante durante el día</li>
+                    <li><strong>Práctico Tamaño Pañalera:</strong> Gracias a su medida compactas de 17 x 17 cm., son sumamente fáciles de guardar y transportar en cualquier compartimento de la pañalera o bolso de viaje.</li>
+                </ul>
+            </div>
+
+            <div id="toalla-facial-para-bebe-100-algodon-7-piezas-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Práctico Set de 7 Toallas Faciales para bebé en color blanco, diseñado especialmente para los bebés. Cada pieza cuenta con una confección de doble tela y unas dimensiones compactas de 17 x 17 cm., ideales para la higiene delicada del rostro del bebé.</p>
+                    <p><strong>Composición Textil:</strong> Toalla 100% Algodón (Tejido natural de doble capa altamente absorbente).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Use lavadora en ciclo delicado, con agua fría y jabón neutro para preservar la suavidad de las toallitas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+
+<section class="tienda-seccion"> 
+        <h2>ABeCe</h2> 
+        <div class="tienda-contenedor">
+
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego" src="imagenes/edredoncunaviajera_dobleburbujaazul.png" alt="Edredon Para cuna viajera Doble Burbuja Con Oso de apego ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Edredón para cuna viajera con su osito de apego</h3>
+    <p class="detalles-prod">90cm x 70 cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego', 'Azul', 'imagenes/edredoncunaviajera_dobleburbujaazul.png', 836, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego', 'Rosa', 'imagenes/edredoncunaviajera_dobleburbujarosa.png', 836, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego">$836 MXN</p>
+    <button type="button" id="btn-compra-edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego" onclick="comprarProducto('Edredon Para cuna viajera Doble Burbuja Con Oso de apego (Azul)', 836)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Textura Doble Burbuja:</strong> Confeccionado con un relieve de burbujas por ambas caras que proporciona una experiencia táctil muy agradable, relajante y ultra suave para la piel del bebé.</li>
+                    <li><strong>Aislamiento Térmico Confortable:</strong> Su estructura acolchada mantiene una temperatura corporal óptima y agradable, protegiendo eficientemente al niño de las corrientes de aire o frío.</li>
+                    <li><strong>Detalles de Alta Costura:</strong> Cuenta con elegantes vivos perimetrales con patrón a rayas que no solo refuerzan las costuras para mayor durabilidad, sino que aportan una estética moderna.</li>
+                </ul>
+            </div>
+
+            <div id="edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Ideal para Cuna Viajera:</strong> Diseñado con las dimensiones exactas para adaptarse a los colchones de cunas viajeras, ofreciendo un espacio de descanso acogedor fuera de casa.</li>
+                    <li><strong>Comodidad en Traslados:</strong> Un accesorio textil ligero y fácil de doblar, perfecto para llevar de viaje, usar en visitas familiares o mantener al bebé abrigado en cualquier lugar.</li>
+                    <li><strong>Oso de Acompañamiento:</strong> Incluye un pequeño oso de peluche integrado que sirve como elemento decorativo y como tierno compañero de juegos o apego para el descanso del lactante.</li>
+                </ul>
+            </div>
+
+            <div id="edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Edredón para cuna viajera con diseño de doble burbuja en color azul (disponible también en rosa). El set incluye un tierno oso decorativo en color blanco y cuenta con un fino acabado de vivos a rayas en los bordes. Diseñado con unas medidas perfectas de 90 x 70 cm.</p>
+                    <p><strong>Composición Textil:</strong> Tela Doble Burbuja 100% Poliéster (Textura acolchada, térmica y de gran suavidad).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en lavadora en ciclo delicado. No usar secadora y no usar blanqueadores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco" src="imagenes/edredoncunaviajeradobleburbuja_amarillo.png" alt="Edredon Para cuna viajera Doble Burbuja Con sabana de cajon blanco ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Edredón para cuna viajera con sábana blanca</h3>
+    <p class="detalles-prod">90 x 70 cm.</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco">Amarillo</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco', 'Amarillo', 'imagenes/edredoncunaviajeradobleburbuja_amarillo.png', 980, this)">
+                <span class="circulo-color" style="background-color: #E7D599;"></span> Amarillo
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco">$980 MXN</p>
+    <button type="button" id="btn-compra-edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco" onclick="comprarProducto('Edredon Para cuna viajera Doble Burbuja Con sabana de cajon blanco (Amarillo)', 980)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Textura Doble Burbuja:</strong> Confeccionado con un relieve de burbujas por ambas caras que proporciona una experiencia táctil muy agradable, relajante y ultra suave para la piel del bebé.</li>
+                    <li><strong>Aislamiento Térmico Confortable:</strong> Su estructura acolchada mantiene una temperatura corporal óptima y agradable, protegiendo eficientemente al niño de las corrientes de aire o frío.</li>
+                    <li><strong>Detalles de Alta Costura:</strong> Cuenta con elegantes vivos perimetrales con patrón a rayas que no solo refuerzan las costuras para mayor durabilidad, sino que aportan una estética moderna.</li>
+                </ul>
+            </div>
+
+            <div id="edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Ideal para Cuna Viajera:</strong> Diseñado con las dimensiones exactas para adaptarse a los colchones de cunas viajeras, ofreciendo un espacio de descanso acogedor fuera de casa.</li>
+                    <li><strong>Comodidad en Traslados:</strong> Un accesorio textil ligero y fácil de doblar, perfecto para llevar de viaje, usar en visitas familiares o mantener al bebé abrigado en cualquier lugar.</li>
+                    <li><strong>sabana blanca de algodón:</strong> Incluye una sabana blanca de cajón blanca para el descanso del lactante.</li>
+                </ul>
+            </div>
+
+            <div id="edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Edredón para cuna viajera con diseño de doble burbuja en color Amarillo Paja. El set incluye una sabana en color blanco y cuenta con un fino acabado de vivos a rayas en los bordes. Diseñado con unas medidas perfectas de 90 x 70 cm.</p>
+                    <p><strong>Composición Textil:</strong> Tela Doble Burbuja 100% Poliéster (Textura acolchada, térmica y de gran suavidad).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en lavadora en ciclo delicado. No usar secadora y no usar blanqueadores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-edredon-para-minicuna-doble-burbuja-con-oso-de-apego" src="imagenes/edredonminicunaazul_osoapego.png" alt="Edredon para minicuna doble / Burbuja Con oso de apego ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Edredón para minicuna con osito de apego</h3>
+    <p class="detalles-prod">90 x 50 cm.</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-edredon-para-minicuna-doble-burbuja-con-oso-de-apego">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('edredon-para-minicuna-doble-burbuja-con-oso-de-apego', 'Azul', 'imagenes/edredonminicunaazul_osoapego.png', 738, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('edredon-para-minicuna-doble-burbuja-con-oso-de-apego', 'Rosa', 'imagenes/edredonminicunarosa_osoapego.png', 738, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-edredon-para-minicuna-doble-burbuja-con-oso-de-apego">$738 MXN</p>
+    <button type="button" id="btn-compra-edredon-para-minicuna-doble-burbuja-con-oso-de-apego" onclick="comprarProducto('Edredon para minicuna doble / Burbuja Con oso de apego (Azul)', 738)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('edredon-para-minicuna-doble-burbuja-con-oso-de-apego-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('edredon-para-minicuna-doble-burbuja-con-oso-de-apego-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('edredon-para-minicuna-doble-burbuja-con-oso-de-apego-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="edredon-para-minicuna-doble-burbuja-con-oso-de-apego-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Textura Doble Burbuja:</strong> Confeccionado con un relieve de burbujas en ambas caras que proporciona una experiencia táctil ultra suave, tersa y muy agradable para la piel del bebé.</li>
+                    <li><strong>Retención Térmica Confortable:</strong> Su estructura acolchada actúa como una barrera ligera y protectora, manteniendo una temperatura corporal agradable sin acumular calor excesivo.</li>
+                    <li><strong>Hermosos Vivos a Rayas:</strong> Cuenta con elegantes acabados perimetrales con patrón a rayas que refuerzan las costuras contra el desgaste diario y aportan una estética moderna.</li>
+                </ul>
+            </div>
+
+            <div id="edredon-para-minicuna-doble-burbuja-con-oso-de-apego-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Adaptable a Espacios Pequeños:</strong> Diseñado con las dimensiones exactas de 90 x 50 cm. para ajustarse de forma óptima a colchones de mini cuna, colecho y moisés.</li>
+                    <li><strong>Confort y Descanso Seguro:</strong> Un accesorio textil ideal para mantener al recién nacido en un ambiente cálido y protegido durante sus siestas diarias en sus primeros meses de vida.</li>
+                    <li><strong>Oso de Acompañamiento:</strong> Incluye un pequeño oso de peluche integrado con textura de burbujas que sirve como un tierno compañero de apego y estimulación sensorial para el bebé.</li>
+                </ul>
+            </div>
+
+            <div id="edredon-para-minicuna-doble-burbuja-con-oso-de-apego-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Edredón para mini cuna, colecho y moisés con diseño de doble burbuja en color rosa (disponible también en azul). El set incluye un tierno oso decorativo en color blanco y cuenta con un fino acabado de vivos a rayas en los bordes. Diseñado con unas medidas perfectas de 90 x 50 cm.</p>
+                    <p><strong>Composición Textil:</strong> Tela Doble Burbuja 100% Poliéster (Textura acolchada, térmica y de gran suavidad).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en lavadora en ciclo delicado. No usar secadora y no usar blanqueadores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+</section>
+
+<section class="tienda-seccion"> 
+        <h2>ABeCe</h2> 
+        <div class="tienda-contenedor">
+
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon" src="imagenes/edredonminicunasabana_amarillo.png" alt="Edredon para minicuna doble / Burbuja Con sabana de cajon algodón ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Edredón para minicuna con sábana de algodón</h3>
+    <p class="detalles-prod">90cm x 50 cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon">Amarillo</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon', 'Amarillo', 'imagenes/edredonminicunasabana_amarillo.png', 850, this)">
+                <span class="circulo-color" style="background-color: #E7D599;"></span> Amarillo
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon">$850 MXN</p>
+    <button type="button" id="btn-compra-edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon" onclick="comprarProducto('Edredon para minicuna doble / Burbuja Con sabana de cajon algodón (Amarillo)', 850)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Textura Doble Burbuja:</strong> Confeccionado con un relieve de burbujas en ambas caras que proporciona una experiencia táctil ultra suave, tersa y muy agradable para la piel del bebé.</li>
+                    <li><strong>Retención Térmica Confortable:</strong> Su estructura acolchada actúa como una barrera ligera y protectora, manteniendo una temperatura corporal agradable sin acumular calor excesivo.</li>
+                    <li><strong>Hermosos Vivos a Rayas:</strong> Cuenta con elegantes acabados perimetrales con patrón a rayas que refuerzan las costuras contra el desgaste diario y aportan una estética moderna.</li>
+                </ul>
+            </div>
+
+            <div id="edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Adaptable a Espacios Pequeños:</strong> Diseñado con las dimensiones exactas de 90 x 50 cm. para ajustarse de forma óptima a colchones de mini cuna, colecho y moisés.</li>
+                    <li><strong>Confort y Descanso Seguro:</strong> Un accesorio textil ideal para mantener al recién nacido en un ambiente cálido y protegido durante sus siestas diarias en sus primeros meses de vida.</li>
+                    <li><strong>incluye sabana blanca de algodón:</strong> Incluye una sabana de color blanco de algodón, puedes adquirir un oso de apego para la estimulación sensorial para el bebé. encuéntralo dentro de esta misma pagina de ABeCe.</li>
+                </ul>
+            </div>
+
+            <div id="edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Edredón para mini cuna, colecho y moisés con diseño de doble burbuja en color Amarillo Paja cuenta con un fino acabado de vivos a rayas en los bordes. Diseñado con unas medidas perfectas de 90 x 50 cm.</p>
+                    <p><strong>Composición Textil:</strong> Tela Doble Burbuja 100% Poliéster (Textura acolchada, térmica y de gran suavidad).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en lavadora en ciclo delicado. No usar secadora y no usar blanqueadores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca" src="imagenes/edredonmoisesminicuna_azulsabana.png" alt="Edredón para minicuna Moisés Incluye sabana de cajón blanca ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Edredón para moisés con sábana blanca</h3>
+    <p class="detalles-prod">90cm x 50 cm.</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca', 'Azul', 'imagenes/edredonmoisesminicuna_azulsabana.png', 746, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca', 'Rosa', 'imagenes/edredonmoisesminicuna_rosasabana.png', 746, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca">$746 MXN</p>
+    <button type="button" id="btn-compra-edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca" onclick="comprarProducto('Edredón para minicuna Moisés Incluye sabana de cajón blanca (Azul)', 746)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Versatilidad Doble Vista:</strong> Tanto el edredón como la almohada cuentan con un diseño de doble vista (combinando patrones lisos de burbuja y finas rayas), multiplicando las opciones de estilo.</li>
+                    <li><strong>Innovación Algodón y Bambú:</strong> Confeccionado con una mezcla textil premium que une la suavidad natural del algodón con las propiedades térmicas e hipoalergénicas del bambú.</li>
+                    <li><strong>Frescura y Alta Transpirabilidad:</strong> Sus materiales nobles facilitan una óptima circulación del aire, evitando la acumulación de humedad y protegiendo eficazmente la delicada piel del lactante.</li>
+                </ul>
+            </div>
+
+            <div id="edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Kit de Descanso Completo:</strong> Set diseñado específicamente para vestir de forma integral los espacios de sueño más pequeños del bebé, como mini cunas, moisés, colecho y Next2me.</li>
+                    <li><strong>Sábana de Ajuste Firme:</strong> La sábana de cajón incorpora un sistema de resorte perimetral completo que la mantiene fija al colchón, evitando pliegues molestos o que se safe al dormir.</li>
+                    <li><strong>Adaptabilidad de Espacios:</strong> Ideal para su uso diario desde el primer día de nacido del bebé, garantizándole un entorno de sueño seguro, sumamente acogedor e higiénico.</li>
+                </ul>
+            </div>
+
+            <div id="edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Juego de edredón doble vista para mini cuna, moisés, colecho y Next2me (Modelo 9021) en color azul. El set completo de 3 piezas incluye: 1 edredón doble vista, 1 almohada doble vista y 1 sábana de cajón en color blanco con resorte alrededor para garantizar una máxima sujeción al colchón.</p>
+                    <p><strong>Composición Textil:</strong> Sábana de cajón: Composición premium de 50% Algodón y 50% Bambú. Edredón y almohada: Combinación de texturas suaves de alta calidad.</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en ciclo delicado utilizando jabón neutro. NO USAR SECADORA, NO CENTRIFUGAR, NO USAR CLORO Y NO PLANCHAR.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tarjeta-producto">
+    <div class="contenedor-lupa-premium" onmousemove="ejecutarLupa(event, this)" onmouseleave="apagarLupa(this)">
+        <img id="img-principal-mantita-de-apego-oso" src="imagenes/mantitaosoapego_azul.png" alt="Mantita de apego Oso ABeCe" class="img-base-lupa">
+        <div class="lupa-lente"></div>
+    </div>
+
+    <h3>Mantita de apego para acompañar sus siestas</h3>
+    <p class="detalles-prod">25cm x 25cm</p>
+
+    <div class="selector-variantes">
+        <p class="titulo-variante">Color/Textura: <span id="nombre-variante-mantita-de-apego-oso">Azul</span></p>
+        <div class="botones-variantes-flex">
+            <button type="button" class="btn-variante activo" onclick="cambiarVarianteUniversal('mantita-de-apego-oso', 'Azul', 'imagenes/mantitaosoapego_azul.png', 310, this)">
+                <span class="circulo-color" style="background-color: #A9CCE3;"></span> Azul
+            </button>
+            <button type="button" class="btn-variante" onclick="cambiarVarianteUniversal('mantita-de-apego-oso', 'Rosa', 'imagenes/mantitaosoapego_rosa.png', 310, this)">
+                <span class="circulo-color" style="background-color: #F7C6D7;"></span> Rosa
+            </button>
+        </div>
+    </div>
+
+    <p class="precio" id="precio-mantita-de-apego-oso">$310 MXN</p>
+    <button type="button" id="btn-compra-mantita-de-apego-oso" onclick="comprarProducto('Mantita de apego Oso (Azul)', 310)">Comprar Ahora</button>
+
+    <div class="ficha-tecnica-tabs">
+        <div class="tabs-botones-flex">
+            <button type="button" class="btn-tab activo" onclick="alternarTabABeCe('mantita-de-apego-oso-beneficios', this)">Beneficios</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('mantita-de-apego-oso-etapas', this)">Etapas</button>
+            <button type="button" class="btn-tab" onclick="alternarTabABeCe('mantita-de-apego-oso-composicion', this)">Composición</button>
+        </div>
+
+        <div class="tabs-contenido-bloque">
+            <div id="mantita-de-apego-oso-beneficios" class="contenido-tab-item activo">
+                <ul>
+                    <li><strong>Nivel de Confort Suave:</strong> Confeccionada con materiales premium que otorgan una textura tersa y blanda, totalmente amigable con la delicada y sensible piel del recién nacido.</li>
+                    <li><strong>Estimulación Sensorial Táctil:</strong> Su característico relieve en tela de burbuja ofrece una experiencia táctil única que contribuye positivamente al desarrollo psicomotriz temprano del niño.</li>
+                    <li><strong>Gama de Colores Tiernos:</strong> disponible en Dos hermosas tonalidades neutras e infantiles (azul, y rosa), ideales para coordinar a juego con el resto de accesorios de tu bebé.</li>
+                </ul>
+            </div>
+
+            <div id="mantita-de-apego-oso-etapas" class="contenido-tab-item">
+                <ul>
+                    <li><strong>Objeto Transicional Ideal:</strong> Funciona como un excelente elemento de apego que ayuda al recién nacido a gestionar la ansiedad de separación, brindándole una gran sensación de seguridad.</li>
+                    <li><strong>Conciliación del Sueño:</strong> Perfecta para acompañar al bebé en su cuna, moisés o colecho durante la rutina de descanso, facilitando un sueño más tranquilo, profundo y reparador.</li>
+                    <li><strong>Tamaño Pañalera Portátil:</strong> Gracias a su práctica medida de 25 x 25 cm., es sumamente fácil de transportar en cualquier bolso o carriola, manteniendo el confort del bebé en paseos o viajes.</li>
+                </ul>
+            </div>
+
+            <div id="mantita-de-apego-oso-composicion" class="contenido-tab-item">
+                <div class="composicion-grid-mini">
+                    <p><strong>Descripción detallada:</strong> Tierna mantita de apego con cabeza de oso en color azul (disponible también en rosa ). Presenta un lindo detalle de listón satinado en el cuello y cuenta con unas dimensiones perfectamente compactas de 25 x 25 centímetros, ideales para que las manitas del bebé la sostengan con facilidad.</p>
+                    <p><strong>Composición Textil:</strong> Tela Burbuja 100% Poliéster (Textura ultra suave y de rápido secado).</p>
+                    <p><strong>Instrucciones de Cuidado:</strong> Lavar en lavadora en ciclo delicado. No usar secadora y no usar blanqueadores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 
+</section>
+
+
+
+
+
 
 
 
@@ -1514,7 +2627,7 @@ Pagar con Tarjeta
 <div class="contenedor-creditos-estudio">
 <img src="imagenes/logo-espinoza.png" alt="Logotipo ESPINOZA SOUND LAB" class="logo-estudio">
 <p class="creditos-desarrollador">
-Desarrollo Digital y Branding por <span class="nombre-estudio">ESPINOZA SOUND LAB</span>
+Branding <span class="nombre-estudio">Espinoza Sound Lab</span>
 </p>
 <p class="contacto-desarrollador">
 ✉️ Contacto Soluciones Web:
@@ -1524,6 +2637,12 @@ Desarrollo Digital y Branding por <span class="nombre-estudio">ESPINOZA SOUND LA
 </footer>
 
 <script src="script.js"></script>
+
+<script>
+    document.querySelectorAll('.ficha-tecnica-tabs .activo').forEach(function (elemento) {
+        elemento.classList.remove('activo');
+    });
+</script>
 
 <!-- WhatsApp oficial -->
 <a href="https://wa.me/525511180337?text=Hola%20ABECE,%20me%20gustaría%20recibir%20información."

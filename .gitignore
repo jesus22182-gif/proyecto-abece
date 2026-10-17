@@ -1,0 +1,19 @@
+# ============================================================
+# Archivos que NUNCA deben subirse a GitHub
+# ============================================================
+
+# Contraseñas y datos privados del servidor
+.env
+.env.*
+
+# Dependencias de Node (se reinstalan con "npm install")
+node_modules/
+
+# Herramientas internas de ABeCe (solo para uso local)
+_herramienta-catalogo/
+_respaldos-catalogo/
+
+# Archivos que crea Windows / Mac
+Thumbs.db
+desktop.ini
+.DS_Store

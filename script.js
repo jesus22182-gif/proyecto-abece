@@ -563,43 +563,50 @@ if (botonMenu && menuPrincipal) {
 
 // Índice de búsqueda del catálogo: cada entrada conserva variantes y su destino.
 const indiceProductosABeCe = [
-    { nombre: "Cojines de Lactancia", variantes: "Rosa Burbuja, Azul Nube, Blanco Algodón", cardIndex: 0, palabras: "cojin cojines lactancia rosa burbuja azul nube blanco algodon" },
-    { nombre: "Cojines de Lactancia Velur", variantes: "Rosa Velur, Azul Velur, Blanco Velur", cardIndex: 1, palabras: "cojin cojines lactancia velur rosa azul blanco" },
-    { nombre: "Cojines de Lactancia Bordados", variantes: "Rosa, Azul, Beige", cardIndex: 2, palabras: "cojin cojines lactancia bordado bordados rosa azul beige" },
-    { nombre: "Sillón Colchón Antirreflujo", variantes: "Azul Turquesa, Rosa, Blanco, Azul", cardIndex: 3, palabras: "sillon colchon antirreflujo azul turquesa rosa blanco" },
-    { nombre: "Cobija Rusia Doble Tela", variantes: "Azul, Rosa, Amarillo", cardIndex: 4, palabras: "cobija rusia doble tela azul rosa amarillo" },
-    { nombre: "Cobija Rusia con Oso de Apego", variantes: "Incluye Oso de Apego", cardIndex: 4, palabras: "cobija rusia oso apego" },
-    { nombre: "Cobija Burbuja Estampado Tela", variantes: "Azul, Rosa, Amarillo", cardIndex: 5, palabras: "cobija burbuja estampado tela azul rosa amarillo" },
-    { nombre: "Almohada con Funda Burbuja", variantes: "Azul, Rosa, Amarillo", cardIndex: 6, palabras: "almohada funda burbuja azul rosa amarillo" },
-    { nombre: "Almohada Burbuja Tela", variantes: "Azul, Rosa, Amarillo, Blanco", cardIndex: 7, palabras: "almohada burbuja tela azul rosa amarillo blanco" },
-    { nombre: "Colchón Cambiador Curvo Funda Capitoneada", variantes: "Blanco", cardIndex: 8, palabras: "colchon cambiador curvo funda capitoneada blanco" },
-    { nombre: "Colchón Cuña Antirreflujo para Bebé Forro Toalla", variantes: "Blanco", cardIndex: 9, palabras: "colchon cuña antirreflujo bebe forro toalla blanco" },
-    { nombre: "Colchón para Cuna Viajera Memory Form con Tela Repelente", variantes: "Blanco", cardIndex: 10, palabras: "colchon cuna viajera memory form tela repelente blanco" },
-    { nombre: "Colchón para Cuna Viajera Memory Form con Tela Repelente Estampada", variantes: "Azul-Niño, Rosa-Niña", cardIndex: 11, palabras: "colchon cuna viajera memory form tela repelente estampada azul niño rosa niña" },
-    { nombre: "Fular para Porteo Canguro Rebozo Porta Bebés Ergonómico", variantes: "Negro, Rosa", cardIndex: 12, palabras: "fular porteo canguro rebozo porta bebes ergonomico negro rosa" },
-    { nombre: "Nido Contención Azul / Rosa", variantes: "Incluye Oso de Apego", cardIndex: 13, palabras: "nido contencion azul rosa oso apego" },
-    { nombre: "Set de 3 Sabanitas Sabanitas Recibidoras", variantes: "Azul, Rosa", cardIndex: 14, palabras: "set 3 sabanitas recibidoras azul rosa" },
-    { nombre: "Sabanitas Recibidoras", variantes: "Azul-gris, Rosa-gris", cardIndex: 15, palabras: "sabanitas recibidoras azul gris rosa" },
-    { nombre: "Juego de Sábanas para Cuna", variantes: "Gris", cardIndex: 16, palabras: "juego sabanas cuna gris" },
-    { nombre: "Juego de Sábanas para Mini Cuna y Colecho", variantes: "Blanco", cardIndex: 17, palabras: "juego sabanas mini cuna colecho blanco" },
-    { nombre: "Cuellera para Soporte de Cabeza", variantes: "Azul, Rosa, Amarillo", cardIndex: 18, palabras: "cuellera soporte cabeza azul rosa amarillo" },
-    { nombre: "Cuellera Pequeña", variantes: "Azul, Rosa, Amarillo", cardIndex: 19, palabras: "cuellera pequeña azul rosa amarillo" },
-    { nombre: "Cojín Térmico", variantes: "Semillas y hierbas", cardIndex: 20, palabras: "cojin termico colicos semillas hierbas" },
-    { nombre: "Oso de Apego Relleno", variantes: "Azul, Rosa, Blanco", cardIndex: 21, palabras: "oso apego relleno azul rosa blanco" },
-    { nombre: "Oso de Apego", variantes: "Azul, Rosa, Blanco", cardIndex: 22, palabras: "oso apego sin relleno azul rosa blanco" },
-    { nombre: "Saquito para Dormir", variantes: "Mantita para bebé", cardIndex: 23, palabras: "saquito dormir mantita" },
-    { nombre: "Andarín", variantes: "Apoyo para primeros pasos", cardIndex: 24, palabras: "andarin primeros pasos" },
-    { nombre: "Protector de Cambiador", variantes: "Protección suave", cardIndex: 25, palabras: "protector cambiador" },
-    { nombre: "Set de 3 Repetidores", variantes: "Azul, Rosa", cardIndex: 26, palabras: "set repetidores" },
-    { nombre: "Toalla Bordada con Capucha", variantes: "Suave para después del baño", cardIndex: 27, palabras: "toalla bordada capucha" },
-    { nombre: "Toalla con Capucha de Conejito", variantes: "Suave y acogedora", cardIndex: 28, palabras: "toalla capucha conejito" },
-    { nombre: "Set de Toallas Faciales", variantes: "Uso diario", cardIndex: 29, palabras: "set toallas faciales" },
-    { nombre: "Edredón para Cuna Viajera con Osito", variantes: "Incluye sábana", cardIndex: 30, palabras: "edredon cuna viajera osito" },
-    { nombre: "Edredón para Cuna Viajera", variantes: "Sábana blanca", cardIndex: 31, palabras: "edredon cuna viajera sabana blanca" },
-    { nombre: "Edredón para Minicuna con Osito", variantes: "Incluye sábana", cardIndex: 32, palabras: "edredon minicuna osito" },
-    { nombre: "Edredón para Minicuna", variantes: "Sábana de algodón", cardIndex: 33, palabras: "edredon minicuna sabana algodon" },
-    { nombre: "Edredón para Moisés", variantes: "Sábana blanca", cardIndex: 34, palabras: "edredon moises sabana blanca" },
-    { nombre: "Mantita de Apego", variantes: "Suave para sus siestas", cardIndex: 35, palabras: "mantita apego" }
+    { nombre: "Cojines de Lactancia", variantes: "Rosa Burbuja, Azul Nube, Blanco Algodón", cardIndex: 0, palabras: "cojin cojines lactancia rosa burbuja azul nube blanco algodon", clave: "cojin" },
+    { nombre: "Cojines de Lactancia Velur", variantes: "Rosa Velur, Azul Velur, Blanco Velur", cardIndex: 1, palabras: "cojin cojines lactancia velur rosa azul blanco", clave: "cojinvelur" },
+    { nombre: "Cojines de Lactancia Bordados", variantes: "Rosa, Azul, Beige", cardIndex: 2, palabras: "cojin cojines lactancia bordado bordados rosa azul beige", clave: "cojinbordado" },
+    { nombre: "Sillón Colchón Antirreflujo", variantes: "Azul Turquesa, Rosa, Blanco, Azul", cardIndex: 3, palabras: "sillon colchon antirreflujo azul turquesa rosa blanco", clave: "sillon" },
+    { nombre: "Cobija Rusia Doble Tela", variantes: "Azul, Rosa, Amarillo", cardIndex: 4, palabras: "cobija rusia doble tela azul rosa amarillo", clave: "cobija" },
+    { nombre: "Cobija Rusia con Oso de Apego", variantes: "Incluye Oso de Apego", cardIndex: 4, palabras: "cobija rusia oso apego", clave: "cobija" },
+    { nombre: "Cobija Burbuja Estampado Tela", variantes: "Azul, Rosa, Amarillo", cardIndex: 5, palabras: "cobija burbuja estampado tela azul rosa amarillo", clave: "cobija-burbuja" },
+    { nombre: "Almohada con Funda Burbuja", variantes: "Azul, Rosa, Amarillo", cardIndex: 6, palabras: "almohada funda burbuja azul rosa amarillo", clave: "almohada-con-funda-burbuja" },
+    { nombre: "Almohada Burbuja Tela", variantes: "Azul, Rosa, Amarillo, Blanco", cardIndex: 7, palabras: "almohada burbuja tela azul rosa amarillo blanco", clave: "almohada-burbuja-tela" },
+    { nombre: "Colchón Cambiador Curvo Funda Capitoneada", variantes: "Blanco", cardIndex: 8, palabras: "colchon cambiador curvo funda capitoneada blanco", clave: "colchon-cambiador-curvo-funda-capitoneada" },
+    { nombre: "Colchón Cuña Antirreflujo para Bebé Forro Toalla", variantes: "Blanco", cardIndex: 10, palabras: "colchon cuña antirreflujo bebe forro toalla blanco", clave: "colchon-cuna-antirreflujo-para-bebe-forro-toalla" },
+    { nombre: "Colchón para Cuna Viajera Memory Form con Tela Repelente", variantes: "Blanco", cardIndex: 11, palabras: "colchon cuna viajera memory form tela repelente blanco", clave: "colchon-para-cuna-viajera-memory-form-con-tela-repelente" },
+    { nombre: "Colchón para Cuna Viajera Memory Form con Tela Repelente Estampada", variantes: "Azul-Niño, Rosa-Niña", cardIndex: 12, palabras: "colchon cuna viajera memory form tela repelente estampada azul niño rosa niña", clave: "colchon-para-cuna-viajera-memory-form-con-tela-repelente-estampada" },
+    { nombre: "Fular para Porteo Canguro Rebozo Porta Bebés Ergonómico", variantes: "Negro, Rosa", cardIndex: 14, palabras: "fular porteo canguro rebozo porta bebes ergonomico negro rosa", clave: "fular-para-porteo-canguro-rebozo-porta-bebes-ergonomico" },
+    { nombre: "Nido Contención Azul / Rosa", variantes: "Incluye Oso de Apego", cardIndex: 15, palabras: "nido contencion azul rosa oso apego", clave: "nido-contencion-azul" },
+    { nombre: "Set de 3 Sabanitas Sabanitas Recibidoras", variantes: "Azul, Rosa", cardIndex: 16, palabras: "set 3 sabanitas recibidoras azul rosa", clave: "set-de-3-sabanitas-sabanitas-recibidoras" },
+    { nombre: "Sabanitas Recibidoras", variantes: "Azul-gris, Rosa-gris", cardIndex: 17, palabras: "sabanitas recibidoras azul gris rosa", clave: "sabanitas-recibidoras" },
+    { nombre: "Juego de Sábanas para Cuna", variantes: "Gris", cardIndex: 18, palabras: "juego sabanas cuna gris", clave: "juego-de-sabanas-cuna" },
+    { nombre: "Juego de Sábanas para Mini Cuna y Colecho", variantes: "Blanco", cardIndex: 19, palabras: "juego sabanas mini cuna colecho blanco", clave: "juego-de-sabanas-mini-cuna-colecho-moises" },
+    { nombre: "Cuellera para Soporte de Cabeza", variantes: "Azul, Rosa, Amarillo", cardIndex: 23, palabras: "cuellera soporte cabeza azul rosa amarillo", clave: "cuellera-soporte-para-cabeza" },
+    { nombre: "Cuellera Pequeña", variantes: "Azul, Rosa, Amarillo", cardIndex: 24, palabras: "cuellera pequeña azul rosa amarillo", clave: "cuellera-soporte-para-cabeza-chica" },
+    { nombre: "Cojín Térmico", variantes: "Semillas y hierbas", cardIndex: 25, palabras: "cojin termico colicos semillas hierbas", clave: "cojin-termico-anti-colicos-para-bebe-semillas-y-hierbas" },
+    { nombre: "Oso de Apego Relleno", variantes: "Azul, Rosa, Blanco", cardIndex: 26, palabras: "oso apego relleno azul rosa blanco", clave: "oso-de-apego-relleno" },
+    { nombre: "Oso de Apego", variantes: "Azul, Rosa, Blanco", cardIndex: 27, palabras: "oso apego sin relleno azul rosa blanco", clave: "oso-de-apego-sin-relleno" },
+    { nombre: "Saquito para Dormir", variantes: "Mantita para bebé", cardIndex: 28, palabras: "saquito dormir mantita", clave: "saquito-para-dormir-para-bebe" },
+    { nombre: "Andarín", variantes: "Apoyo para primeros pasos", cardIndex: 29, palabras: "andarin primeros pasos", clave: "andarin" },
+    { nombre: "Protector de Cambiador", variantes: "Protección suave", cardIndex: 30, palabras: "protector cambiador", clave: "protector-para-colchon-cambiador" },
+    { nombre: "Set de 3 Repetidores", variantes: "Azul, Rosa", cardIndex: 31, palabras: "set repetidores", clave: "set-de-3-repetidores-toalla" },
+    { nombre: "Toalla Bordada con Capucha", variantes: "Suave para después del baño", cardIndex: 32, palabras: "toalla bordada capucha", clave: "toalla-con-capucha-para-bebe-bordado" },
+    { nombre: "Toalla con Capucha de Conejito", variantes: "Suave y acogedora", cardIndex: 33, palabras: "toalla capucha conejito", clave: "toalla-con-capucha-para-bebe-diseno-de-conejo" },
+    { nombre: "Set de Toallas Faciales", variantes: "Uso diario", cardIndex: 34, palabras: "set toallas faciales", clave: "toalla-facial-para-bebe-100-algodon-7-piezas" },
+    { nombre: "Edredón para Cuna Viajera con Osito", variantes: "Incluye sábana", cardIndex: 35, palabras: "edredon cuna viajera osito", clave: "edredon-para-cuna-viajera-doble-burbuja-con-oso-de-apego" },
+    { nombre: "Edredón para Cuna Viajera", variantes: "Sábana blanca", cardIndex: 36, palabras: "edredon cuna viajera sabana blanca", clave: "edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco" },
+    { nombre: "Edredón para Minicuna con Osito", variantes: "Incluye sábana", cardIndex: 37, palabras: "edredon minicuna osito", clave: "edredon-para-minicuna-doble-burbuja-con-oso-de-apego" },
+    { nombre: "Edredón para Minicuna", variantes: "Sábana de algodón", cardIndex: 39, palabras: "edredon minicuna sabana algodon", clave: "edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon" },
+    { nombre: "Edredón para Moisés", variantes: "Sábana blanca", cardIndex: 40, palabras: "edredon moises sabana blanca", clave: "edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca" },
+    { nombre: "Mantita de Apego", variantes: "Suave para sus siestas", cardIndex: 41, palabras: "mantita apego", clave: "mantita-de-apego-oso" },
+    { nombre: "Funda/Protector  Para :Colchon Cambiador, Mini cuna, moises.", variantes: "Azul-mod 4023, Rosa-mod 4026, Amarillo-mod 4027, Blanco-mod 4024", cardIndex: 13, palabras: "funda protector colchon cambiador mini cuna moises azul mod 4023 rosa 4026 amarillo 4027 blanco 4024", clave: "funda-protector-para-colchon-cambiador-mini-cuna-moises" },
+    { nombre: "Cobija  Doble Burbuja", variantes: "Azul-mod 6038, Rosa-mod 6041, Amarillo-mod 6071, Blanco-mod 6039", cardIndex: 42, palabras: "cobija doble burbuja azul mod 6038 rosa 6041 amarillo 6071 blanco 6039", clave: "cobija-doble-burbuja" },
+    { nombre: "Sabana de Cajón Para Cuna Viajera", variantes: "Azul-mod 49, Rosa-mod 51, Blanco-mod 04", cardIndex: 20, palabras: "sabana cajon cuna viajera azul mod 49 rosa 51 blanco 04", clave: "sabana-de-cajon-para-cuna-viajera" },
+    { nombre: "Cobija Para Cuna, Doble Tela (Burbuja-Blunka)", variantes: "Azul-mod 6063, Rosa-mod 6064", cardIndex: 21, palabras: "cobija cuna doble tela burbuja blunka azul mod 6063 rosa 6064", clave: "cobija-para-cuna-doble-tela-burbuja-blunka" },
+    { nombre: "Saquito con piernitas para dormir", variantes: "Amarillo-mod 1912", cardIndex: 38, palabras: "saquito piernitas dormir amarillo mod 1912", clave: "saquito-con-piernitas-para-dormir" },
+    { nombre: "Juego de sábanas para cuna viajera", variantes: "Azul-mod 70, Rosa-mod 71, Gris-mod 56", cardIndex: 22, palabras: "juego sabanas cuna viajera azul mod 70 rosa 71 gris 56", clave: "juego-de-sabanas-para-cuna-viajera" },
+    { nombre: "Fundas Almohada", variantes: "Azul-mod 80, Rosa-mod 81, Gris-mod 60", cardIndex: 9, palabras: "fundas almohada azul mod 80 rosa 81 gris 60", clave: "fundas-almohada" }
 ];
 
 function textoBusqueda(texto) {
@@ -818,19 +825,40 @@ function cambiarVarianteUniversal(productoClave, nombreVersion, rutaImagen, prec
                 tituloFormateado = 'Edredon Para cuna viajera Doble Burbuja Con Oso de apego';
                 break;
            case  'edredon-para-cuna-viajera-doble-burbuja-con-sabana-de-cajon-blanco':
-                tituloFormateado = 'Edredon Para cuna viajera Doble Burbuja Con sabana de cajon blanco';
+                tituloFormateado = 'Edredón para cuna viajera Con sabana de cajón **100% algodón**';
                 break;
            case  'edredon-para-minicuna-doble-burbuja-con-oso-de-apego':
                 tituloFormateado = 'Edredon para minicuna doble / Burbuja Con oso de apego';
                 break;
            case  'edredon-para-minicuna-doble-burbuja-con-sabana-de-cajon-algodon':
-                tituloFormateado = 'Edredon para minicuna doble / Burbuja Con sabana de cajon algodón';
+                tituloFormateado = 'Edredon para minicuna doble Burbuja Con sabana de cajón **100% algodón**';
                 break;
            case  'edredon-para-minicuna-moises-incluye-sabana-de-cajon-blanca':
                 tituloFormateado = 'Edredón para minicuna Moisés Incluye sabana de cajón blanca';
                 break;
            case  'mantita-de-apego-oso':
                 tituloFormateado = 'Mantita de apego Oso';
+                break;
+           case  'funda-protector-para-colchon-cambiador-mini-cuna-moises':
+                tituloFormateado = 'Funda/Protector  Para :Colchon Cambiador, Mini cuna, moises.';
+                break;
+           case  'cobija-doble-burbuja':
+                tituloFormateado = 'Cobija  Doble Burbuja';
+                break;
+           case  'sabana-de-cajon-para-cuna-viajera':
+                tituloFormateado = 'Sabana de Cajón Para Cuna Viajera';
+                break;
+           case  'cobija-para-cuna-doble-tela-burbuja-blunka':
+                tituloFormateado = 'Cobija Para Cuna, Doble Tela (Burbuja-Blunka)';
+                break;
+           case  'saquito-con-piernitas-para-dormir':
+                tituloFormateado = 'Saquito con piernitas para dormir';
+                break;
+           case  'juego-de-sabanas-para-cuna-viajera':
+                tituloFormateado = 'Juego de sábanas para cuna viajera';
+                break;
+           case  'fundas-almohada':
+                tituloFormateado = 'Fundas Almohada';
                 break;
 
         }
